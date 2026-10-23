@@ -1,0 +1,18 @@
+{
+  "confusion_matrix": {
+    "TP": 84,
+    "FP": 75,
+    "TN": 968,
+    "FN": 73,
+    "total": 1200
+  },
+  "performance": {
+    "accuracy": 0.8767,
+    "precision": 0.5283,
+    "recall": 0.535,
+    "specificity": 0.9281,
+    "false_positive_rate": 0.0719,
+    "false_discovery_rate": 0.4717,
+    "f1_score": 0.5316
+  }
+}

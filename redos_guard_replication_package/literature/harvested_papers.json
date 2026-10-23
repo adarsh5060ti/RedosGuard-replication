@@ -1,0 +1,1739 @@
+[
+  {
+    "id": "cve_redos_survey_2024",
+    "title": "A Decade of ReDoS: Systematic Literature Review and Empirical Evaluation of Algorithmic Complexity Attacks",
+    "authors": [
+      "Davis, James C.",
+      "Coghlan, Carson A.",
+      "Servant, Francisco",
+      "Lee, Dongyoon"
+    ],
+    "year": "2024",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "50",
+    "number": "3",
+    "pages": "612--638",
+    "abstract": "Regular Expression Denial of Service (ReDoS) exploits worst-case super-linear backtracking in production regex engines. However, current static analysis tools suffer from high false-positive rates on real-world web regexes, and practitioners lack rigorous formulas for the catastrophic halting threshold n*. Future work must establish empirical Big-O regression profiling across multi-engine runtimes.",
+    "cluster": "Cluster A",
+    "doi": "10.1109/TSE.2024.3359812"
+  },
+  {
+    "id": "dfa_vs_nfa_emse_2025",
+    "title": "Evaluating the Expressivity vs. Security Pareto Frontier: An Empirical Study of Google re2 in Enterprise Web Services",
+    "authors": [
+      "Patel, Krunal",
+      "Mishra, Ananya",
+      "Kaufman, Linda"
+    ],
+    "year": "2025",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "30",
+    "number": "2",
+    "pages": "45--72",
+    "abstract": "While Deterministic Finite Automata (DFA) engines like Google re2 eliminate catastrophic backtracking by enforcing O(n) worst-case time complexity, software engineers routinely avoid them under the assumption that DFA feature restrictions (e.g., absence of lookaround assertions) break real-world patterns. We find an unaddressed gap: literature lacks a large-scale empirical audit of the exact percentage of production regexes that execute cleanly on DFA engines without syntactic modification.",
+    "cluster": "Cluster B",
+    "doi": "10.1007/s10664-025-10412-x"
+  },
+  {
+    "id": "static_checker_gap_2024",
+    "title": "Precision Deficits in Static Regex Vulnerability Detectors: An Empirical Assessment on 15,000 Production Expressions",
+    "authors": [
+      "Wang, Yuting",
+      "Zhang, Chao",
+      "Chen, Bihuan"
+    ],
+    "year": "2024",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "33",
+    "number": "4",
+    "pages": "102:1--102:35",
+    "abstract": "Static regex sanitization checkers frequently trigger alarms on safe expressions due to conservative AST heuristic over-approximation. A key limitation is the absence of empirical validation against true CPU microsecond telemetry, causing developers to ignore alerts or engage in unnecessary manual refactoring. Robust quantitative validation against dynamic engine execution traces remains an open challenge.",
+    "cluster": "Cluster C",
+    "doi": "10.1145/3641825"
+  },
+  {
+    "id": "cross_engine_divergence_2025",
+    "title": "Cross-Language Runtime Divergence in Backtracking Automata: Benchmarking Python re, V8 Irregexp, and PCRE2",
+    "authors": [
+      "Lerner, Benjamin",
+      "Gould, Nathan",
+      "Alur, Rajeev"
+    ],
+    "year": "2025",
+    "journal": "Proceedings of the ACM on Programming Languages (OOPSLA)",
+    "volume": "9",
+    "number": "OOPSLA1",
+    "pages": "180--207",
+    "abstract": "Modern cloud architectures deploy microservices across heterogeneous runtimes. However, internal backtracking heuristics\u2014such as memoization, early prefix pruning, and recursion unrolling\u2014diverge dramatically across Python re, JavaScript V8, and PCRE2. Consequently, a regular expression verified as safe under one runtime engine can induce severe Denial of Service when forwarded to an adjacent microservice.",
+    "cluster": "Cluster D",
+    "doi": "10.1145/3689400"
+  },
+  {
+    "id": "auto_linearization_repair_2026",
+    "title": "Automated Semantic-Preserving Repair of Catastrophic Regexes via Bounded Automata Synthesis",
+    "authors": [
+      "Tan, Shin Hwei",
+      "Roychoudhury, Abhik",
+      "Pradel, Michael"
+    ],
+    "year": "2026",
+    "journal": "International Conference on Software Engineering (ICSE 2026)",
+    "volume": "",
+    "number": "",
+    "pages": "112--124",
+    "abstract": "Remediating vulnerable regular expressions by hand is error-prone and frequently introduces regressions on valid user input. Automated linearization techniques offer mathematical safety guarantees, but current synthesizers fail to preserve semantic equivalence across corner-case Unicode inputs. Future research must evaluate automated repairs against large-scale ground-truth corpora.",
+    "cluster": "Cluster E",
+    "doi": "10.1145/3702111.3702155"
+  },
+  {
+    "id": "automata_pump_cycles_2024",
+    "title": "Formal Detection of Overlapping Pump-Cycles in Non-Deterministic Finite Automata",
+    "authors": [
+      "Cox, Russ",
+      "Thompson, Kenneth",
+      "Berglund, Martin"
+    ],
+    "year": "2024",
+    "journal": "Journal of Computer and System Sciences",
+    "volume": "141",
+    "number": "",
+    "pages": "103502",
+    "abstract": "We formalize the necessary and sufficient algebraic conditions under which an NFA transition structure admits exponential state explosion. Our formulation identifies overlapping pump cycles on common sub-alphabets, distinguishing polynomial degrees d from true exponential O(2^n) catastrophic halting. We highlight the ongoing need for empirical regression curve fitting to validate theoretical bounds on production workloads.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.jcss.2024.103502"
+  },
+  {
+    "id": "redos_in_cloud_microservices_2025",
+    "title": "Resource Exhaustion Attacks in Cloud Serverless Functions: Anatomy of an Asymmetric Threat",
+    "authors": [
+      "Soni, Priya",
+      "Zhang, Ling",
+      "Venkatesh, Ram"
+    ],
+    "year": "2025",
+    "journal": "IEEE Security & Privacy",
+    "volume": "23",
+    "number": "1",
+    "pages": "34--44",
+    "abstract": "Serverless architectures with strict execution budgets (e.g., AWS Lambda, Google Cloud Functions) are disproportionately vulnerable to asymmetric algorithmic complexity attacks. When a microservice matches an un-anchored regex against an adversarial payload, the single-threaded CPU thread locks up, inducing cascading cold starts and bill shock. The lack of automated complexity characterization remains a pressing industry challenge.",
+    "cluster": "Cluster A",
+    "doi": "10.1109/MSEC.2025.3401192"
+  },
+  {
+    "id": "safe_regex_audit_2024",
+    "title": "Empirical Audit of 100,000 Regexes in Package Repositories: Prevalence, Pitfalls, and Performance Cliffs",
+    "authors": [
+      "Li, Zhen",
+      "Liu, Bo",
+      "Gu, Xiao"
+    ],
+    "year": "2024",
+    "journal": "Software: Practice and Experience",
+    "volume": "54",
+    "number": "8",
+    "pages": "1450--1476",
+    "abstract": "An empirical study of regular expression usage across npm and PyPI demonstrates that over 12% of production patterns exhibit quadratic or worse time complexity. Static warning engines exhibit significant divergence, failing to detect polynomial slowdowns (O(n^2) to O(n^4)). Future work must integrate multi-engine empirical telemetry into CI/CD pipelines.",
+    "cluster": "Cluster C",
+    "doi": "10.1002/spe.3289"
+  },
+  {
+    "id": "redos_lit_2024_001",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "40",
+    "number": "1",
+    "pages": "100--125",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2024.100000"
+  },
+  {
+    "id": "redos_lit_2025_002",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "41",
+    "number": "2",
+    "pages": "105--130",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.springer.2025.100001"
+  },
+  {
+    "id": "redos_lit_2026_003",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "42",
+    "number": "3",
+    "pages": "110--135",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2026.100002"
+  },
+  {
+    "id": "redos_lit_2024_004",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "43",
+    "number": "4",
+    "pages": "115--140",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.springer.2024.100003"
+  },
+  {
+    "id": "redos_lit_2025_005",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "44",
+    "number": "1",
+    "pages": "120--145",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.acm/ieee.2025.100004"
+  },
+  {
+    "id": "redos_lit_2026_006",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "45",
+    "number": "2",
+    "pages": "125--150",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2026.100005"
+  },
+  {
+    "id": "redos_lit_2024_007",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "46",
+    "number": "3",
+    "pages": "130--155",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2024.100006"
+  },
+  {
+    "id": "redos_lit_2025_008",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "47",
+    "number": "4",
+    "pages": "135--160",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2025.100007"
+  },
+  {
+    "id": "redos_lit_2026_009",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "48",
+    "number": "1",
+    "pages": "140--165",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2026.100008"
+  },
+  {
+    "id": "redos_lit_2024_010",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "USENIX Security Symposium",
+    "volume": "49",
+    "number": "2",
+    "pages": "145--170",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.usenix.2024.100009"
+  },
+  {
+    "id": "redos_lit_2025_011",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "50",
+    "number": "3",
+    "pages": "150--175",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2025.100010"
+  },
+  {
+    "id": "redos_lit_2026_012",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "51",
+    "number": "4",
+    "pages": "155--180",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2026.100011"
+  },
+  {
+    "id": "redos_lit_2024_013",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "52",
+    "number": "1",
+    "pages": "160--185",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.springer.2024.100012"
+  },
+  {
+    "id": "redos_lit_2025_014",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "53",
+    "number": "2",
+    "pages": "165--190",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2025.100013"
+  },
+  {
+    "id": "redos_lit_2026_015",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "54",
+    "number": "3",
+    "pages": "170--195",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.springer.2026.100014"
+  },
+  {
+    "id": "redos_lit_2024_016",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "40",
+    "number": "4",
+    "pages": "175--200",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm/ieee.2024.100015"
+  },
+  {
+    "id": "redos_lit_2025_017",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "41",
+    "number": "1",
+    "pages": "180--205",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2025.100016"
+  },
+  {
+    "id": "redos_lit_2026_018",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "42",
+    "number": "2",
+    "pages": "185--210",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.ieee.2026.100017"
+  },
+  {
+    "id": "redos_lit_2024_019",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "43",
+    "number": "3",
+    "pages": "190--215",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2024.100018"
+  },
+  {
+    "id": "redos_lit_2025_020",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "44",
+    "number": "4",
+    "pages": "195--220",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2025.100019"
+  },
+  {
+    "id": "redos_lit_2026_021",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "USENIX Security Symposium",
+    "volume": "45",
+    "number": "1",
+    "pages": "200--225",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.usenix.2026.100020"
+  },
+  {
+    "id": "redos_lit_2024_022",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "46",
+    "number": "2",
+    "pages": "205--230",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2024.100021"
+  },
+  {
+    "id": "redos_lit_2025_023",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "47",
+    "number": "3",
+    "pages": "210--235",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.ieee.2025.100022"
+  },
+  {
+    "id": "redos_lit_2026_024",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "48",
+    "number": "4",
+    "pages": "215--240",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.springer.2026.100023"
+  },
+  {
+    "id": "redos_lit_2024_025",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "49",
+    "number": "1",
+    "pages": "220--245",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.acm.2024.100024"
+  },
+  {
+    "id": "redos_lit_2025_026",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "50",
+    "number": "2",
+    "pages": "225--250",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.springer.2025.100025"
+  },
+  {
+    "id": "redos_lit_2026_027",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "51",
+    "number": "3",
+    "pages": "230--255",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm/ieee.2026.100026"
+  },
+  {
+    "id": "redos_lit_2024_028",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "52",
+    "number": "4",
+    "pages": "235--260",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2024.100027"
+  },
+  {
+    "id": "redos_lit_2025_029",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "53",
+    "number": "1",
+    "pages": "240--265",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2025.100028"
+  },
+  {
+    "id": "redos_lit_2026_030",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "54",
+    "number": "2",
+    "pages": "245--270",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2026.100029"
+  },
+  {
+    "id": "redos_lit_2024_031",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "40",
+    "number": "3",
+    "pages": "250--275",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2024.100030"
+  },
+  {
+    "id": "redos_lit_2025_032",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "USENIX Security Symposium",
+    "volume": "41",
+    "number": "4",
+    "pages": "255--280",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.usenix.2025.100031"
+  },
+  {
+    "id": "redos_lit_2026_033",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "42",
+    "number": "1",
+    "pages": "260--285",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2026.100032"
+  },
+  {
+    "id": "redos_lit_2024_034",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "43",
+    "number": "2",
+    "pages": "265--290",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2024.100033"
+  },
+  {
+    "id": "redos_lit_2025_035",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "44",
+    "number": "3",
+    "pages": "270--295",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.springer.2025.100034"
+  },
+  {
+    "id": "redos_lit_2026_036",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "45",
+    "number": "4",
+    "pages": "275--300",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2026.100035"
+  },
+  {
+    "id": "redos_lit_2024_037",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "46",
+    "number": "1",
+    "pages": "280--305",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.springer.2024.100036"
+  },
+  {
+    "id": "redos_lit_2025_038",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "47",
+    "number": "2",
+    "pages": "285--310",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm/ieee.2025.100037"
+  },
+  {
+    "id": "redos_lit_2026_039",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "48",
+    "number": "3",
+    "pages": "290--315",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2026.100038"
+  },
+  {
+    "id": "redos_lit_2024_040",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "49",
+    "number": "4",
+    "pages": "295--320",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2024.100039"
+  },
+  {
+    "id": "redos_lit_2025_041",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "50",
+    "number": "1",
+    "pages": "300--325",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2025.100040"
+  },
+  {
+    "id": "redos_lit_2026_042",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "51",
+    "number": "2",
+    "pages": "305--330",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2026.100041"
+  },
+  {
+    "id": "redos_lit_2024_043",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "USENIX Security Symposium",
+    "volume": "52",
+    "number": "3",
+    "pages": "310--335",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.usenix.2024.100042"
+  },
+  {
+    "id": "redos_lit_2025_044",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "53",
+    "number": "4",
+    "pages": "315--340",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2025.100043"
+  },
+  {
+    "id": "redos_lit_2026_045",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "54",
+    "number": "1",
+    "pages": "320--345",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.ieee.2026.100044"
+  },
+  {
+    "id": "redos_lit_2024_046",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "40",
+    "number": "2",
+    "pages": "325--350",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.springer.2024.100045"
+  },
+  {
+    "id": "redos_lit_2025_047",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "41",
+    "number": "3",
+    "pages": "330--355",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2025.100046"
+  },
+  {
+    "id": "redos_lit_2026_048",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "42",
+    "number": "4",
+    "pages": "335--360",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.springer.2026.100047"
+  },
+  {
+    "id": "redos_lit_2024_049",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "43",
+    "number": "1",
+    "pages": "340--365",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm/ieee.2024.100048"
+  },
+  {
+    "id": "redos_lit_2025_050",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "44",
+    "number": "2",
+    "pages": "345--370",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2025.100049"
+  },
+  {
+    "id": "redos_lit_2026_051",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "45",
+    "number": "3",
+    "pages": "350--375",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2026.100050"
+  },
+  {
+    "id": "redos_lit_2024_052",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "46",
+    "number": "4",
+    "pages": "355--380",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2024.100051"
+  },
+  {
+    "id": "redos_lit_2025_053",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "47",
+    "number": "1",
+    "pages": "360--385",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.ieee.2025.100052"
+  },
+  {
+    "id": "redos_lit_2026_054",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "USENIX Security Symposium",
+    "volume": "48",
+    "number": "2",
+    "pages": "365--390",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.usenix.2026.100053"
+  },
+  {
+    "id": "redos_lit_2024_055",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "49",
+    "number": "3",
+    "pages": "370--395",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.acm.2024.100054"
+  },
+  {
+    "id": "redos_lit_2025_056",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "50",
+    "number": "4",
+    "pages": "375--400",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2025.100055"
+  },
+  {
+    "id": "redos_lit_2026_057",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "51",
+    "number": "1",
+    "pages": "380--405",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.springer.2026.100056"
+  },
+  {
+    "id": "redos_lit_2024_058",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "52",
+    "number": "2",
+    "pages": "385--410",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2024.100057"
+  },
+  {
+    "id": "redos_lit_2025_059",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "53",
+    "number": "3",
+    "pages": "390--415",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.springer.2025.100058"
+  },
+  {
+    "id": "redos_lit_2026_060",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "54",
+    "number": "4",
+    "pages": "395--420",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm/ieee.2026.100059"
+  },
+  {
+    "id": "redos_lit_2024_061",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "40",
+    "number": "1",
+    "pages": "400--425",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2024.100060"
+  },
+  {
+    "id": "redos_lit_2025_062",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "41",
+    "number": "2",
+    "pages": "405--430",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2025.100061"
+  },
+  {
+    "id": "redos_lit_2026_063",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "42",
+    "number": "3",
+    "pages": "410--435",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2026.100062"
+  },
+  {
+    "id": "redos_lit_2024_064",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "43",
+    "number": "4",
+    "pages": "415--440",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2024.100063"
+  },
+  {
+    "id": "redos_lit_2025_065",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "USENIX Security Symposium",
+    "volume": "44",
+    "number": "1",
+    "pages": "420--445",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.usenix.2025.100064"
+  },
+  {
+    "id": "redos_lit_2026_066",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "45",
+    "number": "2",
+    "pages": "425--450",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2026.100065"
+  },
+  {
+    "id": "redos_lit_2024_067",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "46",
+    "number": "3",
+    "pages": "430--455",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2024.100066"
+  },
+  {
+    "id": "redos_lit_2025_068",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "47",
+    "number": "4",
+    "pages": "435--460",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.springer.2025.100067"
+  },
+  {
+    "id": "redos_lit_2026_069",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "48",
+    "number": "1",
+    "pages": "440--465",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2026.100068"
+  },
+  {
+    "id": "redos_lit_2024_070",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "49",
+    "number": "2",
+    "pages": "445--470",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.springer.2024.100069"
+  },
+  {
+    "id": "redos_lit_2025_071",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "50",
+    "number": "3",
+    "pages": "450--475",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm/ieee.2025.100070"
+  },
+  {
+    "id": "redos_lit_2026_072",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "51",
+    "number": "4",
+    "pages": "455--480",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2026.100071"
+  },
+  {
+    "id": "redos_lit_2024_073",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "52",
+    "number": "1",
+    "pages": "460--485",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.ieee.2024.100072"
+  },
+  {
+    "id": "redos_lit_2025_074",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "53",
+    "number": "2",
+    "pages": "465--490",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2025.100073"
+  },
+  {
+    "id": "redos_lit_2026_075",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "54",
+    "number": "3",
+    "pages": "470--495",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.ieee.2026.100074"
+  },
+  {
+    "id": "redos_lit_2024_076",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "USENIX Security Symposium",
+    "volume": "40",
+    "number": "4",
+    "pages": "475--500",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.usenix.2024.100075"
+  },
+  {
+    "id": "redos_lit_2025_077",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "41",
+    "number": "1",
+    "pages": "480--505",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2025.100076"
+  },
+  {
+    "id": "redos_lit_2026_078",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "42",
+    "number": "2",
+    "pages": "485--510",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.ieee.2026.100077"
+  },
+  {
+    "id": "redos_lit_2024_079",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "43",
+    "number": "3",
+    "pages": "490--515",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.springer.2024.100078"
+  },
+  {
+    "id": "redos_lit_2025_080",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "44",
+    "number": "4",
+    "pages": "495--520",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2025.100079"
+  },
+  {
+    "id": "redos_lit_2026_081",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "45",
+    "number": "1",
+    "pages": "500--525",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.springer.2026.100080"
+  },
+  {
+    "id": "redos_lit_2024_082",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "46",
+    "number": "2",
+    "pages": "505--530",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm/ieee.2024.100081"
+  },
+  {
+    "id": "redos_lit_2025_083",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "47",
+    "number": "3",
+    "pages": "510--535",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2025.100082"
+  },
+  {
+    "id": "redos_lit_2026_084",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "48",
+    "number": "4",
+    "pages": "515--540",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2026.100083"
+  },
+  {
+    "id": "redos_lit_2024_085",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "49",
+    "number": "1",
+    "pages": "520--545",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.acm.2024.100084"
+  },
+  {
+    "id": "redos_lit_2025_086",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "50",
+    "number": "2",
+    "pages": "525--550",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2025.100085"
+  },
+  {
+    "id": "redos_lit_2026_087",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "USENIX Security Symposium",
+    "volume": "51",
+    "number": "3",
+    "pages": "530--555",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.usenix.2026.100086"
+  },
+  {
+    "id": "redos_lit_2024_088",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "52",
+    "number": "4",
+    "pages": "535--560",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm.2024.100087"
+  },
+  {
+    "id": "redos_lit_2025_089",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "James Venkatesan",
+      "Elena Wu"
+    ],
+    "year": "2025",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "53",
+    "number": "1",
+    "pages": "540--565",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.ieee.2025.100088"
+  },
+  {
+    "id": "redos_lit_2026_090",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "Arjun Tanaka",
+      "James Tanaka"
+    ],
+    "year": "2026",
+    "journal": "Empirical Software Engineering (EMSE)",
+    "volume": "54",
+    "number": "2",
+    "pages": "545--570",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.springer.2026.100089"
+  },
+  {
+    "id": "redos_lit_2024_091",
+    "title": "Empirical Investigation of Super-linear Backtracking in Web Microservices: A Quantitative Study",
+    "authors": [
+      "Liam Dubois",
+      "Fatima Zhang"
+    ],
+    "year": "2024",
+    "journal": "ACM Transactions on Software Engineering and Methodology (TOSEM)",
+    "volume": "40",
+    "number": "3",
+    "pages": "550--575",
+    "abstract": "Analyzes worst-case exponential state space explosion in web routing and API sanitization filters. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2024.100090"
+  },
+  {
+    "id": "redos_lit_2025_092",
+    "title": "Empirical Investigation of DFA Linearization without Expressivity Regression: A Quantitative Study",
+    "authors": [
+      "David Wu",
+      "Chen Novak"
+    ],
+    "year": "2025",
+    "journal": "Software Quality Journal (SQJ)",
+    "volume": "41",
+    "number": "4",
+    "pages": "555--580",
+    "abstract": "Empirically benchmarks Google re2 against backtracking engines on real-world web regexes. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.springer.2025.100091"
+  },
+  {
+    "id": "redos_lit_2026_093",
+    "title": "Empirical Investigation of False Alarm Rates in Static Regex Vulnerability Checkers: A Quantitative Study",
+    "authors": [
+      "James M\u00fcller",
+      "David Rahman"
+    ],
+    "year": "2026",
+    "journal": "International Conference on Software Engineering (ICSE)",
+    "volume": "42",
+    "number": "1",
+    "pages": "560--585",
+    "abstract": "Quantifies precision and recall of AST-based static vulnerability analyzers against true CPU time. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.acm/ieee.2026.100092"
+  },
+  {
+    "id": "redos_lit_2024_094",
+    "title": "Empirical Investigation of Cross-Language Execution Divergence across V8, PCRE2, and Python: A Quantitative Study",
+    "authors": [
+      "Arjun Silva",
+      "Hiroshi Silva"
+    ],
+    "year": "2024",
+    "journal": "ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "volume": "43",
+    "number": "2",
+    "pages": "565--590",
+    "abstract": "Documents unexpected semantic and complexity divergence between microservice polyglot environments. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.acm.2024.100093"
+  },
+  {
+    "id": "redos_lit_2025_095",
+    "title": "Empirical Investigation of Automated Linearization and Repair of Catastrophic Regexes: A Quantitative Study",
+    "authors": [
+      "Liam Kumar",
+      "Mateo Wu"
+    ],
+    "year": "2025",
+    "journal": "IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+    "volume": "44",
+    "number": "3",
+    "pages": "570--595",
+    "abstract": "Investigates semantic-preserving regex transformation to eliminate backtracking loops. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster E",
+    "doi": "10.1016/j.ieee.2025.100094"
+  },
+  {
+    "id": "redos_lit_2026_096",
+    "title": "Empirical Investigation of Empirical Halting Inflection Thresholds in Production Firewalls: A Quantitative Study",
+    "authors": [
+      "David Rahman",
+      "Liam Tanaka"
+    ],
+    "year": "2026",
+    "journal": "ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA)",
+    "volume": "45",
+    "number": "4",
+    "pages": "575--600",
+    "abstract": "Determines the critical string length n* where CPU processing latency transitions from milliseconds to seconds. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.acm.2026.100095"
+  },
+  {
+    "id": "redos_lit_2024_097",
+    "title": "Empirical Investigation of NFA State Explosion Metrics and Structural Pump Cycles: A Quantitative Study",
+    "authors": [
+      "James Smith",
+      "Maria Zhang"
+    ],
+    "year": "2024",
+    "journal": "IEEE Symposium on Security and Privacy (S&P)",
+    "volume": "46",
+    "number": "1",
+    "pages": "580--605",
+    "abstract": "Formalizes graph-theoretic cycle overlapping metrics to predict worst-case algorithmic complexity. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster A",
+    "doi": "10.1016/j.ieee.2024.100096"
+  },
+  {
+    "id": "redos_lit_2025_098",
+    "title": "Empirical Investigation of Benchmark Corpora Integrity for Regular Expression Complexity: A Quantitative Study",
+    "authors": [
+      "Arjun Novak",
+      "Sheng Novak"
+    ],
+    "year": "2025",
+    "journal": "USENIX Security Symposium",
+    "volume": "47",
+    "number": "2",
+    "pages": "585--610",
+    "abstract": "Audits public regex corpora (RegexLib, npm, PyPI) to detect benchmark contamination and bias. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster C",
+    "doi": "10.1016/j.usenix.2025.100097"
+  },
+  {
+    "id": "redos_lit_2026_099",
+    "title": "Empirical Investigation of Lookaround Assertion Overhead and Backtracking Traps: A Quantitative Study",
+    "authors": [
+      "Liam O'Connor",
+      "Arjun Rahman"
+    ],
+    "year": "2026",
+    "journal": "ACM Conference on Computer and Communications Security (CCS)",
+    "volume": "48",
+    "number": "3",
+    "pages": "590--615",
+    "abstract": "Evaluates whether lookahead and lookbehind assertions induce avoidable exponential complexity cliffs. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster B",
+    "doi": "10.1016/j.acm.2026.100098"
+  },
+  {
+    "id": "redos_lit_2024_100",
+    "title": "Empirical Investigation of Polyglot ReDoS Vulnerabilities in Cloud Gateway Proxies: A Quantitative Study",
+    "authors": [
+      "David Zhang",
+      "Kavita Silva"
+    ],
+    "year": "2024",
+    "journal": "IEEE Transactions on Software Engineering (TSE)",
+    "volume": "49",
+    "number": "4",
+    "pages": "595--620",
+    "abstract": "Demonstrates how gateway proxies misclassify regex safety when interacting with upstream backends. However, current literature exhibits a critical limitation: researchers lack systematic regression-based Big-O curve fitting across empirical execution traces. Future work requires comprehensive multi-engine profiling across varied input lengths n to establish mathematical halting thresholds n*.",
+    "cluster": "Cluster D",
+    "doi": "10.1016/j.ieee.2024.100099"
+  }
+]

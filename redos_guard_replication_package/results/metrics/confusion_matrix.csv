@@ -1,0 +1,12 @@
+Metric,Value,Percentage
+True Positives (TP),84,7.00%
+False Positives (FP),75,6.25%
+True Negatives (TN),968,80.67%
+False Negatives (FN),73,6.08%
+Precision,0.5283,52.83%
+Recall (Sensitivity),0.535,53.50%
+Specificity,0.9281,92.81%
+False Positive Rate (FPR),0.0719,7.19%
+False Discovery Rate (FDR),0.4717,47.17%
+F1-Score,0.5316,-
+Overall Accuracy,0.8767,87.67%

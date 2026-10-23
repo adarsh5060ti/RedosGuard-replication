@@ -1,0 +1,45 @@
+{
+  "total_evaluated_patterns": 1200,
+  "RQ1_complexity_prevalence": {
+    "overall_counts": {
+      "LINEAR": 1043,
+      "POLYNOMIAL_2": 0,
+      "POLYNOMIAL_3_PLUS": 0,
+      "EXPONENTIAL": 157
+    },
+    "overall_percentages": {
+      "LINEAR": 86.92,
+      "POLYNOMIAL_2": 0.0,
+      "POLYNOMIAL_3_PLUS": 0.0,
+      "EXPONENTIAL": 13.08
+    },
+    "corpus_breakdown": {
+      "RegexLib": {
+        "LINEAR": 599,
+        "EXPONENTIAL": 1
+      },
+      "Package_Manifests": {
+        "LINEAR": 400
+      },
+      "OWASP_CVE": {
+        "EXPONENTIAL": 156,
+        "LINEAR": 44
+      }
+    }
+  },
+  "RQ2_halting_threshold_n_star": {
+    "total_halting_patterns": 157,
+    "median_n_star": 36.1,
+    "mean_n_star": 76.07,
+    "min_n_star": 25.2
+  },
+  "RQ3_dfa_compatibility": {
+    "re2_compatible_count": 1103,
+    "total_patterns": 1200,
+    "re2_compatibility_percentage": 91.92,
+    "mann_whitney_u": 3469328.0,
+    "mann_whitney_pval": 1.0,
+    "wilcoxon_stat": 2647641.0,
+    "wilcoxon_pval": 1.0
+  }
+}

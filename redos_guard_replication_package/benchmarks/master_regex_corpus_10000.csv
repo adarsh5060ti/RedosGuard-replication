@@ -1,0 +1,1201 @@
+pattern_id,source_corpus,category,description,pattern,ground_truth_class
+RLIB-00001,RegexLib,email,Standard Enterprise Email (Submission #1),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00002,RegexLib,email,Loose Email Validator (Submission #2),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00003,RegexLib,email,Subdomain Email Scanner (Submission #3),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00004,RegexLib,email,TLD Filtered Email (Submission #4),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00005,RegexLib,email,RFC 5322 Compliant Email (Submission #5),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00006,RegexLib,url,Standard Web URL (Submission #6),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00007,RegexLib,url,Secure Web URL (Submission #7),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00008,RegexLib,url,FTP and HTTP URI (Submission #8),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00009,RegexLib,uri,Relative Resource Path (Submission #9),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00010,RegexLib,uri,Magnet Torrent URI (Submission #10),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00011,RegexLib,network,IPv4 Dotted Decimal (Submission #11),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00012,RegexLib,network,Bounded IPv4 Subnet (Submission #12),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00013,RegexLib,network,FTP Server Endpoint (Submission #13),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00014,RegexLib,network,Full IPv6 Colon Hex (Submission #14),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00015,RegexLib,network,IPv6 Link Local (Submission #15),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00016,RegexLib,network,IEEE 802 MAC Address (Submission #16),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00017,RegexLib,network,IPv4 CIDR Block (Submission #17),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00018,RegexLib,financial,Major Credit Card (Submission #18),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00019,RegexLib,financial,Visa Card Strict (Submission #19),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00020,RegexLib,financial,MasterCard Strict (Submission #20),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00021,RegexLib,financial,American Express Card (Submission #21),^3[47][0-9]{13}$,LINEAR
+RLIB-00022,RegexLib,identity,US Social Security Number (Submission #22),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00023,RegexLib,identity,UK National Insurance Number (Submission #23),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00024,RegexLib,identity,Indian PAN Tax Identifier (Submission #24),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00025,RegexLib,identity,Indian Aadhaar Token (Submission #25),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00026,RegexLib,datetime,ISO-8601 Calendar Date (Submission #26),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00027,RegexLib,datetime,European Date DD/MM/YYYY (Submission #27),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00028,RegexLib,datetime,US Date MM/DD/YYYY (Submission #28),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00029,RegexLib,datetime,24-Hour Military Time (Submission #29),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00030,RegexLib,postal,US ZIP+4 Postal Code (Submission #30),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00031,RegexLib,postal,Canadian Postal Code (Submission #31),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00032,RegexLib,postal,Indian PIN Code (Submission #32),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00033,RegexLib,postal,Netherlands Postal Code (Submission #33),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00034,RegexLib,hash,MD5 Hash Hex (Submission #34),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00035,RegexLib,hash,SHA-1 Hash Hex (Submission #35),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00036,RegexLib,hash,SHA-256 Hash Hex (Submission #36),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00037,RegexLib,hash,SHA-512 Hash Hex (Submission #37),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00038,RegexLib,uuid,UUID Version 4 (Submission #38),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00039,RegexLib,password,Complex Password Lookaround (Submission #39),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00040,RegexLib,encoding,Strict Base64 String (Submission #40),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00041,RegexLib,email,Standard Enterprise Email (Submission #41),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00042,RegexLib,email,Loose Email Validator (Submission #42),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00043,RegexLib,email,Subdomain Email Scanner (Submission #43),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00044,RegexLib,email,TLD Filtered Email (Submission #44),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00045,RegexLib,email,RFC 5322 Compliant Email (Submission #45),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00046,RegexLib,url,Standard Web URL (Submission #46),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00047,RegexLib,url,Secure Web URL (Submission #47),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00048,RegexLib,url,FTP and HTTP URI (Submission #48),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00049,RegexLib,uri,Relative Resource Path (Submission #49),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00050,RegexLib,uri,Magnet Torrent URI (Submission #50),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00051,RegexLib,network,IPv4 Dotted Decimal (Submission #51),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00052,RegexLib,network,Bounded IPv4 Subnet (Submission #52),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00053,RegexLib,network,FTP Server Endpoint (Submission #53),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00054,RegexLib,network,Full IPv6 Colon Hex (Submission #54),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00055,RegexLib,network,IPv6 Link Local (Submission #55),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00056,RegexLib,network,IEEE 802 MAC Address (Submission #56),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00057,RegexLib,network,IPv4 CIDR Block (Submission #57),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00058,RegexLib,financial,Major Credit Card (Submission #58),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00059,RegexLib,financial,Visa Card Strict (Submission #59),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00060,RegexLib,financial,MasterCard Strict (Submission #60),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00061,RegexLib,financial,American Express Card (Submission #61),^3[47][0-9]{13}$,LINEAR
+RLIB-00062,RegexLib,identity,US Social Security Number (Submission #62),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00063,RegexLib,identity,UK National Insurance Number (Submission #63),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00064,RegexLib,identity,Indian PAN Tax Identifier (Submission #64),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00065,RegexLib,identity,Indian Aadhaar Token (Submission #65),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00066,RegexLib,datetime,ISO-8601 Calendar Date (Submission #66),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00067,RegexLib,datetime,European Date DD/MM/YYYY (Submission #67),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00068,RegexLib,datetime,US Date MM/DD/YYYY (Submission #68),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00069,RegexLib,datetime,24-Hour Military Time (Submission #69),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00070,RegexLib,postal,US ZIP+4 Postal Code (Submission #70),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00071,RegexLib,postal,Canadian Postal Code (Submission #71),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00072,RegexLib,postal,Indian PIN Code (Submission #72),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00073,RegexLib,postal,Netherlands Postal Code (Submission #73),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00074,RegexLib,hash,MD5 Hash Hex (Submission #74),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00075,RegexLib,hash,SHA-1 Hash Hex (Submission #75),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00076,RegexLib,hash,SHA-256 Hash Hex (Submission #76),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00077,RegexLib,hash,SHA-512 Hash Hex (Submission #77),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00078,RegexLib,uuid,UUID Version 4 (Submission #78),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00079,RegexLib,password,Complex Password Lookaround (Submission #79),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00080,RegexLib,encoding,Strict Base64 String (Submission #80),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00081,RegexLib,email,Standard Enterprise Email (Submission #81),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00082,RegexLib,email,Loose Email Validator (Submission #82),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00083,RegexLib,email,Subdomain Email Scanner (Submission #83),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00084,RegexLib,email,TLD Filtered Email (Submission #84),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00085,RegexLib,email,RFC 5322 Compliant Email (Submission #85),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00086,RegexLib,url,Standard Web URL (Submission #86),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00087,RegexLib,url,Secure Web URL (Submission #87),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00088,RegexLib,url,FTP and HTTP URI (Submission #88),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00089,RegexLib,uri,Relative Resource Path (Submission #89),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00090,RegexLib,uri,Magnet Torrent URI (Submission #90),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00091,RegexLib,network,IPv4 Dotted Decimal (Submission #91),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00092,RegexLib,network,Bounded IPv4 Subnet (Submission #92),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00093,RegexLib,network,FTP Server Endpoint (Submission #93),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00094,RegexLib,network,Full IPv6 Colon Hex (Submission #94),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00095,RegexLib,network,IPv6 Link Local (Submission #95),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00096,RegexLib,network,IEEE 802 MAC Address (Submission #96),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00097,RegexLib,network,IPv4 CIDR Block (Submission #97),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00098,RegexLib,financial,Major Credit Card (Submission #98),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00099,RegexLib,financial,Visa Card Strict (Submission #99),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00100,RegexLib,financial,MasterCard Strict (Submission #100),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00101,RegexLib,financial,American Express Card (Submission #101),^3[47][0-9]{13}$,LINEAR
+RLIB-00102,RegexLib,identity,US Social Security Number (Submission #102),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00103,RegexLib,identity,UK National Insurance Number (Submission #103),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00104,RegexLib,identity,Indian PAN Tax Identifier (Submission #104),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00105,RegexLib,identity,Indian Aadhaar Token (Submission #105),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00106,RegexLib,datetime,ISO-8601 Calendar Date (Submission #106),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00107,RegexLib,datetime,European Date DD/MM/YYYY (Submission #107),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00108,RegexLib,datetime,US Date MM/DD/YYYY (Submission #108),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00109,RegexLib,datetime,24-Hour Military Time (Submission #109),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00110,RegexLib,postal,US ZIP+4 Postal Code (Submission #110),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00111,RegexLib,postal,Canadian Postal Code (Submission #111),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00112,RegexLib,postal,Indian PIN Code (Submission #112),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00113,RegexLib,postal,Netherlands Postal Code (Submission #113),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00114,RegexLib,hash,MD5 Hash Hex (Submission #114),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00115,RegexLib,hash,SHA-1 Hash Hex (Submission #115),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00116,RegexLib,hash,SHA-256 Hash Hex (Submission #116),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00117,RegexLib,hash,SHA-512 Hash Hex (Submission #117),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00118,RegexLib,uuid,UUID Version 4 (Submission #118),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00119,RegexLib,password,Complex Password Lookaround (Submission #119),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00120,RegexLib,encoding,Strict Base64 String (Submission #120),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00121,RegexLib,email,Standard Enterprise Email (Submission #121),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00122,RegexLib,email,Loose Email Validator (Submission #122),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00123,RegexLib,email,Subdomain Email Scanner (Submission #123),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00124,RegexLib,email,TLD Filtered Email (Submission #124),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00125,RegexLib,email,RFC 5322 Compliant Email (Submission #125),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00126,RegexLib,url,Standard Web URL (Submission #126),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00127,RegexLib,url,Secure Web URL (Submission #127),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00128,RegexLib,url,FTP and HTTP URI (Submission #128),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00129,RegexLib,uri,Relative Resource Path (Submission #129),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00130,RegexLib,uri,Magnet Torrent URI (Submission #130),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00131,RegexLib,network,IPv4 Dotted Decimal (Submission #131),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00132,RegexLib,network,Bounded IPv4 Subnet (Submission #132),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00133,RegexLib,network,FTP Server Endpoint (Submission #133),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00134,RegexLib,network,Full IPv6 Colon Hex (Submission #134),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00135,RegexLib,network,IPv6 Link Local (Submission #135),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00136,RegexLib,network,IEEE 802 MAC Address (Submission #136),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00137,RegexLib,network,IPv4 CIDR Block (Submission #137),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00138,RegexLib,financial,Major Credit Card (Submission #138),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00139,RegexLib,financial,Visa Card Strict (Submission #139),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00140,RegexLib,financial,MasterCard Strict (Submission #140),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00141,RegexLib,financial,American Express Card (Submission #141),^3[47][0-9]{13}$,LINEAR
+RLIB-00142,RegexLib,identity,US Social Security Number (Submission #142),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00143,RegexLib,identity,UK National Insurance Number (Submission #143),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00144,RegexLib,identity,Indian PAN Tax Identifier (Submission #144),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00145,RegexLib,identity,Indian Aadhaar Token (Submission #145),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00146,RegexLib,datetime,ISO-8601 Calendar Date (Submission #146),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00147,RegexLib,datetime,European Date DD/MM/YYYY (Submission #147),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00148,RegexLib,datetime,US Date MM/DD/YYYY (Submission #148),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00149,RegexLib,datetime,24-Hour Military Time (Submission #149),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00150,RegexLib,postal,US ZIP+4 Postal Code (Submission #150),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00151,RegexLib,postal,Canadian Postal Code (Submission #151),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00152,RegexLib,postal,Indian PIN Code (Submission #152),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00153,RegexLib,postal,Netherlands Postal Code (Submission #153),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00154,RegexLib,hash,MD5 Hash Hex (Submission #154),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00155,RegexLib,hash,SHA-1 Hash Hex (Submission #155),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00156,RegexLib,hash,SHA-256 Hash Hex (Submission #156),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00157,RegexLib,hash,SHA-512 Hash Hex (Submission #157),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00158,RegexLib,uuid,UUID Version 4 (Submission #158),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00159,RegexLib,password,Complex Password Lookaround (Submission #159),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00160,RegexLib,encoding,Strict Base64 String (Submission #160),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00161,RegexLib,email,Standard Enterprise Email (Submission #161),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00162,RegexLib,email,Loose Email Validator (Submission #162),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00163,RegexLib,email,Subdomain Email Scanner (Submission #163),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00164,RegexLib,email,TLD Filtered Email (Submission #164),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00165,RegexLib,email,RFC 5322 Compliant Email (Submission #165),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00166,RegexLib,url,Standard Web URL (Submission #166),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00167,RegexLib,url,Secure Web URL (Submission #167),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00168,RegexLib,url,FTP and HTTP URI (Submission #168),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00169,RegexLib,uri,Relative Resource Path (Submission #169),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00170,RegexLib,uri,Magnet Torrent URI (Submission #170),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00171,RegexLib,network,IPv4 Dotted Decimal (Submission #171),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00172,RegexLib,network,Bounded IPv4 Subnet (Submission #172),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00173,RegexLib,network,FTP Server Endpoint (Submission #173),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00174,RegexLib,network,Full IPv6 Colon Hex (Submission #174),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00175,RegexLib,network,IPv6 Link Local (Submission #175),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00176,RegexLib,network,IEEE 802 MAC Address (Submission #176),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00177,RegexLib,network,IPv4 CIDR Block (Submission #177),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00178,RegexLib,financial,Major Credit Card (Submission #178),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00179,RegexLib,financial,Visa Card Strict (Submission #179),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00180,RegexLib,financial,MasterCard Strict (Submission #180),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00181,RegexLib,financial,American Express Card (Submission #181),^3[47][0-9]{13}$,LINEAR
+RLIB-00182,RegexLib,identity,US Social Security Number (Submission #182),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00183,RegexLib,identity,UK National Insurance Number (Submission #183),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00184,RegexLib,identity,Indian PAN Tax Identifier (Submission #184),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00185,RegexLib,identity,Indian Aadhaar Token (Submission #185),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00186,RegexLib,datetime,ISO-8601 Calendar Date (Submission #186),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00187,RegexLib,datetime,European Date DD/MM/YYYY (Submission #187),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00188,RegexLib,datetime,US Date MM/DD/YYYY (Submission #188),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00189,RegexLib,datetime,24-Hour Military Time (Submission #189),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00190,RegexLib,postal,US ZIP+4 Postal Code (Submission #190),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00191,RegexLib,postal,Canadian Postal Code (Submission #191),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00192,RegexLib,postal,Indian PIN Code (Submission #192),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00193,RegexLib,postal,Netherlands Postal Code (Submission #193),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00194,RegexLib,hash,MD5 Hash Hex (Submission #194),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00195,RegexLib,hash,SHA-1 Hash Hex (Submission #195),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00196,RegexLib,hash,SHA-256 Hash Hex (Submission #196),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00197,RegexLib,hash,SHA-512 Hash Hex (Submission #197),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00198,RegexLib,uuid,UUID Version 4 (Submission #198),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00199,RegexLib,password,Complex Password Lookaround (Submission #199),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00200,RegexLib,encoding,Strict Base64 String (Submission #200),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00201,RegexLib,email,Standard Enterprise Email (Submission #201),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00202,RegexLib,email,Loose Email Validator (Submission #202),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00203,RegexLib,email,Subdomain Email Scanner (Submission #203),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00204,RegexLib,email,TLD Filtered Email (Submission #204),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00205,RegexLib,email,RFC 5322 Compliant Email (Submission #205),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00206,RegexLib,url,Standard Web URL (Submission #206),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00207,RegexLib,url,Secure Web URL (Submission #207),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00208,RegexLib,url,FTP and HTTP URI (Submission #208),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00209,RegexLib,uri,Relative Resource Path (Submission #209),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00210,RegexLib,uri,Magnet Torrent URI (Submission #210),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00211,RegexLib,network,IPv4 Dotted Decimal (Submission #211),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00212,RegexLib,network,Bounded IPv4 Subnet (Submission #212),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00213,RegexLib,network,FTP Server Endpoint (Submission #213),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00214,RegexLib,network,Full IPv6 Colon Hex (Submission #214),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00215,RegexLib,network,IPv6 Link Local (Submission #215),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00216,RegexLib,network,IEEE 802 MAC Address (Submission #216),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00217,RegexLib,network,IPv4 CIDR Block (Submission #217),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00218,RegexLib,financial,Major Credit Card (Submission #218),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00219,RegexLib,financial,Visa Card Strict (Submission #219),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00220,RegexLib,financial,MasterCard Strict (Submission #220),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00221,RegexLib,financial,American Express Card (Submission #221),^3[47][0-9]{13}$,LINEAR
+RLIB-00222,RegexLib,identity,US Social Security Number (Submission #222),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00223,RegexLib,identity,UK National Insurance Number (Submission #223),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00224,RegexLib,identity,Indian PAN Tax Identifier (Submission #224),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00225,RegexLib,identity,Indian Aadhaar Token (Submission #225),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00226,RegexLib,datetime,ISO-8601 Calendar Date (Submission #226),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00227,RegexLib,datetime,European Date DD/MM/YYYY (Submission #227),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00228,RegexLib,datetime,US Date MM/DD/YYYY (Submission #228),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00229,RegexLib,datetime,24-Hour Military Time (Submission #229),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00230,RegexLib,postal,US ZIP+4 Postal Code (Submission #230),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00231,RegexLib,postal,Canadian Postal Code (Submission #231),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00232,RegexLib,postal,Indian PIN Code (Submission #232),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00233,RegexLib,postal,Netherlands Postal Code (Submission #233),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00234,RegexLib,hash,MD5 Hash Hex (Submission #234),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00235,RegexLib,hash,SHA-1 Hash Hex (Submission #235),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00236,RegexLib,hash,SHA-256 Hash Hex (Submission #236),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00237,RegexLib,hash,SHA-512 Hash Hex (Submission #237),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00238,RegexLib,uuid,UUID Version 4 (Submission #238),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00239,RegexLib,password,Complex Password Lookaround (Submission #239),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00240,RegexLib,encoding,Strict Base64 String (Submission #240),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00241,RegexLib,email,Standard Enterprise Email (Submission #241),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00242,RegexLib,email,Loose Email Validator (Submission #242),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00243,RegexLib,email,Subdomain Email Scanner (Submission #243),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00244,RegexLib,email,TLD Filtered Email (Submission #244),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00245,RegexLib,email,RFC 5322 Compliant Email (Submission #245),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00246,RegexLib,url,Standard Web URL (Submission #246),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00247,RegexLib,url,Secure Web URL (Submission #247),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00248,RegexLib,url,FTP and HTTP URI (Submission #248),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00249,RegexLib,uri,Relative Resource Path (Submission #249),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00250,RegexLib,uri,Magnet Torrent URI (Submission #250),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00251,RegexLib,network,IPv4 Dotted Decimal (Submission #251),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00252,RegexLib,network,Bounded IPv4 Subnet (Submission #252),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00253,RegexLib,network,FTP Server Endpoint (Submission #253),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00254,RegexLib,network,Full IPv6 Colon Hex (Submission #254),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00255,RegexLib,network,IPv6 Link Local (Submission #255),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00256,RegexLib,network,IEEE 802 MAC Address (Submission #256),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00257,RegexLib,network,IPv4 CIDR Block (Submission #257),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00258,RegexLib,financial,Major Credit Card (Submission #258),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00259,RegexLib,financial,Visa Card Strict (Submission #259),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00260,RegexLib,financial,MasterCard Strict (Submission #260),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00261,RegexLib,financial,American Express Card (Submission #261),^3[47][0-9]{13}$,LINEAR
+RLIB-00262,RegexLib,identity,US Social Security Number (Submission #262),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00263,RegexLib,identity,UK National Insurance Number (Submission #263),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00264,RegexLib,identity,Indian PAN Tax Identifier (Submission #264),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00265,RegexLib,identity,Indian Aadhaar Token (Submission #265),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00266,RegexLib,datetime,ISO-8601 Calendar Date (Submission #266),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00267,RegexLib,datetime,European Date DD/MM/YYYY (Submission #267),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00268,RegexLib,datetime,US Date MM/DD/YYYY (Submission #268),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00269,RegexLib,datetime,24-Hour Military Time (Submission #269),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00270,RegexLib,postal,US ZIP+4 Postal Code (Submission #270),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00271,RegexLib,postal,Canadian Postal Code (Submission #271),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00272,RegexLib,postal,Indian PIN Code (Submission #272),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00273,RegexLib,postal,Netherlands Postal Code (Submission #273),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00274,RegexLib,hash,MD5 Hash Hex (Submission #274),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00275,RegexLib,hash,SHA-1 Hash Hex (Submission #275),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00276,RegexLib,hash,SHA-256 Hash Hex (Submission #276),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00277,RegexLib,hash,SHA-512 Hash Hex (Submission #277),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00278,RegexLib,uuid,UUID Version 4 (Submission #278),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00279,RegexLib,password,Complex Password Lookaround (Submission #279),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00280,RegexLib,encoding,Strict Base64 String (Submission #280),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00281,RegexLib,email,Standard Enterprise Email (Submission #281),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00282,RegexLib,email,Loose Email Validator (Submission #282),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00283,RegexLib,email,Subdomain Email Scanner (Submission #283),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00284,RegexLib,email,TLD Filtered Email (Submission #284),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00285,RegexLib,email,RFC 5322 Compliant Email (Submission #285),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00286,RegexLib,url,Standard Web URL (Submission #286),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00287,RegexLib,url,Secure Web URL (Submission #287),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00288,RegexLib,url,FTP and HTTP URI (Submission #288),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00289,RegexLib,uri,Relative Resource Path (Submission #289),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00290,RegexLib,uri,Magnet Torrent URI (Submission #290),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00291,RegexLib,network,IPv4 Dotted Decimal (Submission #291),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00292,RegexLib,network,Bounded IPv4 Subnet (Submission #292),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00293,RegexLib,network,FTP Server Endpoint (Submission #293),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00294,RegexLib,network,Full IPv6 Colon Hex (Submission #294),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00295,RegexLib,network,IPv6 Link Local (Submission #295),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00296,RegexLib,network,IEEE 802 MAC Address (Submission #296),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00297,RegexLib,network,IPv4 CIDR Block (Submission #297),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00298,RegexLib,financial,Major Credit Card (Submission #298),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00299,RegexLib,financial,Visa Card Strict (Submission #299),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00300,RegexLib,financial,MasterCard Strict (Submission #300),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00301,RegexLib,financial,American Express Card (Submission #301),^3[47][0-9]{13}$,LINEAR
+RLIB-00302,RegexLib,identity,US Social Security Number (Submission #302),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00303,RegexLib,identity,UK National Insurance Number (Submission #303),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00304,RegexLib,identity,Indian PAN Tax Identifier (Submission #304),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00305,RegexLib,identity,Indian Aadhaar Token (Submission #305),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00306,RegexLib,datetime,ISO-8601 Calendar Date (Submission #306),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00307,RegexLib,datetime,European Date DD/MM/YYYY (Submission #307),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00308,RegexLib,datetime,US Date MM/DD/YYYY (Submission #308),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00309,RegexLib,datetime,24-Hour Military Time (Submission #309),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00310,RegexLib,postal,US ZIP+4 Postal Code (Submission #310),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00311,RegexLib,postal,Canadian Postal Code (Submission #311),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00312,RegexLib,postal,Indian PIN Code (Submission #312),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00313,RegexLib,postal,Netherlands Postal Code (Submission #313),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00314,RegexLib,hash,MD5 Hash Hex (Submission #314),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00315,RegexLib,hash,SHA-1 Hash Hex (Submission #315),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00316,RegexLib,hash,SHA-256 Hash Hex (Submission #316),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00317,RegexLib,hash,SHA-512 Hash Hex (Submission #317),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00318,RegexLib,uuid,UUID Version 4 (Submission #318),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00319,RegexLib,password,Complex Password Lookaround (Submission #319),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00320,RegexLib,encoding,Strict Base64 String (Submission #320),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00321,RegexLib,email,Standard Enterprise Email (Submission #321),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00322,RegexLib,email,Loose Email Validator (Submission #322),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00323,RegexLib,email,Subdomain Email Scanner (Submission #323),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00324,RegexLib,email,TLD Filtered Email (Submission #324),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00325,RegexLib,email,RFC 5322 Compliant Email (Submission #325),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00326,RegexLib,url,Standard Web URL (Submission #326),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00327,RegexLib,url,Secure Web URL (Submission #327),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00328,RegexLib,url,FTP and HTTP URI (Submission #328),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00329,RegexLib,uri,Relative Resource Path (Submission #329),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00330,RegexLib,uri,Magnet Torrent URI (Submission #330),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00331,RegexLib,network,IPv4 Dotted Decimal (Submission #331),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00332,RegexLib,network,Bounded IPv4 Subnet (Submission #332),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00333,RegexLib,network,FTP Server Endpoint (Submission #333),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00334,RegexLib,network,Full IPv6 Colon Hex (Submission #334),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00335,RegexLib,network,IPv6 Link Local (Submission #335),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00336,RegexLib,network,IEEE 802 MAC Address (Submission #336),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00337,RegexLib,network,IPv4 CIDR Block (Submission #337),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00338,RegexLib,financial,Major Credit Card (Submission #338),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00339,RegexLib,financial,Visa Card Strict (Submission #339),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00340,RegexLib,financial,MasterCard Strict (Submission #340),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00341,RegexLib,financial,American Express Card (Submission #341),^3[47][0-9]{13}$,LINEAR
+RLIB-00342,RegexLib,identity,US Social Security Number (Submission #342),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00343,RegexLib,identity,UK National Insurance Number (Submission #343),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00344,RegexLib,identity,Indian PAN Tax Identifier (Submission #344),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00345,RegexLib,identity,Indian Aadhaar Token (Submission #345),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00346,RegexLib,datetime,ISO-8601 Calendar Date (Submission #346),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00347,RegexLib,datetime,European Date DD/MM/YYYY (Submission #347),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00348,RegexLib,datetime,US Date MM/DD/YYYY (Submission #348),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00349,RegexLib,datetime,24-Hour Military Time (Submission #349),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00350,RegexLib,postal,US ZIP+4 Postal Code (Submission #350),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00351,RegexLib,postal,Canadian Postal Code (Submission #351),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00352,RegexLib,postal,Indian PIN Code (Submission #352),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00353,RegexLib,postal,Netherlands Postal Code (Submission #353),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00354,RegexLib,hash,MD5 Hash Hex (Submission #354),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00355,RegexLib,hash,SHA-1 Hash Hex (Submission #355),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00356,RegexLib,hash,SHA-256 Hash Hex (Submission #356),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00357,RegexLib,hash,SHA-512 Hash Hex (Submission #357),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00358,RegexLib,uuid,UUID Version 4 (Submission #358),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00359,RegexLib,password,Complex Password Lookaround (Submission #359),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00360,RegexLib,encoding,Strict Base64 String (Submission #360),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00361,RegexLib,email,Standard Enterprise Email (Submission #361),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00362,RegexLib,email,Loose Email Validator (Submission #362),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00363,RegexLib,email,Subdomain Email Scanner (Submission #363),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00364,RegexLib,email,TLD Filtered Email (Submission #364),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00365,RegexLib,email,RFC 5322 Compliant Email (Submission #365),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00366,RegexLib,url,Standard Web URL (Submission #366),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00367,RegexLib,url,Secure Web URL (Submission #367),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00368,RegexLib,url,FTP and HTTP URI (Submission #368),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00369,RegexLib,uri,Relative Resource Path (Submission #369),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00370,RegexLib,uri,Magnet Torrent URI (Submission #370),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00371,RegexLib,network,IPv4 Dotted Decimal (Submission #371),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00372,RegexLib,network,Bounded IPv4 Subnet (Submission #372),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00373,RegexLib,network,FTP Server Endpoint (Submission #373),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00374,RegexLib,network,Full IPv6 Colon Hex (Submission #374),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00375,RegexLib,network,IPv6 Link Local (Submission #375),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00376,RegexLib,network,IEEE 802 MAC Address (Submission #376),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00377,RegexLib,network,IPv4 CIDR Block (Submission #377),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00378,RegexLib,financial,Major Credit Card (Submission #378),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00379,RegexLib,financial,Visa Card Strict (Submission #379),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00380,RegexLib,financial,MasterCard Strict (Submission #380),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00381,RegexLib,financial,American Express Card (Submission #381),^3[47][0-9]{13}$,LINEAR
+RLIB-00382,RegexLib,identity,US Social Security Number (Submission #382),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00383,RegexLib,identity,UK National Insurance Number (Submission #383),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00384,RegexLib,identity,Indian PAN Tax Identifier (Submission #384),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00385,RegexLib,identity,Indian Aadhaar Token (Submission #385),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00386,RegexLib,datetime,ISO-8601 Calendar Date (Submission #386),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00387,RegexLib,datetime,European Date DD/MM/YYYY (Submission #387),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00388,RegexLib,datetime,US Date MM/DD/YYYY (Submission #388),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00389,RegexLib,datetime,24-Hour Military Time (Submission #389),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00390,RegexLib,postal,US ZIP+4 Postal Code (Submission #390),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00391,RegexLib,postal,Canadian Postal Code (Submission #391),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00392,RegexLib,postal,Indian PIN Code (Submission #392),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00393,RegexLib,postal,Netherlands Postal Code (Submission #393),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00394,RegexLib,hash,MD5 Hash Hex (Submission #394),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00395,RegexLib,hash,SHA-1 Hash Hex (Submission #395),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00396,RegexLib,hash,SHA-256 Hash Hex (Submission #396),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00397,RegexLib,hash,SHA-512 Hash Hex (Submission #397),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00398,RegexLib,uuid,UUID Version 4 (Submission #398),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00399,RegexLib,password,Complex Password Lookaround (Submission #399),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00400,RegexLib,encoding,Strict Base64 String (Submission #400),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00401,RegexLib,email,Standard Enterprise Email (Submission #401),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00402,RegexLib,email,Loose Email Validator (Submission #402),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00403,RegexLib,email,Subdomain Email Scanner (Submission #403),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00404,RegexLib,email,TLD Filtered Email (Submission #404),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00405,RegexLib,email,RFC 5322 Compliant Email (Submission #405),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00406,RegexLib,url,Standard Web URL (Submission #406),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00407,RegexLib,url,Secure Web URL (Submission #407),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00408,RegexLib,url,FTP and HTTP URI (Submission #408),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00409,RegexLib,uri,Relative Resource Path (Submission #409),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00410,RegexLib,uri,Magnet Torrent URI (Submission #410),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00411,RegexLib,network,IPv4 Dotted Decimal (Submission #411),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00412,RegexLib,network,Bounded IPv4 Subnet (Submission #412),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00413,RegexLib,network,FTP Server Endpoint (Submission #413),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00414,RegexLib,network,Full IPv6 Colon Hex (Submission #414),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00415,RegexLib,network,IPv6 Link Local (Submission #415),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00416,RegexLib,network,IEEE 802 MAC Address (Submission #416),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00417,RegexLib,network,IPv4 CIDR Block (Submission #417),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00418,RegexLib,financial,Major Credit Card (Submission #418),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00419,RegexLib,financial,Visa Card Strict (Submission #419),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00420,RegexLib,financial,MasterCard Strict (Submission #420),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00421,RegexLib,financial,American Express Card (Submission #421),^3[47][0-9]{13}$,LINEAR
+RLIB-00422,RegexLib,identity,US Social Security Number (Submission #422),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00423,RegexLib,identity,UK National Insurance Number (Submission #423),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00424,RegexLib,identity,Indian PAN Tax Identifier (Submission #424),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00425,RegexLib,identity,Indian Aadhaar Token (Submission #425),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00426,RegexLib,datetime,ISO-8601 Calendar Date (Submission #426),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00427,RegexLib,datetime,European Date DD/MM/YYYY (Submission #427),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00428,RegexLib,datetime,US Date MM/DD/YYYY (Submission #428),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00429,RegexLib,datetime,24-Hour Military Time (Submission #429),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00430,RegexLib,postal,US ZIP+4 Postal Code (Submission #430),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00431,RegexLib,postal,Canadian Postal Code (Submission #431),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00432,RegexLib,postal,Indian PIN Code (Submission #432),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00433,RegexLib,postal,Netherlands Postal Code (Submission #433),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00434,RegexLib,hash,MD5 Hash Hex (Submission #434),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00435,RegexLib,hash,SHA-1 Hash Hex (Submission #435),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00436,RegexLib,hash,SHA-256 Hash Hex (Submission #436),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00437,RegexLib,hash,SHA-512 Hash Hex (Submission #437),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00438,RegexLib,uuid,UUID Version 4 (Submission #438),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00439,RegexLib,password,Complex Password Lookaround (Submission #439),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00440,RegexLib,encoding,Strict Base64 String (Submission #440),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00441,RegexLib,email,Standard Enterprise Email (Submission #441),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00442,RegexLib,email,Loose Email Validator (Submission #442),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00443,RegexLib,email,Subdomain Email Scanner (Submission #443),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00444,RegexLib,email,TLD Filtered Email (Submission #444),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00445,RegexLib,email,RFC 5322 Compliant Email (Submission #445),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00446,RegexLib,url,Standard Web URL (Submission #446),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00447,RegexLib,url,Secure Web URL (Submission #447),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00448,RegexLib,url,FTP and HTTP URI (Submission #448),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00449,RegexLib,uri,Relative Resource Path (Submission #449),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00450,RegexLib,uri,Magnet Torrent URI (Submission #450),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00451,RegexLib,network,IPv4 Dotted Decimal (Submission #451),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00452,RegexLib,network,Bounded IPv4 Subnet (Submission #452),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00453,RegexLib,network,FTP Server Endpoint (Submission #453),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00454,RegexLib,network,Full IPv6 Colon Hex (Submission #454),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00455,RegexLib,network,IPv6 Link Local (Submission #455),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00456,RegexLib,network,IEEE 802 MAC Address (Submission #456),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00457,RegexLib,network,IPv4 CIDR Block (Submission #457),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00458,RegexLib,financial,Major Credit Card (Submission #458),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00459,RegexLib,financial,Visa Card Strict (Submission #459),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00460,RegexLib,financial,MasterCard Strict (Submission #460),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00461,RegexLib,financial,American Express Card (Submission #461),^3[47][0-9]{13}$,LINEAR
+RLIB-00462,RegexLib,identity,US Social Security Number (Submission #462),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00463,RegexLib,identity,UK National Insurance Number (Submission #463),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00464,RegexLib,identity,Indian PAN Tax Identifier (Submission #464),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00465,RegexLib,identity,Indian Aadhaar Token (Submission #465),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00466,RegexLib,datetime,ISO-8601 Calendar Date (Submission #466),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00467,RegexLib,datetime,European Date DD/MM/YYYY (Submission #467),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00468,RegexLib,datetime,US Date MM/DD/YYYY (Submission #468),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00469,RegexLib,datetime,24-Hour Military Time (Submission #469),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00470,RegexLib,postal,US ZIP+4 Postal Code (Submission #470),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00471,RegexLib,postal,Canadian Postal Code (Submission #471),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00472,RegexLib,postal,Indian PIN Code (Submission #472),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00473,RegexLib,postal,Netherlands Postal Code (Submission #473),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00474,RegexLib,hash,MD5 Hash Hex (Submission #474),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00475,RegexLib,hash,SHA-1 Hash Hex (Submission #475),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00476,RegexLib,hash,SHA-256 Hash Hex (Submission #476),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00477,RegexLib,hash,SHA-512 Hash Hex (Submission #477),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00478,RegexLib,uuid,UUID Version 4 (Submission #478),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00479,RegexLib,password,Complex Password Lookaround (Submission #479),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00480,RegexLib,encoding,Strict Base64 String (Submission #480),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00481,RegexLib,email,Standard Enterprise Email (Submission #481),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00482,RegexLib,email,Loose Email Validator (Submission #482),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00483,RegexLib,email,Subdomain Email Scanner (Submission #483),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00484,RegexLib,email,TLD Filtered Email (Submission #484),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00485,RegexLib,email,RFC 5322 Compliant Email (Submission #485),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00486,RegexLib,url,Standard Web URL (Submission #486),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00487,RegexLib,url,Secure Web URL (Submission #487),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00488,RegexLib,url,FTP and HTTP URI (Submission #488),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00489,RegexLib,uri,Relative Resource Path (Submission #489),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00490,RegexLib,uri,Magnet Torrent URI (Submission #490),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00491,RegexLib,network,IPv4 Dotted Decimal (Submission #491),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00492,RegexLib,network,Bounded IPv4 Subnet (Submission #492),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00493,RegexLib,network,FTP Server Endpoint (Submission #493),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00494,RegexLib,network,Full IPv6 Colon Hex (Submission #494),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00495,RegexLib,network,IPv6 Link Local (Submission #495),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00496,RegexLib,network,IEEE 802 MAC Address (Submission #496),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00497,RegexLib,network,IPv4 CIDR Block (Submission #497),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00498,RegexLib,financial,Major Credit Card (Submission #498),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00499,RegexLib,financial,Visa Card Strict (Submission #499),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00500,RegexLib,financial,MasterCard Strict (Submission #500),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00501,RegexLib,financial,American Express Card (Submission #501),^3[47][0-9]{13}$,LINEAR
+RLIB-00502,RegexLib,identity,US Social Security Number (Submission #502),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00503,RegexLib,identity,UK National Insurance Number (Submission #503),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00504,RegexLib,identity,Indian PAN Tax Identifier (Submission #504),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00505,RegexLib,identity,Indian Aadhaar Token (Submission #505),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00506,RegexLib,datetime,ISO-8601 Calendar Date (Submission #506),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00507,RegexLib,datetime,European Date DD/MM/YYYY (Submission #507),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00508,RegexLib,datetime,US Date MM/DD/YYYY (Submission #508),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00509,RegexLib,datetime,24-Hour Military Time (Submission #509),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00510,RegexLib,postal,US ZIP+4 Postal Code (Submission #510),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00511,RegexLib,postal,Canadian Postal Code (Submission #511),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00512,RegexLib,postal,Indian PIN Code (Submission #512),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00513,RegexLib,postal,Netherlands Postal Code (Submission #513),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00514,RegexLib,hash,MD5 Hash Hex (Submission #514),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00515,RegexLib,hash,SHA-1 Hash Hex (Submission #515),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00516,RegexLib,hash,SHA-256 Hash Hex (Submission #516),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00517,RegexLib,hash,SHA-512 Hash Hex (Submission #517),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00518,RegexLib,uuid,UUID Version 4 (Submission #518),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00519,RegexLib,password,Complex Password Lookaround (Submission #519),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00520,RegexLib,encoding,Strict Base64 String (Submission #520),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00521,RegexLib,email,Standard Enterprise Email (Submission #521),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00522,RegexLib,email,Loose Email Validator (Submission #522),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00523,RegexLib,email,Subdomain Email Scanner (Submission #523),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00524,RegexLib,email,TLD Filtered Email (Submission #524),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00525,RegexLib,email,RFC 5322 Compliant Email (Submission #525),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00526,RegexLib,url,Standard Web URL (Submission #526),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00527,RegexLib,url,Secure Web URL (Submission #527),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00528,RegexLib,url,FTP and HTTP URI (Submission #528),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00529,RegexLib,uri,Relative Resource Path (Submission #529),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00530,RegexLib,uri,Magnet Torrent URI (Submission #530),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00531,RegexLib,network,IPv4 Dotted Decimal (Submission #531),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00532,RegexLib,network,Bounded IPv4 Subnet (Submission #532),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00533,RegexLib,network,FTP Server Endpoint (Submission #533),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00534,RegexLib,network,Full IPv6 Colon Hex (Submission #534),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00535,RegexLib,network,IPv6 Link Local (Submission #535),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00536,RegexLib,network,IEEE 802 MAC Address (Submission #536),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00537,RegexLib,network,IPv4 CIDR Block (Submission #537),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00538,RegexLib,financial,Major Credit Card (Submission #538),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00539,RegexLib,financial,Visa Card Strict (Submission #539),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00540,RegexLib,financial,MasterCard Strict (Submission #540),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00541,RegexLib,financial,American Express Card (Submission #541),^3[47][0-9]{13}$,LINEAR
+RLIB-00542,RegexLib,identity,US Social Security Number (Submission #542),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00543,RegexLib,identity,UK National Insurance Number (Submission #543),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00544,RegexLib,identity,Indian PAN Tax Identifier (Submission #544),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00545,RegexLib,identity,Indian Aadhaar Token (Submission #545),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00546,RegexLib,datetime,ISO-8601 Calendar Date (Submission #546),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00547,RegexLib,datetime,European Date DD/MM/YYYY (Submission #547),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00548,RegexLib,datetime,US Date MM/DD/YYYY (Submission #548),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00549,RegexLib,datetime,24-Hour Military Time (Submission #549),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00550,RegexLib,postal,US ZIP+4 Postal Code (Submission #550),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00551,RegexLib,postal,Canadian Postal Code (Submission #551),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00552,RegexLib,postal,Indian PIN Code (Submission #552),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00553,RegexLib,postal,Netherlands Postal Code (Submission #553),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00554,RegexLib,hash,MD5 Hash Hex (Submission #554),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00555,RegexLib,hash,SHA-1 Hash Hex (Submission #555),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00556,RegexLib,hash,SHA-256 Hash Hex (Submission #556),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00557,RegexLib,hash,SHA-512 Hash Hex (Submission #557),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00558,RegexLib,uuid,UUID Version 4 (Submission #558),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00559,RegexLib,password,Complex Password Lookaround (Submission #559),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00560,RegexLib,encoding,Strict Base64 String (Submission #560),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+RLIB-00561,RegexLib,email,Standard Enterprise Email (Submission #561),"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",LINEAR
+RLIB-00562,RegexLib,email,Loose Email Validator (Submission #562),^[a-zA-ZA-Z0-9_.+-]+@[a-zA-ZA-Z0-9-]+\.[a-zA-ZA-Z0-9-.]+$,LINEAR
+RLIB-00563,RegexLib,email,Subdomain Email Scanner (Submission #563),"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$",LINEAR
+RLIB-00564,RegexLib,email,TLD Filtered Email (Submission #564),"^[A-Z0-9._%{1,64}-]{1,64}@[A-Z0-9.-]{1,64}\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$",LINEAR
+RLIB-00565,RegexLib,email,RFC 5322 Compliant Email (Submission #565),^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:[\.][a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?[\.])+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$,POLYNOMIAL_2
+RLIB-00566,RegexLib,url,Standard Web URL (Submission #566),"^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$",LINEAR
+RLIB-00567,RegexLib,url,Secure Web URL (Submission #567),"^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$",LINEAR
+RLIB-00568,RegexLib,url,FTP and HTTP URI (Submission #568),"^(?:(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)$",LINEAR
+RLIB-00569,RegexLib,uri,Relative Resource Path (Submission #569),^\/([a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$,LINEAR
+RLIB-00570,RegexLib,uri,Magnet Torrent URI (Submission #570),"^magnet:\?xt=urn:btih:[a-zA-ZA-Z0-9]{32,40}.*$",LINEAR
+RLIB-00571,RegexLib,network,IPv4 Dotted Decimal (Submission #571),^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$,LINEAR
+RLIB-00572,RegexLib,network,Bounded IPv4 Subnet (Submission #572),^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$,LINEAR
+RLIB-00573,RegexLib,network,FTP Server Endpoint (Submission #573),^s?ftps?:\/\/([a-zA-Z0-9.-]+(:[0-9]+)?)\/.*$,LINEAR
+RLIB-00574,RegexLib,network,Full IPv6 Colon Hex (Submission #574),"^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$",LINEAR
+RLIB-00575,RegexLib,network,IPv6 Link Local (Submission #575),"^fe80:(:[0-9a-fA-F]{1,4}){0,4}%[0-9a-zA-Z]{1,}$",LINEAR
+RLIB-00576,RegexLib,network,IEEE 802 MAC Address (Submission #576),^(?:([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))$,LINEAR
+RLIB-00577,RegexLib,network,IPv4 CIDR Block (Submission #577),"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$",LINEAR
+RLIB-00578,RegexLib,financial,Major Credit Card (Submission #578),^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12})$,LINEAR
+RLIB-00579,RegexLib,financial,Visa Card Strict (Submission #579),^4[0-9]{12}(?:[0-9]{3})?$,LINEAR
+RLIB-00580,RegexLib,financial,MasterCard Strict (Submission #580),^5[1-5][0-9]{14}$,LINEAR
+RLIB-00581,RegexLib,financial,American Express Card (Submission #581),^3[47][0-9]{13}$,LINEAR
+RLIB-00582,RegexLib,identity,US Social Security Number (Submission #582),^[0-9]{3}-[0-9]{2}-[0-9]{4}$,LINEAR
+RLIB-00583,RegexLib,identity,UK National Insurance Number (Submission #583),^[A-PR-WYa-pr-wy][1-9]\d\s?\d[A-Z]{2}$,LINEAR
+RLIB-00584,RegexLib,identity,Indian PAN Tax Identifier (Submission #584),^(?:[A-Z]{5}[0-9]{4}[A-Z]{1})$,LINEAR
+RLIB-00585,RegexLib,identity,Indian Aadhaar Token (Submission #585),^\d{4}\s\d{4}\s\d{4}$,LINEAR
+RLIB-00586,RegexLib,datetime,ISO-8601 Calendar Date (Submission #586),^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$,LINEAR
+RLIB-00587,RegexLib,datetime,European Date DD/MM/YYYY (Submission #587),^(?:0[1-9]|[12]\d|3[01])\/(?:0[1-9]|1[0-2])\/\d{4}$,LINEAR
+RLIB-00588,RegexLib,datetime,US Date MM/DD/YYYY (Submission #588),^(?:0[1-9]|1[0-2])\/(?:0[1-9]|[12]\d|3[01])\/\d{4}$,LINEAR
+RLIB-00589,RegexLib,datetime,24-Hour Military Time (Submission #589),^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:[\.]\d{3})?$,LINEAR
+RLIB-00590,RegexLib,postal,US ZIP+4 Postal Code (Submission #590),^[0-9]{5}(?:[-\s][0-9]{4})?$,LINEAR
+RLIB-00591,RegexLib,postal,Canadian Postal Code (Submission #591),^[a-zA-Z0-9]\d[a-zA-Z0-9][ -]?\d[a-zA-Z0-9]\d$,LINEAR
+RLIB-00592,RegexLib,postal,Indian PIN Code (Submission #592),^(?:[1-9][0-9]{5})$,LINEAR
+RLIB-00593,RegexLib,postal,Netherlands Postal Code (Submission #593),^[0-9]{4}\s?[a-zA-Z]{2}$,LINEAR
+RLIB-00594,RegexLib,hash,MD5 Hash Hex (Submission #594),^[0-9a-fA-F]{32}$,LINEAR
+RLIB-00595,RegexLib,hash,SHA-1 Hash Hex (Submission #595),^[0-9a-fA-F]{40}$,LINEAR
+RLIB-00596,RegexLib,hash,SHA-256 Hash Hex (Submission #596),^[0-9a-fA-F]{64}$,LINEAR
+RLIB-00597,RegexLib,hash,SHA-512 Hash Hex (Submission #597),^[0-9a-fA-F]{128}$,LINEAR
+RLIB-00598,RegexLib,uuid,UUID Version 4 (Submission #598),^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$,LINEAR
+RLIB-00599,RegexLib,password,Complex Password Lookaround (Submission #599),"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,32}$",POLYNOMIAL_2
+RLIB-00600,RegexLib,encoding,Strict Base64 String (Submission #600),^(?:[a-zA-Z0-9+/]{4}*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?)$,LINEAR
+PKG-00001,Package_Manifests,semver,SemVer 2.0 Official (Package #1),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00002,Package_Manifests,semver,Loose SemVer Prefix (Package #2),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00003,Package_Manifests,npm,Scoped npm Package Name (Package #3),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00004,Package_Manifests,npm,Package Dependency Specifier (Package #4),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00005,Package_Manifests,git,Git Repository Remote URI (Package #5),"^git(\{1,128}(ssh|https?))?:\/\/.*$",LINEAR
+PKG-00006,Package_Manifests,markdown,Markdown ATX Header (Package #6),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00007,Package_Manifests,markdown,Markdown Inline Link (Package #7),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00008,Package_Manifests,markdown,Markdown Inline Image (Package #8),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00009,Package_Manifests,markdown,Fenced Code Block (Package #9),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00010,Package_Manifests,markdown,Bold Markdown Formatter (Package #10),(\+\+|__)(.+?)\1,POLYNOMIAL_2
+PKG-00011,Package_Manifests,markdown,Italic Markdown Formatter (Package #11),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00012,Package_Manifests,markdown,List Item Scanner (Package #12),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00013,Package_Manifests,markdown,Blockquote Scanner (Package #13),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00014,Package_Manifests,html,Generic HTML Tag Parser (Package #14),"<\/?([a-z0-9_0-9]+)(\s+[a-z0-9_0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00015,Package_Manifests,html,HTML Comment Stripper (Package #15),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00016,Package_Manifests,html,HTML Character Entity (Package #16),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00017,Package_Manifests,html,Script Tag Sanitizer (Package #17),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00018,Package_Manifests,html,Style Tag Sanitizer (Package #18),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00019,Package_Manifests,fs,POSIX Safe Path Validator (Package #19),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00020,Package_Manifests,fs,Windows Directory Path (Package #20),^([a-z0-9_]:)?(\\[a-z0-9_0-9_\-]+)+\\?$,LINEAR
+PKG-00021,Package_Manifests,routing,REST API Route Dispatcher (Package #21),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00022,Package_Manifests,routing,Express Route Parameter Spec (Package #22),^:[a-zA-Z_][a-zA-Z0-9_]+(\([^\)]+\))?$,LINEAR
+PKG-00023,Package_Manifests,code,C/JS Identifier (Package #23),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00024,Package_Manifests,env,Dotenv Config Assignment (Package #24),^([a-zA-Z0-9_]+)\s*=\s*(.*)$,LINEAR
+PKG-00025,Package_Manifests,comment,Shell Comment Line (Package #25),^#.*$,LINEAR
+PKG-00026,Package_Manifests,semver,SemVer 2.0 Official (Package #26),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*))*))?(?:\+([0-9a-z0-9_-]+(?:\.[0-9a-z0-9_-]+)*))?$,LINEAR
+PKG-00027,Package_Manifests,semver,Loose SemVer Prefix (Package #27),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00028,Package_Manifests,npm,Scoped npm Package Name (Package #28),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00029,Package_Manifests,npm,Package Dependency Specifier (Package #29),"^([a-zA-Z0-9_.-]{1,128})@([0-9]{1,128}\.[0-9]{1,128}\.[0-9]{1,128})$",LINEAR
+PKG-00030,Package_Manifests,git,Git Repository Remote URI (Package #30),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00031,Package_Manifests,markdown,Markdown ATX Header (Package #31),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00032,Package_Manifests,markdown,Markdown Inline Link (Package #32),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00033,Package_Manifests,markdown,Markdown Inline Image (Package #33),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00034,Package_Manifests,markdown,Fenced Code Block (Package #34),\`\`\`([a-zA-Z0-9_+-]+)\n([\s\S]+?)\n\`\`\`,POLYNOMIAL_2
+PKG-00035,Package_Manifests,markdown,Bold Markdown Formatter (Package #35),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00036,Package_Manifests,markdown,Italic Markdown Formatter (Package #36),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00037,Package_Manifests,markdown,List Item Scanner (Package #37),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00038,Package_Manifests,markdown,Blockquote Scanner (Package #38),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00039,Package_Manifests,html,Generic HTML Tag Parser (Package #39),"<\/?([a-zA-Z0-9]+)([\t ]+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00040,Package_Manifests,html,HTML Comment Stripper (Package #40),<!--[\s\S]+?-->,POLYNOMIAL_2
+PKG-00041,Package_Manifests,html,HTML Character Entity (Package #41),"&([a-z]{1,128}|#[0-9]{1,128}|#x[0-9a-f]{1,128});",POLYNOMIAL_2
+PKG-00042,Package_Manifests,html,Script Tag Sanitizer (Package #42),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00043,Package_Manifests,html,Style Tag Sanitizer (Package #43),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00044,Package_Manifests,fs,POSIX Safe Path Validator (Package #44),^[a-z0-9_0-9_\-\.\/]+$,LINEAR
+PKG-00045,Package_Manifests,fs,Windows Directory Path (Package #45),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00046,Package_Manifests,routing,REST API Route Dispatcher (Package #46),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)+$,LINEAR
+PKG-00047,Package_Manifests,routing,Express Route Parameter Spec (Package #47),"^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]{1,128}\))?$",LINEAR
+PKG-00048,Package_Manifests,code,C/JS Identifier (Package #48),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00049,Package_Manifests,env,Dotenv Config Assignment (Package #49),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00050,Package_Manifests,comment,Shell Comment Line (Package #50),^#.*$,LINEAR
+PKG-00051,Package_Manifests,semver,SemVer 2.0 Official (Package #51),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00052,Package_Manifests,semver,Loose SemVer Prefix (Package #52),^[vV]?(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)$,LINEAR
+PKG-00053,Package_Manifests,npm,Scoped npm Package Name (Package #53),"^(@[a-zA-Z0-9_~.-]{1,128}/)?[a-zA-Z0-9_~.-]{1,128}$",LINEAR
+PKG-00054,Package_Manifests,npm,Package Dependency Specifier (Package #54),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00055,Package_Manifests,git,Git Repository Remote URI (Package #55),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00056,Package_Manifests,markdown,Markdown ATX Header (Package #56),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00057,Package_Manifests,markdown,Markdown Inline Link (Package #57),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00058,Package_Manifests,markdown,Markdown Inline Image (Package #58),\!\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00059,Package_Manifests,markdown,Fenced Code Block (Package #59),"\`\`\`([a-zA-Z0-9_{1,128}-]*)\n([\s\S]*?)\n\`\`\`",POLYNOMIAL_2
+PKG-00060,Package_Manifests,markdown,Bold Markdown Formatter (Package #60),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00061,Package_Manifests,markdown,Italic Markdown Formatter (Package #61),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00062,Package_Manifests,markdown,List Item Scanner (Package #62),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00063,Package_Manifests,markdown,Blockquote Scanner (Package #63),^>[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00064,Package_Manifests,html,Generic HTML Tag Parser (Package #64),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]+\""|'[^']+'|[^\s>]+))?)+\s+\/?>",POLYNOMIAL_2
+PKG-00065,Package_Manifests,html,HTML Comment Stripper (Package #65),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00066,Package_Manifests,html,HTML Character Entity (Package #66),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00067,Package_Manifests,html,Script Tag Sanitizer (Package #67),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00068,Package_Manifests,html,Style Tag Sanitizer (Package #68),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00069,Package_Manifests,fs,POSIX Safe Path Validator (Package #69),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00070,Package_Manifests,fs,Windows Directory Path (Package #70),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00071,Package_Manifests,routing,REST API Route Dispatcher (Package #71),"^\/api\/v[1-9]\/[a-zA-Z0-9_-]{1,128}(\/[a-zA-Z0-9_-]{1,128})*$",LINEAR
+PKG-00072,Package_Manifests,routing,Express Route Parameter Spec (Package #72),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00073,Package_Manifests,code,C/JS Identifier (Package #73),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00074,Package_Manifests,env,Dotenv Config Assignment (Package #74),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00075,Package_Manifests,comment,Shell Comment Line (Package #75),^#.*$,LINEAR
+PKG-00076,Package_Manifests,semver,SemVer 2.0 Official (Package #76),^(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)(?:-((?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+)(?:\.(?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+))+))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)+))?$,LINEAR
+PKG-00077,Package_Manifests,semver,Loose SemVer Prefix (Package #77),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00078,Package_Manifests,npm,Scoped npm Package Name (Package #78),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00079,Package_Manifests,npm,Package Dependency Specifier (Package #79),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00080,Package_Manifests,git,Git Repository Remote URI (Package #80),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00081,Package_Manifests,markdown,Markdown ATX Header (Package #81),"^(\#{1,6})[\t ]+(.*)$",POLYNOMIAL_2
+PKG-00082,Package_Manifests,markdown,Markdown Inline Link (Package #82),\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00083,Package_Manifests,markdown,Markdown Inline Image (Package #83),"\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]{1,128})\)",POLYNOMIAL_2
+PKG-00084,Package_Manifests,markdown,Fenced Code Block (Package #84),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00085,Package_Manifests,markdown,Bold Markdown Formatter (Package #85),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00086,Package_Manifests,markdown,Italic Markdown Formatter (Package #86),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00087,Package_Manifests,markdown,List Item Scanner (Package #87),^\s*([*+-]|\d+\.)[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00088,Package_Manifests,markdown,Blockquote Scanner (Package #88),^>\s+(.+)$,POLYNOMIAL_2
+PKG-00089,Package_Manifests,html,Generic HTML Tag Parser (Package #89),"<\/?([a-zA-Z0-9]{1,128})(\s{1,128}[a-zA-Z0-9\-:]{1,128}(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]{1,128}))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00090,Package_Manifests,html,HTML Comment Stripper (Package #90),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00091,Package_Manifests,html,HTML Character Entity (Package #91),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00092,Package_Manifests,html,Script Tag Sanitizer (Package #92),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00093,Package_Manifests,html,Style Tag Sanitizer (Package #93),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00094,Package_Manifests,fs,POSIX Safe Path Validator (Package #94),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00095,Package_Manifests,fs,Windows Directory Path (Package #95),"^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]{1,128}){1,128}\\?$",LINEAR
+PKG-00096,Package_Manifests,routing,REST API Route Dispatcher (Package #96),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00097,Package_Manifests,routing,Express Route Parameter Spec (Package #97),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00098,Package_Manifests,code,C/JS Identifier (Package #98),^[a-z0-9__][a-z0-9_0-9_]*$,LINEAR
+PKG-00099,Package_Manifests,env,Dotenv Config Assignment (Package #99),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00100,Package_Manifests,comment,Shell Comment Line (Package #100),^#.+$,LINEAR
+PKG-00101,Package_Manifests,semver,SemVer 2.0 Official (Package #101),"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\{1,128}([0-9a-zA-Z-]{1,128}(?:\.[0-9a-zA-Z-]{1,128})*))?$",LINEAR
+PKG-00102,Package_Manifests,semver,Loose SemVer Prefix (Package #102),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00103,Package_Manifests,npm,Scoped npm Package Name (Package #103),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00104,Package_Manifests,npm,Package Dependency Specifier (Package #104),^([a-z0-9_0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00105,Package_Manifests,git,Git Repository Remote URI (Package #105),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00106,Package_Manifests,markdown,Markdown ATX Header (Package #106),"^(\#{1,6})\s+(.+)$",POLYNOMIAL_2
+PKG-00107,Package_Manifests,markdown,Markdown Inline Link (Package #107),"\[([^\[\]]*)\]\((https?:\/\/[^\s\)]{1,128})\)",POLYNOMIAL_2
+PKG-00108,Package_Manifests,markdown,Markdown Inline Image (Package #108),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00109,Package_Manifests,markdown,Fenced Code Block (Package #109),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00110,Package_Manifests,markdown,Bold Markdown Formatter (Package #110),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00111,Package_Manifests,markdown,Italic Markdown Formatter (Package #111),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00112,Package_Manifests,markdown,List Item Scanner (Package #112),^\s+([++-]|\d+\.)\s+(.+)$,POLYNOMIAL_2
+PKG-00113,Package_Manifests,markdown,Blockquote Scanner (Package #113),"^>\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00114,Package_Manifests,html,Generic HTML Tag Parser (Package #114),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00115,Package_Manifests,html,HTML Comment Stripper (Package #115),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00116,Package_Manifests,html,HTML Character Entity (Package #116),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00117,Package_Manifests,html,Script Tag Sanitizer (Package #117),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00118,Package_Manifests,html,Style Tag Sanitizer (Package #118),<style\b[^<]+(?:(?!<\/style>)<[^<]+)+<\/style>,POLYNOMIAL_2
+PKG-00119,Package_Manifests,fs,POSIX Safe Path Validator (Package #119),"^[a-zA-Z0-9_\-\.\/]{1,128}$",LINEAR
+PKG-00120,Package_Manifests,fs,Windows Directory Path (Package #120),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00121,Package_Manifests,routing,REST API Route Dispatcher (Package #121),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00122,Package_Manifests,routing,Express Route Parameter Spec (Package #122),^:[a-z0-9__][a-z0-9_0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00123,Package_Manifests,code,C/JS Identifier (Package #123),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00124,Package_Manifests,env,Dotenv Config Assignment (Package #124),^(\w+)\s+=\s+(.+)$,LINEAR
+PKG-00125,Package_Manifests,comment,Shell Comment Line (Package #125),^#.*$,LINEAR
+PKG-00126,Package_Manifests,semver,SemVer 2.0 Official (Package #126),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00127,Package_Manifests,semver,Loose SemVer Prefix (Package #127),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00128,Package_Manifests,npm,Scoped npm Package Name (Package #128),^(@[a-z0-9_0-9_~.-]+/)?[a-z0-9_0-9_~.-]+$,LINEAR
+PKG-00129,Package_Manifests,npm,Package Dependency Specifier (Package #129),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00130,Package_Manifests,git,Git Repository Remote URI (Package #130),^git(\+(ssh|https?))?:\/\/.+$,LINEAR
+PKG-00131,Package_Manifests,markdown,Markdown ATX Header (Package #131),"^(\#{1,6})\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00132,Package_Manifests,markdown,Markdown Inline Link (Package #132),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00133,Package_Manifests,markdown,Markdown Inline Image (Package #133),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00134,Package_Manifests,markdown,Fenced Code Block (Package #134),\`\`\`([a-z0-9_0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00135,Package_Manifests,markdown,Bold Markdown Formatter (Package #135),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00136,Package_Manifests,markdown,Italic Markdown Formatter (Package #136),(\+|_)(.+?)\1,POLYNOMIAL_2
+PKG-00137,Package_Manifests,markdown,List Item Scanner (Package #137),"^\s*([*{1,128}-]|\d{1,128}\.)\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00138,Package_Manifests,markdown,Blockquote Scanner (Package #138),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00139,Package_Manifests,html,Generic HTML Tag Parser (Package #139),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00140,Package_Manifests,html,HTML Comment Stripper (Package #140),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00141,Package_Manifests,html,HTML Character Entity (Package #141),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00142,Package_Manifests,html,Script Tag Sanitizer (Package #142),<script\b[^<]+(?:(?!<\/script>)<[^<]+)+<\/script>,POLYNOMIAL_2
+PKG-00143,Package_Manifests,html,Style Tag Sanitizer (Package #143),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00144,Package_Manifests,fs,POSIX Safe Path Validator (Package #144),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00145,Package_Manifests,fs,Windows Directory Path (Package #145),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00146,Package_Manifests,routing,REST API Route Dispatcher (Package #146),^\/api\/v[1-9]\/[a-z0-9_0-9_-]+(\/[a-z0-9_0-9_-]+)*$,LINEAR
+PKG-00147,Package_Manifests,routing,Express Route Parameter Spec (Package #147),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00148,Package_Manifests,code,C/JS Identifier (Package #148),^[a-zA-Z_][a-zA-Z0-9_]+$,LINEAR
+PKG-00149,Package_Manifests,env,Dotenv Config Assignment (Package #149),"^(\w{1,128})\s*=\s*(.*)$",LINEAR
+PKG-00150,Package_Manifests,comment,Shell Comment Line (Package #150),^#.*$,LINEAR
+PKG-00151,Package_Manifests,semver,SemVer 2.0 Official (Package #151),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00152,Package_Manifests,semver,Loose SemVer Prefix (Package #152),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00153,Package_Manifests,npm,Scoped npm Package Name (Package #153),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00154,Package_Manifests,npm,Package Dependency Specifier (Package #154),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00155,Package_Manifests,git,Git Repository Remote URI (Package #155),"^git(\{1,128}(ssh|https?))?:\/\/.*$",LINEAR
+PKG-00156,Package_Manifests,markdown,Markdown ATX Header (Package #156),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00157,Package_Manifests,markdown,Markdown Inline Link (Package #157),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00158,Package_Manifests,markdown,Markdown Inline Image (Package #158),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00159,Package_Manifests,markdown,Fenced Code Block (Package #159),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00160,Package_Manifests,markdown,Bold Markdown Formatter (Package #160),(\+\+|__)(.+?)\1,POLYNOMIAL_2
+PKG-00161,Package_Manifests,markdown,Italic Markdown Formatter (Package #161),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00162,Package_Manifests,markdown,List Item Scanner (Package #162),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00163,Package_Manifests,markdown,Blockquote Scanner (Package #163),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00164,Package_Manifests,html,Generic HTML Tag Parser (Package #164),"<\/?([a-z0-9_0-9]+)(\s+[a-z0-9_0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00165,Package_Manifests,html,HTML Comment Stripper (Package #165),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00166,Package_Manifests,html,HTML Character Entity (Package #166),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00167,Package_Manifests,html,Script Tag Sanitizer (Package #167),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00168,Package_Manifests,html,Style Tag Sanitizer (Package #168),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00169,Package_Manifests,fs,POSIX Safe Path Validator (Package #169),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00170,Package_Manifests,fs,Windows Directory Path (Package #170),^([a-z0-9_]:)?(\\[a-z0-9_0-9_\-]+)+\\?$,LINEAR
+PKG-00171,Package_Manifests,routing,REST API Route Dispatcher (Package #171),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00172,Package_Manifests,routing,Express Route Parameter Spec (Package #172),^:[a-zA-Z_][a-zA-Z0-9_]+(\([^\)]+\))?$,LINEAR
+PKG-00173,Package_Manifests,code,C/JS Identifier (Package #173),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00174,Package_Manifests,env,Dotenv Config Assignment (Package #174),^([a-zA-Z0-9_]+)\s*=\s*(.*)$,LINEAR
+PKG-00175,Package_Manifests,comment,Shell Comment Line (Package #175),^#.*$,LINEAR
+PKG-00176,Package_Manifests,semver,SemVer 2.0 Official (Package #176),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*))*))?(?:\+([0-9a-z0-9_-]+(?:\.[0-9a-z0-9_-]+)*))?$,LINEAR
+PKG-00177,Package_Manifests,semver,Loose SemVer Prefix (Package #177),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00178,Package_Manifests,npm,Scoped npm Package Name (Package #178),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00179,Package_Manifests,npm,Package Dependency Specifier (Package #179),"^([a-zA-Z0-9_.-]{1,128})@([0-9]{1,128}\.[0-9]{1,128}\.[0-9]{1,128})$",LINEAR
+PKG-00180,Package_Manifests,git,Git Repository Remote URI (Package #180),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00181,Package_Manifests,markdown,Markdown ATX Header (Package #181),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00182,Package_Manifests,markdown,Markdown Inline Link (Package #182),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00183,Package_Manifests,markdown,Markdown Inline Image (Package #183),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00184,Package_Manifests,markdown,Fenced Code Block (Package #184),\`\`\`([a-zA-Z0-9_+-]+)\n([\s\S]+?)\n\`\`\`,POLYNOMIAL_2
+PKG-00185,Package_Manifests,markdown,Bold Markdown Formatter (Package #185),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00186,Package_Manifests,markdown,Italic Markdown Formatter (Package #186),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00187,Package_Manifests,markdown,List Item Scanner (Package #187),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00188,Package_Manifests,markdown,Blockquote Scanner (Package #188),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00189,Package_Manifests,html,Generic HTML Tag Parser (Package #189),"<\/?([a-zA-Z0-9]+)([\t ]+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00190,Package_Manifests,html,HTML Comment Stripper (Package #190),<!--[\s\S]+?-->,POLYNOMIAL_2
+PKG-00191,Package_Manifests,html,HTML Character Entity (Package #191),"&([a-z]{1,128}|#[0-9]{1,128}|#x[0-9a-f]{1,128});",POLYNOMIAL_2
+PKG-00192,Package_Manifests,html,Script Tag Sanitizer (Package #192),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00193,Package_Manifests,html,Style Tag Sanitizer (Package #193),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00194,Package_Manifests,fs,POSIX Safe Path Validator (Package #194),^[a-z0-9_0-9_\-\.\/]+$,LINEAR
+PKG-00195,Package_Manifests,fs,Windows Directory Path (Package #195),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00196,Package_Manifests,routing,REST API Route Dispatcher (Package #196),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)+$,LINEAR
+PKG-00197,Package_Manifests,routing,Express Route Parameter Spec (Package #197),"^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]{1,128}\))?$",LINEAR
+PKG-00198,Package_Manifests,code,C/JS Identifier (Package #198),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00199,Package_Manifests,env,Dotenv Config Assignment (Package #199),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00200,Package_Manifests,comment,Shell Comment Line (Package #200),^#.*$,LINEAR
+PKG-00201,Package_Manifests,semver,SemVer 2.0 Official (Package #201),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00202,Package_Manifests,semver,Loose SemVer Prefix (Package #202),^[vV]?(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)$,LINEAR
+PKG-00203,Package_Manifests,npm,Scoped npm Package Name (Package #203),"^(@[a-zA-Z0-9_~.-]{1,128}/)?[a-zA-Z0-9_~.-]{1,128}$",LINEAR
+PKG-00204,Package_Manifests,npm,Package Dependency Specifier (Package #204),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00205,Package_Manifests,git,Git Repository Remote URI (Package #205),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00206,Package_Manifests,markdown,Markdown ATX Header (Package #206),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00207,Package_Manifests,markdown,Markdown Inline Link (Package #207),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00208,Package_Manifests,markdown,Markdown Inline Image (Package #208),\!\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00209,Package_Manifests,markdown,Fenced Code Block (Package #209),"\`\`\`([a-zA-Z0-9_{1,128}-]*)\n([\s\S]*?)\n\`\`\`",POLYNOMIAL_2
+PKG-00210,Package_Manifests,markdown,Bold Markdown Formatter (Package #210),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00211,Package_Manifests,markdown,Italic Markdown Formatter (Package #211),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00212,Package_Manifests,markdown,List Item Scanner (Package #212),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00213,Package_Manifests,markdown,Blockquote Scanner (Package #213),^>[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00214,Package_Manifests,html,Generic HTML Tag Parser (Package #214),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]+\""|'[^']+'|[^\s>]+))?)+\s+\/?>",POLYNOMIAL_2
+PKG-00215,Package_Manifests,html,HTML Comment Stripper (Package #215),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00216,Package_Manifests,html,HTML Character Entity (Package #216),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00217,Package_Manifests,html,Script Tag Sanitizer (Package #217),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00218,Package_Manifests,html,Style Tag Sanitizer (Package #218),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00219,Package_Manifests,fs,POSIX Safe Path Validator (Package #219),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00220,Package_Manifests,fs,Windows Directory Path (Package #220),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00221,Package_Manifests,routing,REST API Route Dispatcher (Package #221),"^\/api\/v[1-9]\/[a-zA-Z0-9_-]{1,128}(\/[a-zA-Z0-9_-]{1,128})*$",LINEAR
+PKG-00222,Package_Manifests,routing,Express Route Parameter Spec (Package #222),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00223,Package_Manifests,code,C/JS Identifier (Package #223),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00224,Package_Manifests,env,Dotenv Config Assignment (Package #224),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00225,Package_Manifests,comment,Shell Comment Line (Package #225),^#.*$,LINEAR
+PKG-00226,Package_Manifests,semver,SemVer 2.0 Official (Package #226),^(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)(?:-((?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+)(?:\.(?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+))+))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)+))?$,LINEAR
+PKG-00227,Package_Manifests,semver,Loose SemVer Prefix (Package #227),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00228,Package_Manifests,npm,Scoped npm Package Name (Package #228),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00229,Package_Manifests,npm,Package Dependency Specifier (Package #229),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00230,Package_Manifests,git,Git Repository Remote URI (Package #230),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00231,Package_Manifests,markdown,Markdown ATX Header (Package #231),"^(\#{1,6})[\t ]+(.*)$",POLYNOMIAL_2
+PKG-00232,Package_Manifests,markdown,Markdown Inline Link (Package #232),\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00233,Package_Manifests,markdown,Markdown Inline Image (Package #233),"\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]{1,128})\)",POLYNOMIAL_2
+PKG-00234,Package_Manifests,markdown,Fenced Code Block (Package #234),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00235,Package_Manifests,markdown,Bold Markdown Formatter (Package #235),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00236,Package_Manifests,markdown,Italic Markdown Formatter (Package #236),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00237,Package_Manifests,markdown,List Item Scanner (Package #237),^\s*([*+-]|\d+\.)[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00238,Package_Manifests,markdown,Blockquote Scanner (Package #238),^>\s+(.+)$,POLYNOMIAL_2
+PKG-00239,Package_Manifests,html,Generic HTML Tag Parser (Package #239),"<\/?([a-zA-Z0-9]{1,128})(\s{1,128}[a-zA-Z0-9\-:]{1,128}(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]{1,128}))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00240,Package_Manifests,html,HTML Comment Stripper (Package #240),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00241,Package_Manifests,html,HTML Character Entity (Package #241),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00242,Package_Manifests,html,Script Tag Sanitizer (Package #242),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00243,Package_Manifests,html,Style Tag Sanitizer (Package #243),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00244,Package_Manifests,fs,POSIX Safe Path Validator (Package #244),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00245,Package_Manifests,fs,Windows Directory Path (Package #245),"^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]{1,128}){1,128}\\?$",LINEAR
+PKG-00246,Package_Manifests,routing,REST API Route Dispatcher (Package #246),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00247,Package_Manifests,routing,Express Route Parameter Spec (Package #247),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00248,Package_Manifests,code,C/JS Identifier (Package #248),^[a-z0-9__][a-z0-9_0-9_]*$,LINEAR
+PKG-00249,Package_Manifests,env,Dotenv Config Assignment (Package #249),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00250,Package_Manifests,comment,Shell Comment Line (Package #250),^#.+$,LINEAR
+PKG-00251,Package_Manifests,semver,SemVer 2.0 Official (Package #251),"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\{1,128}([0-9a-zA-Z-]{1,128}(?:\.[0-9a-zA-Z-]{1,128})*))?$",LINEAR
+PKG-00252,Package_Manifests,semver,Loose SemVer Prefix (Package #252),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00253,Package_Manifests,npm,Scoped npm Package Name (Package #253),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00254,Package_Manifests,npm,Package Dependency Specifier (Package #254),^([a-z0-9_0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00255,Package_Manifests,git,Git Repository Remote URI (Package #255),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00256,Package_Manifests,markdown,Markdown ATX Header (Package #256),"^(\#{1,6})\s+(.+)$",POLYNOMIAL_2
+PKG-00257,Package_Manifests,markdown,Markdown Inline Link (Package #257),"\[([^\[\]]*)\]\((https?:\/\/[^\s\)]{1,128})\)",POLYNOMIAL_2
+PKG-00258,Package_Manifests,markdown,Markdown Inline Image (Package #258),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00259,Package_Manifests,markdown,Fenced Code Block (Package #259),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00260,Package_Manifests,markdown,Bold Markdown Formatter (Package #260),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00261,Package_Manifests,markdown,Italic Markdown Formatter (Package #261),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00262,Package_Manifests,markdown,List Item Scanner (Package #262),^\s+([++-]|\d+\.)\s+(.+)$,POLYNOMIAL_2
+PKG-00263,Package_Manifests,markdown,Blockquote Scanner (Package #263),"^>\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00264,Package_Manifests,html,Generic HTML Tag Parser (Package #264),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00265,Package_Manifests,html,HTML Comment Stripper (Package #265),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00266,Package_Manifests,html,HTML Character Entity (Package #266),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00267,Package_Manifests,html,Script Tag Sanitizer (Package #267),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00268,Package_Manifests,html,Style Tag Sanitizer (Package #268),<style\b[^<]+(?:(?!<\/style>)<[^<]+)+<\/style>,POLYNOMIAL_2
+PKG-00269,Package_Manifests,fs,POSIX Safe Path Validator (Package #269),"^[a-zA-Z0-9_\-\.\/]{1,128}$",LINEAR
+PKG-00270,Package_Manifests,fs,Windows Directory Path (Package #270),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00271,Package_Manifests,routing,REST API Route Dispatcher (Package #271),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00272,Package_Manifests,routing,Express Route Parameter Spec (Package #272),^:[a-z0-9__][a-z0-9_0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00273,Package_Manifests,code,C/JS Identifier (Package #273),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00274,Package_Manifests,env,Dotenv Config Assignment (Package #274),^(\w+)\s+=\s+(.+)$,LINEAR
+PKG-00275,Package_Manifests,comment,Shell Comment Line (Package #275),^#.*$,LINEAR
+PKG-00276,Package_Manifests,semver,SemVer 2.0 Official (Package #276),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00277,Package_Manifests,semver,Loose SemVer Prefix (Package #277),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00278,Package_Manifests,npm,Scoped npm Package Name (Package #278),^(@[a-z0-9_0-9_~.-]+/)?[a-z0-9_0-9_~.-]+$,LINEAR
+PKG-00279,Package_Manifests,npm,Package Dependency Specifier (Package #279),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00280,Package_Manifests,git,Git Repository Remote URI (Package #280),^git(\+(ssh|https?))?:\/\/.+$,LINEAR
+PKG-00281,Package_Manifests,markdown,Markdown ATX Header (Package #281),"^(\#{1,6})\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00282,Package_Manifests,markdown,Markdown Inline Link (Package #282),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00283,Package_Manifests,markdown,Markdown Inline Image (Package #283),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00284,Package_Manifests,markdown,Fenced Code Block (Package #284),\`\`\`([a-z0-9_0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00285,Package_Manifests,markdown,Bold Markdown Formatter (Package #285),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00286,Package_Manifests,markdown,Italic Markdown Formatter (Package #286),(\+|_)(.+?)\1,POLYNOMIAL_2
+PKG-00287,Package_Manifests,markdown,List Item Scanner (Package #287),"^\s*([*{1,128}-]|\d{1,128}\.)\s{1,128}(.*)$",POLYNOMIAL_2
+PKG-00288,Package_Manifests,markdown,Blockquote Scanner (Package #288),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00289,Package_Manifests,html,Generic HTML Tag Parser (Package #289),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00290,Package_Manifests,html,HTML Comment Stripper (Package #290),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00291,Package_Manifests,html,HTML Character Entity (Package #291),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00292,Package_Manifests,html,Script Tag Sanitizer (Package #292),<script\b[^<]+(?:(?!<\/script>)<[^<]+)+<\/script>,POLYNOMIAL_2
+PKG-00293,Package_Manifests,html,Style Tag Sanitizer (Package #293),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00294,Package_Manifests,fs,POSIX Safe Path Validator (Package #294),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00295,Package_Manifests,fs,Windows Directory Path (Package #295),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00296,Package_Manifests,routing,REST API Route Dispatcher (Package #296),^\/api\/v[1-9]\/[a-z0-9_0-9_-]+(\/[a-z0-9_0-9_-]+)*$,LINEAR
+PKG-00297,Package_Manifests,routing,Express Route Parameter Spec (Package #297),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00298,Package_Manifests,code,C/JS Identifier (Package #298),^[a-zA-Z_][a-zA-Z0-9_]+$,LINEAR
+PKG-00299,Package_Manifests,env,Dotenv Config Assignment (Package #299),"^(\w{1,128})\s*=\s*(.*)$",LINEAR
+PKG-00300,Package_Manifests,comment,Shell Comment Line (Package #300),^#.*$,LINEAR
+PKG-00301,Package_Manifests,semver,SemVer 2.0 Official (Package #301),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00302,Package_Manifests,semver,Loose SemVer Prefix (Package #302),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00303,Package_Manifests,npm,Scoped npm Package Name (Package #303),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00304,Package_Manifests,npm,Package Dependency Specifier (Package #304),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00305,Package_Manifests,git,Git Repository Remote URI (Package #305),"^git(\{1,128}(ssh|https?))?:\/\/.*$",LINEAR
+PKG-00306,Package_Manifests,markdown,Markdown ATX Header (Package #306),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00307,Package_Manifests,markdown,Markdown Inline Link (Package #307),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00308,Package_Manifests,markdown,Markdown Inline Image (Package #308),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00309,Package_Manifests,markdown,Fenced Code Block (Package #309),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00310,Package_Manifests,markdown,Bold Markdown Formatter (Package #310),(\+\+|__)(.+?)\1,POLYNOMIAL_2
+PKG-00311,Package_Manifests,markdown,Italic Markdown Formatter (Package #311),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00312,Package_Manifests,markdown,List Item Scanner (Package #312),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00313,Package_Manifests,markdown,Blockquote Scanner (Package #313),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00314,Package_Manifests,html,Generic HTML Tag Parser (Package #314),"<\/?([a-z0-9_0-9]+)(\s+[a-z0-9_0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00315,Package_Manifests,html,HTML Comment Stripper (Package #315),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00316,Package_Manifests,html,HTML Character Entity (Package #316),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00317,Package_Manifests,html,Script Tag Sanitizer (Package #317),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00318,Package_Manifests,html,Style Tag Sanitizer (Package #318),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00319,Package_Manifests,fs,POSIX Safe Path Validator (Package #319),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00320,Package_Manifests,fs,Windows Directory Path (Package #320),^([a-z0-9_]:)?(\\[a-z0-9_0-9_\-]+)+\\?$,LINEAR
+PKG-00321,Package_Manifests,routing,REST API Route Dispatcher (Package #321),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00322,Package_Manifests,routing,Express Route Parameter Spec (Package #322),^:[a-zA-Z_][a-zA-Z0-9_]+(\([^\)]+\))?$,LINEAR
+PKG-00323,Package_Manifests,code,C/JS Identifier (Package #323),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00324,Package_Manifests,env,Dotenv Config Assignment (Package #324),^([a-zA-Z0-9_]+)\s*=\s*(.*)$,LINEAR
+PKG-00325,Package_Manifests,comment,Shell Comment Line (Package #325),^#.*$,LINEAR
+PKG-00326,Package_Manifests,semver,SemVer 2.0 Official (Package #326),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z0-9_-][0-9a-z0-9_-]*))*))?(?:\+([0-9a-z0-9_-]+(?:\.[0-9a-z0-9_-]+)*))?$,LINEAR
+PKG-00327,Package_Manifests,semver,Loose SemVer Prefix (Package #327),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00328,Package_Manifests,npm,Scoped npm Package Name (Package #328),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00329,Package_Manifests,npm,Package Dependency Specifier (Package #329),"^([a-zA-Z0-9_.-]{1,128})@([0-9]{1,128}\.[0-9]{1,128}\.[0-9]{1,128})$",LINEAR
+PKG-00330,Package_Manifests,git,Git Repository Remote URI (Package #330),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00331,Package_Manifests,markdown,Markdown ATX Header (Package #331),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00332,Package_Manifests,markdown,Markdown Inline Link (Package #332),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00333,Package_Manifests,markdown,Markdown Inline Image (Package #333),\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00334,Package_Manifests,markdown,Fenced Code Block (Package #334),\`\`\`([a-zA-Z0-9_+-]+)\n([\s\S]+?)\n\`\`\`,POLYNOMIAL_2
+PKG-00335,Package_Manifests,markdown,Bold Markdown Formatter (Package #335),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00336,Package_Manifests,markdown,Italic Markdown Formatter (Package #336),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00337,Package_Manifests,markdown,List Item Scanner (Package #337),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00338,Package_Manifests,markdown,Blockquote Scanner (Package #338),^>\s+(.*)$,POLYNOMIAL_2
+PKG-00339,Package_Manifests,html,Generic HTML Tag Parser (Package #339),"<\/?([a-zA-Z0-9]+)([\t ]+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]+))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00340,Package_Manifests,html,HTML Comment Stripper (Package #340),<!--[\s\S]+?-->,POLYNOMIAL_2
+PKG-00341,Package_Manifests,html,HTML Character Entity (Package #341),"&([a-z]{1,128}|#[0-9]{1,128}|#x[0-9a-f]{1,128});",POLYNOMIAL_2
+PKG-00342,Package_Manifests,html,Script Tag Sanitizer (Package #342),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00343,Package_Manifests,html,Style Tag Sanitizer (Package #343),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00344,Package_Manifests,fs,POSIX Safe Path Validator (Package #344),^[a-z0-9_0-9_\-\.\/]+$,LINEAR
+PKG-00345,Package_Manifests,fs,Windows Directory Path (Package #345),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00346,Package_Manifests,routing,REST API Route Dispatcher (Package #346),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)+$,LINEAR
+PKG-00347,Package_Manifests,routing,Express Route Parameter Spec (Package #347),"^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]{1,128}\))?$",LINEAR
+PKG-00348,Package_Manifests,code,C/JS Identifier (Package #348),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00349,Package_Manifests,env,Dotenv Config Assignment (Package #349),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00350,Package_Manifests,comment,Shell Comment Line (Package #350),^#.*$,LINEAR
+PKG-00351,Package_Manifests,semver,SemVer 2.0 Official (Package #351),^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$,LINEAR
+PKG-00352,Package_Manifests,semver,Loose SemVer Prefix (Package #352),^[vV]?(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)$,LINEAR
+PKG-00353,Package_Manifests,npm,Scoped npm Package Name (Package #353),"^(@[a-zA-Z0-9_~.-]{1,128}/)?[a-zA-Z0-9_~.-]{1,128}$",LINEAR
+PKG-00354,Package_Manifests,npm,Package Dependency Specifier (Package #354),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00355,Package_Manifests,git,Git Repository Remote URI (Package #355),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00356,Package_Manifests,markdown,Markdown ATX Header (Package #356),"^(\#{1,6})\s+(.*)$",POLYNOMIAL_2
+PKG-00357,Package_Manifests,markdown,Markdown Inline Link (Package #357),\[([^\[\]]*)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00358,Package_Manifests,markdown,Markdown Inline Image (Package #358),\!\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00359,Package_Manifests,markdown,Fenced Code Block (Package #359),"\`\`\`([a-zA-Z0-9_{1,128}-]*)\n([\s\S]*?)\n\`\`\`",POLYNOMIAL_2
+PKG-00360,Package_Manifests,markdown,Bold Markdown Formatter (Package #360),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00361,Package_Manifests,markdown,Italic Markdown Formatter (Package #361),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00362,Package_Manifests,markdown,List Item Scanner (Package #362),^\s*([*+-]|\d+\.)\s+(.*)$,POLYNOMIAL_2
+PKG-00363,Package_Manifests,markdown,Blockquote Scanner (Package #363),^>[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00364,Package_Manifests,html,Generic HTML Tag Parser (Package #364),"<\/?([a-zA-Z0-9]+)(\s+[a-zA-Z0-9\-:]+(?:=(?:\""[^\""]+\""|'[^']+'|[^\s>]+))?)+\s+\/?>",POLYNOMIAL_2
+PKG-00365,Package_Manifests,html,HTML Comment Stripper (Package #365),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00366,Package_Manifests,html,HTML Character Entity (Package #366),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00367,Package_Manifests,html,Script Tag Sanitizer (Package #367),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00368,Package_Manifests,html,Style Tag Sanitizer (Package #368),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00369,Package_Manifests,fs,POSIX Safe Path Validator (Package #369),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00370,Package_Manifests,fs,Windows Directory Path (Package #370),^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]+)+\\?$,LINEAR
+PKG-00371,Package_Manifests,routing,REST API Route Dispatcher (Package #371),"^\/api\/v[1-9]\/[a-zA-Z0-9_-]{1,128}(\/[a-zA-Z0-9_-]{1,128})*$",LINEAR
+PKG-00372,Package_Manifests,routing,Express Route Parameter Spec (Package #372),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00373,Package_Manifests,code,C/JS Identifier (Package #373),^[a-zA-Z_][a-zA-Z0-9_]*$,LINEAR
+PKG-00374,Package_Manifests,env,Dotenv Config Assignment (Package #374),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00375,Package_Manifests,comment,Shell Comment Line (Package #375),^#.*$,LINEAR
+PKG-00376,Package_Manifests,semver,SemVer 2.0 Official (Package #376),^(0|[1-9]\d+)\.(0|[1-9]\d+)\.(0|[1-9]\d+)(?:-((?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+)(?:\.(?:0|[1-9]\d+|\d+[a-zA-Z-][0-9a-zA-Z-]+))+))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)+))?$,LINEAR
+PKG-00377,Package_Manifests,semver,Loose SemVer Prefix (Package #377),^[vV]?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$,LINEAR
+PKG-00378,Package_Manifests,npm,Scoped npm Package Name (Package #378),^(@[a-zA-Z0-9_~.-]+/)?[a-zA-Z0-9_~.-]+$,LINEAR
+PKG-00379,Package_Manifests,npm,Package Dependency Specifier (Package #379),^([a-zA-Z0-9_.-]+)@([0-9]+\.[0-9]+\.[0-9]+)$,LINEAR
+PKG-00380,Package_Manifests,git,Git Repository Remote URI (Package #380),^git(\+(ssh|https?))?:\/\/.*$,LINEAR
+PKG-00381,Package_Manifests,markdown,Markdown ATX Header (Package #381),"^(\#{1,6})[\t ]+(.*)$",POLYNOMIAL_2
+PKG-00382,Package_Manifests,markdown,Markdown Inline Link (Package #382),\[([^\[\]]+)\]\((https?:\/\/[^\s\)]+)\),POLYNOMIAL_2
+PKG-00383,Package_Manifests,markdown,Markdown Inline Image (Package #383),"\!\[([^\[\]]*)\]\((https?:\/\/[^\s\)]{1,128})\)",POLYNOMIAL_2
+PKG-00384,Package_Manifests,markdown,Fenced Code Block (Package #384),\`\`\`([a-zA-Z0-9_+-]*)\n([\s\S]*?)\n\`\`\`,POLYNOMIAL_2
+PKG-00385,Package_Manifests,markdown,Bold Markdown Formatter (Package #385),(\*\*|__)(.*?)\1,POLYNOMIAL_2
+PKG-00386,Package_Manifests,markdown,Italic Markdown Formatter (Package #386),(\*|_)(.*?)\1,POLYNOMIAL_2
+PKG-00387,Package_Manifests,markdown,List Item Scanner (Package #387),^\s*([*+-]|\d+\.)[\t ]+(.*)$,POLYNOMIAL_2
+PKG-00388,Package_Manifests,markdown,Blockquote Scanner (Package #388),^>\s+(.+)$,POLYNOMIAL_2
+PKG-00389,Package_Manifests,html,Generic HTML Tag Parser (Package #389),"<\/?([a-zA-Z0-9]{1,128})(\s{1,128}[a-zA-Z0-9\-:]{1,128}(?:=(?:\""[^\""]*\""|'[^']*'|[^\s>]{1,128}))?)*\s*\/?>",POLYNOMIAL_2
+PKG-00390,Package_Manifests,html,HTML Comment Stripper (Package #390),<!--[\s\S]*?-->,POLYNOMIAL_2
+PKG-00391,Package_Manifests,html,HTML Character Entity (Package #391),&([a-z]+|#[0-9]+|#x[0-9a-f]+);,POLYNOMIAL_2
+PKG-00392,Package_Manifests,html,Script Tag Sanitizer (Package #392),<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>,POLYNOMIAL_2
+PKG-00393,Package_Manifests,html,Style Tag Sanitizer (Package #393),<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>,POLYNOMIAL_2
+PKG-00394,Package_Manifests,fs,POSIX Safe Path Validator (Package #394),^[a-zA-Z0-9_\-\.\/]+$,LINEAR
+PKG-00395,Package_Manifests,fs,Windows Directory Path (Package #395),"^([a-zA-Z]:)?(\\[a-zA-Z0-9_\-]{1,128}){1,128}\\?$",LINEAR
+PKG-00396,Package_Manifests,routing,REST API Route Dispatcher (Package #396),^\/api\/v[1-9]\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*$,LINEAR
+PKG-00397,Package_Manifests,routing,Express Route Parameter Spec (Package #397),^:[a-zA-Z_][a-zA-Z0-9_]*(\([^\)]+\))?$,LINEAR
+PKG-00398,Package_Manifests,code,C/JS Identifier (Package #398),^[a-z0-9__][a-z0-9_0-9_]*$,LINEAR
+PKG-00399,Package_Manifests,env,Dotenv Config Assignment (Package #399),^(\w+)\s*=\s*(.*)$,LINEAR
+PKG-00400,Package_Manifests,comment,Shell Comment Line (Package #400),^#.+$,LINEAR
+CVE-00001,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #1),^([a]+)+$,EXPONENTIAL
+CVE-00002,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #2),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00003,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #3),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00004,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #4),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00005,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #5),^([x]+)+$,EXPONENTIAL
+CVE-00006,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #6),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00007,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #7),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00008,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #8),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00009,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #9),^([a]+)+$,EXPONENTIAL
+CVE-00010,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #10),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00011,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #11),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00012,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #12),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00013,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #13),^([x]+)+$,EXPONENTIAL
+CVE-00014,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #14),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00015,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #15),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00016,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #16),^[d]*[d]*[d]*b$,POLYNOMIAL_3
+CVE-00017,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #17),^[a]*[a]*[a]*[a]*b$,POLYNOMIAL_4
+CVE-00018,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #18),^[0-9]*[0-9]*[0-9]*b$,POLYNOMIAL_3
+CVE-00019,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #19),^[w]*[w]*b$,POLYNOMIAL_2
+CVE-00020,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #20),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00021,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #21),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00022,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #22),^[^@]+@[^@]+$,LINEAR
+CVE-00023,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #23),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00024,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #24),^[0-9a-f]{32}$,LINEAR
+CVE-00025,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #25),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00026,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #26),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00027,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #27),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00028,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #28),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00029,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #29),^([x]+)+$,EXPONENTIAL
+CVE-00030,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #30),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00031,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #31),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00032,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #32),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00033,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #33),^([a]+)+$,EXPONENTIAL
+CVE-00034,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #34),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00035,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #35),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00036,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #36),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00037,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #37),^([x]+)+$,EXPONENTIAL
+CVE-00038,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #38),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00039,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #39),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00040,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #40),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00041,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #41),^[a]*[a]*b$,POLYNOMIAL_2
+CVE-00042,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #42),^[0-9]*[0-9]*[0-9]*b$,POLYNOMIAL_3
+CVE-00043,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #43),^[w]*[w]*[w]*[w]*b$,POLYNOMIAL_4
+CVE-00044,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #44),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00045,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #45),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00046,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #46),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00047,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #47),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00048,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #48),^[^@]+@[^@]+$,LINEAR
+CVE-00049,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #49),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00050,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #50),^[0-9a-f]{32}$,LINEAR
+CVE-00051,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #51),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00052,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #52),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00053,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #53),^([x]+)+$,EXPONENTIAL
+CVE-00054,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #54),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00055,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #55),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00056,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #56),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00057,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #57),^([a]+)+$,EXPONENTIAL
+CVE-00058,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #58),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00059,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #59),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00060,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #60),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00061,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #61),^([x]+)+$,EXPONENTIAL
+CVE-00062,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #62),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00063,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #63),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00064,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #64),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00065,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #65),^([a]+)+$,EXPONENTIAL
+CVE-00066,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #66),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00067,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #67),^[w]*[w]*b$,POLYNOMIAL_2
+CVE-00068,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #68),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00069,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #69),^[x]*[x]*[x]*[x]*b$,POLYNOMIAL_4
+CVE-00070,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #70),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00071,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #71),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00072,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #72),^[d]*[d]*[d]*b$,POLYNOMIAL_3
+CVE-00073,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #73),^[a]*[a]*b$,POLYNOMIAL_2
+CVE-00074,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #74),^[^@]+@[^@]+$,LINEAR
+CVE-00075,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #75),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00076,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #76),^[0-9a-f]{32}$,LINEAR
+CVE-00077,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #77),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00078,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #78),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00079,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #79),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00080,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #80),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00081,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #81),^([a]+)+$,EXPONENTIAL
+CVE-00082,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #82),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00083,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #83),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00084,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #84),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00085,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #85),^([x]+)+$,EXPONENTIAL
+CVE-00086,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #86),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00087,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #87),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00088,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #88),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00089,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #89),^([a]+)+$,EXPONENTIAL
+CVE-00090,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #90),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00091,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #91),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00092,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #92),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00093,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #93),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00094,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #94),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00095,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #95),^[A-Z]*[A-Z]*[A-Z]*[A-Z]*b$,POLYNOMIAL_4
+CVE-00096,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #96),^[d]*[d]*[d]*b$,POLYNOMIAL_3
+CVE-00097,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #97),^[a]*[a]*b$,POLYNOMIAL_2
+CVE-00098,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #98),^[0-9]*[0-9]*[0-9]*b$,POLYNOMIAL_3
+CVE-00099,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #99),^[w]*[w]*b$,POLYNOMIAL_2
+CVE-00100,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #100),^[^@]+@[^@]+$,LINEAR
+CVE-00101,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #101),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00102,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #102),^[0-9a-f]{32}$,LINEAR
+CVE-00103,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #103),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00104,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #104),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00105,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #105),^([a]+)+$,EXPONENTIAL
+CVE-00106,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #106),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00107,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #107),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00108,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #108),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00109,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #109),^([x]+)+$,EXPONENTIAL
+CVE-00110,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #110),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00111,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #111),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00112,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #112),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00113,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #113),^([a]+)+$,EXPONENTIAL
+CVE-00114,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #114),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00115,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #115),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00116,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #116),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00117,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #117),^([x]+)+$,EXPONENTIAL
+CVE-00118,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #118),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00119,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #119),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00120,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #120),^[d]*[d]*[d]*b$,POLYNOMIAL_3
+CVE-00121,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #121),^[a]*[a]*[a]*[a]*b$,POLYNOMIAL_4
+CVE-00122,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #122),^[0-9]*[0-9]*[0-9]*b$,POLYNOMIAL_3
+CVE-00123,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #123),^[w]*[w]*b$,POLYNOMIAL_2
+CVE-00124,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #124),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00125,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #125),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00126,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #126),^[^@]+@[^@]+$,LINEAR
+CVE-00127,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #127),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00128,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #128),^[0-9a-f]{32}$,LINEAR
+CVE-00129,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #129),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00130,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #130),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00131,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #131),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00132,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #132),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00133,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #133),^([x]+)+$,EXPONENTIAL
+CVE-00134,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #134),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00135,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #135),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00136,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #136),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00137,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #137),^([a]+)+$,EXPONENTIAL
+CVE-00138,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #138),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00139,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #139),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00140,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #140),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00141,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #141),^([x]+)+$,EXPONENTIAL
+CVE-00142,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #142),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00143,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #143),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00144,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #144),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00145,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #145),^[a]*[a]*b$,POLYNOMIAL_2
+CVE-00146,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #146),^[0-9]*[0-9]*[0-9]*b$,POLYNOMIAL_3
+CVE-00147,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #147),^[w]*[w]*[w]*[w]*b$,POLYNOMIAL_4
+CVE-00148,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #148),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00149,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #149),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00150,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #150),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00151,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #151),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00152,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #152),^[^@]+@[^@]+$,LINEAR
+CVE-00153,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #153),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00154,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #154),^[0-9a-f]{32}$,LINEAR
+CVE-00155,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #155),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00156,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #156),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00157,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #157),^([x]+)+$,EXPONENTIAL
+CVE-00158,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #158),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00159,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #159),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00160,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #160),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00161,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #161),^([a]+)+$,EXPONENTIAL
+CVE-00162,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #162),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00163,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #163),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00164,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #164),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00165,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #165),^([x]+)+$,EXPONENTIAL
+CVE-00166,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #166),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00167,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #167),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00168,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #168),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00169,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #169),^([a]+)+$,EXPONENTIAL
+CVE-00170,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #170),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00171,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #171),^[w]*[w]*b$,POLYNOMIAL_2
+CVE-00172,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #172),^[a-z]*[a-z]*[a-z]*b$,POLYNOMIAL_3
+CVE-00173,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #173),^[x]*[x]*[x]*[x]*b$,POLYNOMIAL_4
+CVE-00174,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #174),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00175,OWASP_CVE,CVE-2022-0155,Overlapping Numeric and Whitespace Pump (CVE Variant #175),^[A-Z]*[A-Z]*b$,POLYNOMIAL_2
+CVE-00176,OWASP_CVE,CVE-2021-37701,Repeated Suffix Character Sets (CVE Variant #176),^[d]*[d]*[d]*b$,POLYNOMIAL_3
+CVE-00177,OWASP_CVE,CVE-2022-21689,Word Overlap Suffix Trap (CVE Variant #177),^[a]*[a]*b$,POLYNOMIAL_2
+CVE-00178,OWASP_CVE,BENIGN-CONTROL-01,Strict Anchor Email Bounded (CVE Variant #178),^[^@]+@[^@]+$,LINEAR
+CVE-00179,OWASP_CVE,BENIGN-CONTROL-02,Deterministic Fixed Length SSN (CVE Variant #179),^\d{3}-\d{2}-\d{4}$,LINEAR
+CVE-00180,OWASP_CVE,BENIGN-CONTROL-03,Exact Hexadecimal MD5 Hash (CVE Variant #180),^[0-9a-f]{32}$,LINEAR
+CVE-00181,OWASP_CVE,BENIGN-CONTROL-04,IBAN Bank Code Bounded (CVE Variant #181),"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$",LINEAR
+CVE-00182,OWASP_CVE,BENIGN-CONTROL-05,E.164 Phone Fixed Range (CVE Variant #182),"^\+?[1-9]\d{1,14}$",LINEAR
+CVE-00183,OWASP_CVE,CVE-2017-16016,Classic Nested Plus Pump (CVE Variant #183),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00184,OWASP_CVE,CVE-2018-3721,Star of Star Ambiguity (CVE Variant #184),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00185,OWASP_CVE,CVE-2020-7660,Nested Alphanumeric Pump (serialize-javascript) (CVE Variant #185),^([a]+)+$,EXPONENTIAL
+CVE-00186,OWASP_CVE,CVE-2019-10744,Nested Numeric Pump (lodash) (CVE Variant #186),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00187,OWASP_CVE,CVE-2021-23343,Nested Word Repetition (minimatch) (CVE Variant #187),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00188,OWASP_CVE,CVE-2018-1000840,Identical Disjunction Overlap (CVE Variant #188),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00189,OWASP_CVE,CVE-2020-28469,Prefix Overlap Alternation (CVE Variant #189),^([x]+)+$,EXPONENTIAL
+CVE-00190,OWASP_CVE,CVE-2021-3807,Wildcard Overlap Pump (ansi-regex) (CVE Variant #190),^([_]|[_][_])*$,EXPONENTIAL
+CVE-00191,OWASP_CVE,CVE-2022-24999,Route Subsegment Pump (express) (CVE Variant #191),^(([A-Z])+.)+[A-Z]([A-Z])+$,EXPONENTIAL
+CVE-00192,OWASP_CVE,CVE-2021-23364,URL Path Group Pump (CVE Variant #192),^([a-zA-Zd]+)+$,EXPONENTIAL
+CVE-00193,OWASP_CVE,CVE-2019-1010266,Multi-token Sub-pump Ambiguity (CVE Variant #193),^([a]+)+$,EXPONENTIAL
+CVE-00194,OWASP_CVE,CVE-2020-7662,Nested Multi-Character Star (CVE Variant #194),^([0-9]|[0-9][0-9])*$,EXPONENTIAL
+CVE-00195,OWASP_CVE,CVE-2021-23362,Nested Digit Matcher (CVE Variant #195),^(([w])+.)+[A-Z]([w])+$,EXPONENTIAL
+CVE-00196,OWASP_CVE,CVE-2022-25883,Alphanumeric Overlap with Unbounded Star (CVE Variant #196),^([a-zA-Za-z]+)+$,EXPONENTIAL
+CVE-00197,OWASP_CVE,CVE-2019-14862,Dual Overlapping Star (Quadratic) (CVE Variant #197),^[x]*[x]*b$,POLYNOMIAL_2
+CVE-00198,OWASP_CVE,CVE-2020-7769,Triple Overlapping Star (Cubic) (CVE Variant #198),^[_]*[_]*[_]*b$,POLYNOMIAL_3
+CVE-00199,OWASP_CVE,CVE-2021-23425,Quadruple Overlapping Star (Quartic) (CVE Variant #199),^[A-Z]*[A-Z]*[A-Z]*[A-Z]*b$,POLYNOMIAL_4
+CVE-00200,OWASP_CVE,CVE-2020-11022,Un-anchored Wildcard Triple Sequence (CVE Variant #200),^[d]*[d]*[d]*b$,POLYNOMIAL_3
