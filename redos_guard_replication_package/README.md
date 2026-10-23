@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://www.python.org/)
 [![Engines: CPython | regex | re2](https://img.shields.io/badge/Engines-CPython%20%7C%20regex%20%7C%20re2-orange.svg)](https://github.com/google/re2)
-[![DOI: 10.5281/zenodo.10842910](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.10842910-purple.svg)](https://doi.org/10.5281/zenodo.10842910)
+
 
 > **A Large-Scale Empirical Study of Algorithmic Complexity Breakdown in Production Regular Expression Engines**  
 > **Authors:** Adarsh Singh, Devarsh Patel and Dr. Umamaheswari M  
