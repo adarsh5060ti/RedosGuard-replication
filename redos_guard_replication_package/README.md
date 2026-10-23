@@ -6,9 +6,9 @@
 [![DOI: 10.5281/zenodo.10842910](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.10842910-purple.svg)](https://doi.org/10.5281/zenodo.10842910)
 
 > **A Large-Scale Empirical Study of Algorithmic Complexity Breakdown in Production Regular Expression Engines**  
-> **Authors:** Adarsh Singh and Dr. Umamaheswari M  
+> **Authors:** Adarsh Singh, Devarsh Patel and Dr. Umamaheswari M  
 > **Institution:** School of Computer Science & Engineering, Vellore Institute of Technology (VIT), Vellore, Tamil Nadu, 632014, India  
-> **Correspondence:** `adarsh.singh2024b@vitstudent.ac.in`, `umamaheswari.m@vit.ac.in`
+> **Correspondence:** `adarsh.singh2024b@vitstudent.ac.in`,`devarsh.patel2024@vitstudent.ac.in`, `umamaheswari.m@vit.ac.in`
 
 ---
 
