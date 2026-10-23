@@ -1,0 +1,757 @@
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage[
+    hidelinks,
+    pdfauthor={Adarsh Singh, Devarsh Patel and Umamaheswari M},
+    pdftitle={Characterizing the Catastrophic Backtracking Cliff: A Large-Scale Empirical Study of Algorithmic Complexity Breakdown in Production Regular Expression Engines},
+    pdfsubject={Regular Expression Denial of Service (ReDoS)},
+    pdfkeywords={ReDoS, Backtracking NFAs, DFAs, Google re2, Empirical Software Engineering}
+]{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\graphicspath{{figures/}}
+
+% Tables span both columns of the two-column layout, so that wide tables keep their rows readable.
+\renewenvironment{table}[1][]{\begin{table*}[#1]}{\end{table*}}
+
+% The template prints a volume line in its footers, and it prints a history line and a DOI line in its title block. This
+% manuscript omits those three lines and keeps the page numbers. The title block and the two page styles below are the
+% template's own code for the non-editorial layout with those lines removed; ieeeaccess.cls itself is unchanged.
+\makeatletter
+\def\@maketitle{%
+     \setbox\maketitlebox\hbox\bgroup%
+     \begin{minipage}{\titlewidth}%
+     \raggedright\vspace*{1.2mm}%
+     {\vss\color{accessblue}\titlefont\@title\vss}\vspace*{6mm}\par%
+     {\vss\authorfont\@author\vss}\vspace*{0mm}\par%
+     \@tempcnta=0%
+     \loop\ifnum\@tempcnta<\theaddrCtr%
+       \advance\@tempcnta by 1%
+       \par{\vss\addressfont\textsuperscript{\expandafter\csname addrInd\the\@tempcnta\endcsname}%
+        \expandafter\csname addr\the\@tempcnta\endcsname\vss}%
+     \repeat\vspace*{1mm}\par%
+     {\vss\correspfont\@corresp\vss\vspace{2mm}}\par%
+     {\vss\tfootnotefont\@tfootnote\vss\vspace{7mm}}\par%
+     \noindent\box99\vspace{6mm}\par%
+     \noindent\box88\vspace{18mm}\par%
+     \end{minipage}\par%
+     \egroup%
+     \fixSkip{\the\ht\maketitlebox}%
+}
+\let\ieeeTitlePageStyle\ps@titlepage
+\def\ps@titlepage{\ieeeTitlePageStyle
+  \def\@oddfoot{\raisebox{3pt}{%
+    \hbox to 0pc{\hbox to \textwidth{\mbox{}\hfill{\footervolfont\@pubid}\hfill\mbox{}}}%
+    \hbox to 0pc{\hbox to \textwidth{\mbox{}\hfill{\footerpagefont\thepage}}}%
+  }}%
+  \def\@evenfoot{\raisebox{3pt}{%
+    \hbox to 0pc{\hbox to \textwidth{{\footerpagefont\thepage}\hfill}\mbox{}}\hspace*{1.8pc}%
+    \hspace*{-1.8pc}\hbox to 0pc{\hbox to \textwidth{\mbox{}\hfill{\footervolfont\@pubid}\hfill\mbox{}}}%
+  }}%
+}
+\let\ieeeHeadingsStyle\ps@headings
+\def\ps@headings{\ieeeHeadingsStyle
+  \def\@oddfoot{\raisebox{8pt}{%
+    \hbox to 0pc{\hbox to \textwidth{\mbox{}\hfill{\footerpagefont\thepage}}}%
+  }}%
+  \def\@evenfoot{\raisebox{8pt}{%
+    \hbox to 0pc{\hbox to \textwidth{{\footerpagefont\thepage}\mbox{}\hfill}}\hspace*{1.8pc}%
+  }}%
+}
+% The class sets its headings style when it loads, so the body pages keep its footers until the style is set again.
+\ps@headings
+\makeatother
+
+\emergencystretch=3em
+\sloppy
+
+\hyphenation{op-tical net-works semi-conduc-tor ReDoS}
+
+\begin{document}
+
+\title{Characterizing the Catastrophic Backtracking Cliff: A Large-Scale Empirical Study of Algorithmic Complexity Breakdown in Production Regular Expression Engines}
+
+\author{\uppercase{Adarsh Singh}\ \authorrefmark{1}, \uppercase{Devarsh Patel}\ \authorrefmark{2}, \uppercase{and Umamaheswari M}\ \authorrefmark{3}}
+\address[1]{School of Computer Science \& Engineering, Vellore Institute of Technology (VIT), Vellore, India (e-mail: adarsh.singh2024b@vitstudent.ac.in)}
+\address[2]{School of Computer Science \& Engineering, Vellore Institute of Technology (VIT), Vellore, India (e-mail: devarsh.patel2024@vitstudent.ac.in)}
+\address[3]{School of Computer Science \& Engineering, Vellore Institute of Technology (VIT), Vellore, India (e-mail: umamaheswari.m@vit.ac.in)}
+
+\markboth
+{Singh \headeretal - Catastrophic Backtracking Cliff in Production Regular Expression Engines}
+{Singh \headeretal, including Catastrophic Backtracking Cliff in Production Regular Expression Engines}
+
+\corresp{Corresponding author: Umamaheswari M (e-mail: umamaheswari.m@vit.ac.in).}
+
+\begin{abstract}
+Web software in production environments relies heavily on regular expressions for input validation, request routing, and packet inspection, at least in principle, and CPU telemetry is being collected at the microsecond level by our method, fits ordinary least squares (OLS) regression models to power-law, $\mathcal{O}(n^d)$, and semi-logarithmic, $\mathcal{O}(2^n)$, growth curves, and verifies transitions through the tests grounded in automaton cycles, broadly speaking. ReDoS-Guard was devised to study the execution complexity of regular expressions and for the measurement of the performance of automaton engines empirically; indeed, modern execution environments, spanning CPython's \texttt{re}, Google V8's \texttt{Irregexp}, and PCRE2, appraise regular expressions applying non-deterministic finite automata (NFA) with backtracking. 1,200 regular expressions were sampled from one corpus of 10,000 patterns, covering enterprise web services (RegexLib), package repositories (npm and PyPI), and confirmed security advisories (OWASP and CVE), and assessed 18,000 data points (1,200 patterns $\times$ 15 input lengths) across the three engines (CPython's \texttt{re}, Python's \texttt{regex}, and Google's \texttt{re2}), totaling 54,000 executions. In real-world applications, dynamic fuzzers and SMT solvers can take minutes to process the person pattern, which is disrupting continuous integration workflows. Current defenses are insufficient. A further high rate of false positives is, for all practical purposes, created by Static analyzers (\emph{linters}); also the engine is forced by non-matching input suffixes for the inquiry of the search tree exhaustively. By comparison, 79.0\% of the patterns in security testing exhibit exponential growth, $\mathcal{O}(2^n)$, and 1.0\% show polynomial growth (80.0\% superlinear in total); key findings: (1) Regular expressions in enterprise web services are overwhelmingly linear: 99.9\% of benign patterns run in linear time, $\mathcal{O}(n)$. In our combined dataset of 1,200 patterns, the prevalence is 86.92\% for linear patterns, 12.92\% for exponential patterns, and 0.17\% for polynomial patterns ($N = 2$). (2) Exponential patterns exceed the 800~ms \emph{watchdog} threshold at a median input size of $n^* = 36.1$ iterations (mean: $76.05 \pm 93.88$; minimum $n^* = 22.6$); this is corresponding to a median payload size of $L^* = 41.8$ characters (minimum $L^* = 29.6$), so such short payloads can bypass the standard inspection limits of Web Application Firewalls (WAFs). Any Regular Expression Denial of Service (ReDoS) attack can (in practice) be yielded by this when patterns include ambiguous quantifiers or overlapping alternatives. (3) The Google RE2 engine natively processes 91.92\% (1{,}103/1{,}200) of the production patterns in our combined dataset without syntax errors (96.3\% for enterprise web validation, 85.0\% for package ecosystems, and 55.0\% for security benchmarks); under an adversarial workload, it hits a speedup of over $10^5\times$, which uncovers that linear-automata engines can protect production perimeters without compromising web compatibility. Building on this observation, by comparison, an exactness of 99.42\% is hit by the hybrid parametric regression approach applied by ReDoS-Guard; and thus, a baseline precision of 87.67\% is pulled off by (4) Static abstract syntax tree (AST) analyzers but display a false discovery rate of 47.17\% (a false positive rate of 7.19\%).
+\end{abstract}
+
+\begin{keywords}
+Regular Expression Denial of Service (ReDoS), Algorithmic Complexity Breakdown, Non-Deterministic Finite Automata, Deterministic Finite Automata, Google re2, Empirical Software Engineering, Static Analysis Validation
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+\section{Introduction}
+
+\subsection{The Catastrophic Backtracking Crisis}
+\PARstart{A}{utomata} theory is revealing that regular languages can, to some extent, be handled in linear time. From this perspective, rabin and Scott~\cite{rabin1959finite} proved that every Chomsky Type-3 language admits a Deterministic Finite Automaton (DFA) that is running in strict $\mathcal{O}(n)$ time relative to input length $n$, in the main; and thus, thompson~\cite{thompson1968regular} established an equal linear-time simulation for non-deterministic finite automata (NFAs), and Sipser~\cite{sipser2012introduction} and Mamouras and Chattopadhyay~\cite{mamouras2024efficient} formalized the complexity bounds, at least for now. Production programming environments, yet, depart from this model; runtimes such as CPython's \texttt{re}~\cite{cpython_sre}, Google V8's \texttt{Irregexp}~\cite{v8_irregexp}, Java's \texttt{java.util.regex}, Ruby's Onigmo, and PCRE2 evaluate expressions with backtracking NFAs~\cite{cox2007regular,cox2010regular}. Engine designers chose this architecture to support non-regular grammar extensions, most particularly backreferences (\texttt{\textbackslash 1}) and speculative lookarounds (\texttt{(?=...)})~\cite{aho1990algorithms,hopcroft2006introduction,aho2006compilers}, and a single-pass DFA can't track such state without exponential state proliferation.
+
+Stated separately, A severe performance vulnerability is also created by this design; and thus, on well-formed inputs, backtracking NFAs process transitions effectively and finish in time proportional to this string length, at least in practice. The failure is appearing when an expression includes structural vagueness, such as nested repetitions like \texttt{(a+)+}, overlapping alternations like \texttt{(a|a)+}, or adjacent character classes that are sharing symbols, in many respects. When an adversarial non-matching suffix arrives, the depth-first matcher analyzes every person untaken branch on its choice-point stack before rejecting the string~\cite{berglund2014analyzing,weideman2016analyzing,staicu2018freezing}. Against this backdrop, validation that normally takes microseconds can then stall for seconds or minutes; this vulnerability, termed Regular Expression Denial of Service (ReDoS)~\cite{cox2010regular,kirrage2013static}, has extreme operational asymmetry, like an adversarial payload of forty characters can pin a CPU thread, stall an event loop, exhaust worker pools, and cascade into a broader service outage~\cite{staicu2018freezing,davis2019interview}.
+
+\subsection{Anatomy of Production Outages}
+That is to say, backtracking failures have caused repeated outages across the production infrastructure:
+\begin{enumerate}
+    \item \textbf{Cloudflare Global Edge Outage (July 2, 2019):} A production WAF rule encompassed consecutive wildcards within an unanchored alternation group: \texttt{.*.*=.*}~\cite{davis2021memoization,cloudflare2019outage}; CPU consumption got 100\%, across 194 edge data centers, and 82\% of global traffic dropped for 27 minutes~\cite{cloudflare2019outage}, at least empirically; in fact, when incoming HTTP requests skipped the \texttt{'='} delimiter hypothetically, the backtracking NFA attempted every possible split index, in actual application. Along these dimensions, what the consecutive wildcards alone yielded was $\Theta(n^2)$ transitions ($1{,}326$ phases for $n=50$), which compounded into $\Theta(2^n)$ growth together with the foregoing alternations.
+    \item \textbf{Stack Overflow Global Outage (July 20, 2016):} Remarkably, the culprit was a whitespace-trimming regex in Markdown parsing (\texttt{\^{}[\textbackslash s\textbackslash u200c]+|[\textbackslash s\textbackslash u200c]+\$}) that lacked a leading anchor on its trailing branch~\cite{stackoverflow2016outage}. A user submitted a post with 20,000 trailing spaces. Because the engine restarted its scan after each mismatch, execution required $\sum_{i=0}^{n-1}(n-i) = \frac{n(n+1)}{2} \approx 2 \times 10^8$ operations ($\Theta(n^2)$); this starved IIS web workers globally for 34 minutes~\cite{staicu2018freezing,stackoverflow2016outage}, all things considered.
+    \item \textbf{Package Ecosystem Contagion:} The hurdle is spreading through the dependency trees. Viewed through this lens, core npm and PyPI libraries---\texttt{ansi-regex} (CVE-2021-3807, over 50M weekly downloads)~\cite{cve_2021_3807}, \texttt{ssri} (CVE-2021-27290)~\cite{cve_2021_27290}, \texttt{semver} (CVE-2022-25883)~\cite{cve_2022_25883}, \texttt{minimatch} (CVE-2022-3517)~\cite{cve_2022_3517}---have shipped with catastrophic backtracking vulnerabilities, silently exposing every downstream microservice to unauthenticated denial of service~\cite{davis2019lingua,davis2021memoization}, on the whole.
+\end{enumerate}
+
+\subsection{Shortcomings of Existing Defensive Methodologies}
+The defensive tooling landscape uncovers five structural gaps:
+\begin{enumerate}
+    \item \emph{Static AST Linters (e.g., Regexploit, safe-regex):} Static checkers are inspecting syntax trees for nested quantifiers; and thus, despite this, they are skipping runtime length modeling and do not check whether adjacent character classes overlap; this is driving false discovery rates between 32\% and 47\%~\cite{davis2019why,regexploit2021,safe_regex2023}, to a significant degree.
+    \item \emph{Dynamic Fuzzers \& Solvers (e.g., ReScue, ReDoSHunter):} Tools grounded in genetic fuzzing or SMT resolving generate concrete attack payloads~\cite{shen2018rescue,li2021redoshunter}, but tackling string constraints takes 10 to 30 minutes per pattern; this overhead is preventing integration into the automated CI/CD pipelines, in real-world scenarios.
+    \item \emph{The DFA Expressivity Fallacy:} Practitioners are presuming that linear automata engines such as Google \texttt{re2} reject too many real-world patterns~\cite{cox2007regular,chapman2016exploring}; this premise has not been confirmed on production code, in actual application.
+    \item \emph{Uncharacterized Cross-Runtime Divergence:} Execution engines are handling matching patterns separately. Taken together, jIT unrolling in V8, bytecode dispatch in CPython, and loop optimizations in Python \texttt{regex} are changing vulnerability thresholds in ways that static analysis can't anticipate, on the whole.
+    \item \emph{Fragile Inductive Refactoring:} Program synthesis tools such as FlashRegex~\cite{li2020flashregex} generate regex patches from positive and negative examples, which is why on the contrary, inductive rewrites do not formally guarantee correctness on unobserved edge cases, at least for now.
+\end{enumerate}
+
+\subsection{Research Contributions}
+We contribute in what follows manner:
+\begin{enumerate}
+    \item \textbf{Theoretical Automata Foundations:} Formalized operational reduction semantics for backtracking NFAs, inductive rapid lower bounds (Theorem~\ref{thm:exp_lower_bound}), and linear automaton proofs (Theorem~\ref{thm:dfa_immunity}), in actual application.
+    \item \textbf{Related Work \& Tooling Landscape:} Comprehensive synthesis of automata ambiguity theory, ecosystem-scale studies, and defensive tooling shortcomings.
+    \item \textbf{Parametric Regression Harness:} Linear and polynomial execution profiles are separated by a classifier, and an automated profiler was built that entries microsecond CPU telemetry and fits OLS power-law and semi-log curves, all things considered.
+    \item \textbf{Closed-Form Halting Horizon ($n^*$ and $L^*$):} Across our exponential cohort, the median halting threshold is commonly $n^* = 36.1$ iterations ($L^* = 41.8$ characters; minimum $n^* = 22.6$, $L^* = 29.6$), in actual application; indeed, closed-form expressions are also devised for the 800~ms watchdog inflection.
+    \item \textbf{Empirical Audit of Google \texttt{re2}:} We reveal that 91.92\% of production patterns run natively in linear automata engines (Google \texttt{re2}), with speedups of up to $10^5\times$, under the attack, in real-world scenarios.
+    \item \textbf{Static Detector Ground-Truth Audit:} We benchmark static linters against microsecond traces and decrease the false discovery rate from 47.17\% to 1.92\% with ReDoS-Guard's hybrid parametric profiler, in the main.
+\end{enumerate}
+
+\begin{table*}[t]
+\centering
+\caption{Feature Comparison: Architectural Properties of ReDoS-Guard vs. Existing Defensive Tools}
+\label{tab:competitor_matrix}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Dimension} & \textbf{safe-regex}~\cite{safe_regex2023} & \textbf{Regexploit}~\cite{regexploit2021} & \textbf{ReScue}~\cite{shen2018rescue} & \textbf{ReDoSHunter}~\cite{li2021redoshunter} & \textbf{FlashRegex}~\cite{li2020flashregex} & \textbf{ReDoS-Guard (Ours)} \\
+\midrule
+Analysis Paradigm & Static AST & Static AST & Dynamic Fuzz & Hybrid SMT & Program Synth & Parametric Telemetry \\
+Curve Fitting & No & No & No & No & No & Yes (OLS) \\
+Polynomial Degree $d$ & No (Bin.) & Partial & Heuristic & Partial & No & Exact $d$ ($\mathcal{O}(n^d)$) \\
+Halting Inflection $n^*$ & No & No & No & Partial & No & Closed-Form \\
+Multi-Engine Diverg. & No & No & No & No & No & Yes (3 Eng.) \\
+DFA Compatibility & No & No & No & No & Partial & Yes (91.9\%) \\
+Per-Pattern Latency & $<1$ ms & $<5$ ms & 10--30 min & 1--5 min & 30--60 s & 18.4 ms (Prof) \\
+Ground-Truth Traces & None & None & Dynamic & Dynamic & Unit Tests & 54k Runs \\
+Detection Accuracy$^*$ & 87.67\% & 91.42\% & 82.5\%$^*$ & 89.5\%$^*$ & N/A & 99.42\% (Hyb) \\
+\bottomrule
+\end{tabular}
+}
+\vspace{1pt}
+\footnotesize{$^*$Accuracies for static tools (safe-regex, Regexploit) are evaluated across all 1,200 patterns. For dynamic/hybrid baselines (ReScue~\cite{shen2018rescue}, ReDoSHunter~\cite{li2021redoshunter}), direct benchmarking was conducted on a stratified 200-pattern package/security subset under a 60~s execution cap, where ReScue achieved 82.5\% accuracy (uncapped search averages 18.4 min/pat.) and ReDoSHunter achieved 89.5\% (uncapped SMT solving averages 3.2 min/pat.). On this same 200-pattern subset, ReDoS-Guard achieved 96.5\% accuracy (193/200; 99.42\% across full 1,200 suite) with mean dynamic profiling latency of 142 ms/pat. plus $<1$ ms for numerical OLS fitting.}
+\end{table*}
+
+\section{Background and Automata Foundations}\label{sec:background}
+
+\subsection{Formal Automata Definitions}
+
+\begin{definition}[Non-Deterministic Finite Automaton]\label{def:nfa}
+A Non-Deterministic Finite Automaton (NFA) is a 5-tuple:
+\begin{equation}\label{eq:nfa_tuple}
+\mathcal{A} = \langle Q, \Sigma, \Delta, q_0, F \rangle
+\end{equation}
+where $Q$ is a finite set of states, $\Sigma$ is the input character alphabet, $\Delta: Q \times (\Sigma \cup \{\varepsilon\}) \to Q^*$ is the transition function mapping a state and symbol to an ordered sequence of successor states, $q_0 \in Q$ is the initial state, on the whole. Also $F \subseteq Q$ is the set of accepting states.
+\end{definition}
+
+In backtracking NFA engines, when multiple transition choices exist from a state $q$ on symbol $\sigma \in \Sigma \cup \{\varepsilon\}$, the engine commits to the first branch in $\Delta(q, \sigma)$ and pushes alternative choice-points onto a Depth-First Search (DFS) stack $\mathrm{Stk}$. In parallel with this, formally, an instantaneous configuration of a backtracking engine is a 4-tuple:
+\begin{equation}\label{eq:engine_config}
+\gamma = \langle q, w, V_{\mathrm{eps}}, \mathrm{Stk} \rangle
+\end{equation}
+where $q \in Q$ is the current active state, $w \in \Sigma^*$ is the remaining unconsumed input suffix, $V_{\mathrm{eps}} \subseteq Q$ is the set of states visited via epsilon-transitions at the current index (preventing cyclic epsilon-loops). In light of this dynamic, here $\mathrm{Stk} = [c_1, \dots, c_k]$ is the depth-first search choice-point stack. Each choice-point $c_i$ is a 3-tuple:
+\begin{equation}\label{eq:choice_point}
+c_i = \langle q_{\mathrm{alt}}, w_{\mathrm{alt}}, V_{\mathrm{eps,alt}} \rangle
+\end{equation}
+encapsulating an untaken branch state $q_{\mathrm{alt}} \in Q$, unconsumed suffix $w_{\mathrm{alt}} \in \Sigma^*$, and visited epsilon-state snapshot $V_{\mathrm{eps,alt}} \subseteq Q$, at least for now.
+
+\begin{definition}[Degree of Ambiguity and Cycle Topology]\label{def:ambiguity_degree}
+Let $\mathcal{G}_{\mathcal{A}} = (Q, E)$ be the directed transition graph of NFA $\mathcal{A}$, so an active pump cycle on word $w_p \in \Sigma^+$ is a non-empty sequence of transitions $q \xrightarrow{w_p}^* q$. Under these conditions, we apply the ambiguity criteria of Berglund et al.~\cite{berglund2014analyzing} and Weideman et al.~\cite{weideman2016analyzing}:
+\begin{enumerate}
+    \item \textbf{Mutually Reachable Overlapping Cycles (Exponentially Degree Ambiguous -- EDA):} Two cycles $C_1, C_2$ reside in the same Strongly Connected Component (SCC) of $\mathcal{G}_{\mathcal{A}}$, sharing a pivot state $q_{\mathrm{pivot}} \in C_1 \cap C_2$ such that there are two separate non-empty paths $q_{\mathrm{pivot}} \xrightarrow{w_p}^* q_{\mathrm{pivot}}$ along $C_1$ and $C_2$. This causes exponential vagueness:
+    \begin{equation}\label{eq:eda_ambiguity}
+    \mathcal{D}(\mathcal{A}) = \Omega(2^n)
+    \end{equation}
+    \item \textbf{Sequentially Reachable Overlapping Cycles (Infinitely Degree Ambiguous / Polynomial -- IDA):} Cycle $C_1$ reaches cycle $C_2$ across $d$ distinct SCCs via a one-way path with no return path from $C_2$ to $C_1$. This induces polynomial ambiguity:
+    \begin{equation}\label{eq:ida_ambiguity}
+    \mathcal{D}(\mathcal{A}) = \Theta(n^d)
+    \end{equation}
+\end{enumerate}
+\end{definition}
+
+\subsection{Operational Semantics of Backtracking NFAs}
+We formalize execution semantics as a small-step transition reduction relation over configurations $\langle q, w, V_{\mathrm{eps}}, \mathrm{Stk} \rangle$, and let $\operatorname{Step}_{\mathrm{eps}}(q, V_{\mathrm{eps}}) \triangleq \Delta(q, \varepsilon) \setminus V_{\mathrm{eps}}$ designate the unvisited epsilon-transitions from state $q$. Within this framework, the predicate $\operatorname{Stuck}(q, w, V_{\mathrm{eps}})$ holds when forward execution can't proceed:
+\begin{align}\label{eq:stuck_pred}
+\operatorname{Stuck}(q, w, V_{\mathrm{eps}}) \iff & (w = \varepsilon \land q \notin F \notag \\
+& \quad \land \operatorname{Step}_{\mathrm{eps}}(q, V_{\mathrm{eps}}) = \emptyset) \notag \\
+& \lor (w = \sigma \cdot w' \land \Delta(q, \sigma) = \emptyset \notag \\
+& \quad \land \operatorname{Step}_{\mathrm{eps}}(q, V_{\mathrm{eps}}) = \emptyset)
+\end{align}
+Let $\operatorname{Trans}(q, w, V_{\mathrm{eps}})$ represent the ordered sequence of candidate transitions: consuming transitions $[(q', w', \emptyset) \mid q' \in \Delta(q, \sigma)]$ (when $w = \sigma \cdot w'$) followed by unvisited epsilon-transitions $[(q'', w, V_{\mathrm{eps}} \cup \{q''\}) \mid q'' \in \operatorname{Step}_{\mathrm{eps}}(q, V_{\mathrm{eps}})]$. In this broader context, the operational semantics consists of four rules:
+\begin{enumerate}
+    \item \textbf{Transition Commit:} If $\operatorname{Trans}(q, w, V_{\mathrm{eps}}) = (q_{\mathrm{next}}, w_{\mathrm{next}}, V_{\mathrm{eps,next}}) :: \mathrm{Alts}$, the engine commits to the first branch and pushes remaining alternatives onto choice-point stack $\mathrm{Stk}$:
+    \begin{equation}\label{eq:rule_commit}
+    \begin{aligned}
+    &\langle q, w, V_{\mathrm{eps}}, \mathrm{Stk} \rangle \xrightarrow{\mathrm{step}} \\
+    &\quad \langle q_{\mathrm{next}}, w_{\mathrm{next}}, V_{\mathrm{eps,next}}, \mathrm{Alts} \mathbin{+\!\!+} \mathrm{Stk} \rangle
+    \end{aligned}
+    \end{equation}
+    \item \textbf{Match Acceptance:} The engine accepts when it reaches an accepting state with an empty remaining input:
+    \begin{equation}\label{eq:rule_accept}
+    \langle q, \varepsilon, V_{\mathrm{eps}}, \mathrm{Stk} \rangle \xrightarrow{\mathrm{accept}} \textsc{Accept} \quad (q \in F)
+    \end{equation}
+    \item \textbf{Backtrack Reversion:} When forward progress stalls and alternative choice-points remain on the stack:
+    \begin{align}\label{eq:rule_backtrack}
+    &\langle q, w, V_{\mathrm{eps}}, \notag \\
+    &\quad (q_{\mathrm{alt}}, w_{\mathrm{alt}}, V_{\mathrm{eps,alt}}) :: \mathrm{Stk}' \rangle \notag \\
+    &\quad \xrightarrow{\mathrm{backtrack}} \langle q_{\mathrm{alt}}, w_{\mathrm{alt}}, V_{\mathrm{eps,alt}}, \mathrm{Stk}' \rangle \notag \\
+    &\quad \text{if } \operatorname{Stuck}(q, w, V_{\mathrm{eps}})
+    \end{align}
+    \item \textbf{Match Rejection:} When forward progress stalls and the choice-point stack is generally empty:
+    \begin{equation}\label{eq:rule_reject}
+    \langle q, w, V_{\mathrm{eps}}, [] \rangle \xrightarrow{\mathrm{reject}} \textsc{Reject} \quad \text{if } \operatorname{Stuck}(q, w, V_{\mathrm{eps}})
+    \end{equation}
+\end{enumerate}
+
+\subsection{Complexity Bounds and Proof of Lower Bounds}
+
+\begin{theorem}[Exponential Backtracking Complexity under Mutual Cycle Reachability]\label{thm:exp_lower_bound}
+Let $\mathcal{A}$ be a backtracking NFA spanning two active pump cycles $C_1$ and $C_2$ that reside within the same Strongly Connected Component (SCC) of $\mathcal{G}_{\mathcal{A}}$, sharing a pivot state $q_{\mathrm{pivot}} \in C_1 \cap C_2$ such that both cycles are mutually reachable ($q_{\mathrm{pivot}} \xrightarrow{w_p}^* q_{\mathrm{pivot}}$) on a non-empty pump word $w_p \in \Sigma^+$. Under these conditions, let:
+\begin{equation}\label{eq:adv_payload}
+w(n) = u_{\mathrm{prefix}} \cdot (w_p)^n \cdot w_{\mathrm{suffix}}
+\end{equation}
+be an adversarial input where $u_{\mathrm{prefix}}$ transitions from $q_0$ to $q_{\mathrm{pivot}}$, and $w_{\mathrm{suffix}}$ is a terminal failure sentinel satisfying $\forall q \in Q, \; \langle q, w_{\mathrm{suffix}}, \emptyset, [] \rangle \xrightarrow{}^* \textsc{Reject}$. Against this backdrop, the global rejection premise $w(n) \notin \mathcal{L}(\mathcal{A})$ secures that no prefix is systematically accepted along higher-priority alternative branches before the pump cycles are routinely crossed. Then the number of backtrack operations $B(n)$ that the engine conducts before rejection is consistently bounded below by:
+\begin{equation}\label{eq:exp_lower_bound}
+B(n) \ge 2^n - 1 = \Omega(2^n)
+\end{equation}
+$\Omega(2^n)$ state transitions are, in this setting, therefore needed by the engine.
+\end{theorem}
+
+\begin{proof}
+By structural induction on $n$. For $n = 1$, the engine commits to $C_1$ and pushes an alternative choice-point for $C_2$ at $q_{\mathrm{pivot}}$. Upon encountering sentinel $w_{\mathrm{suffix}}$, branch $C_1$ fails, popping $C_2$ which also fails on $w_{\mathrm{suffix}}$, formulating $B(1) = 2^1 - 1 = 1$. Postulate the inductive postulate holds for $n = k$: $B(k) \ge 2^k - 1$. From this perspective, for $n = k + 1$, after reading prefix $u_{\mathrm{prefix}}$, the engine reaches $q_{\mathrm{pivot}}$ with remaining input $(w_p)^{k+1} \cdot w_{\mathrm{suffix}}$. Committing to $C_1$ consumes one copy of $w_p$, returning to $q_{\mathrm{pivot}}$ with remaining suffix $(w_p)^k \cdot w_{\mathrm{suffix}}$. By induction, crossing this sub-tree needs $B(k)$ backtracks. Upon failure, the engine pops the choice-point at $q_{\mathrm{pivot}}$, doing $C_2$ which consumes $w_p$ and recurses into the matching sub-tree of length $k$, requiring another $B(k)$ backtracks plus the branch choice-point itself:
+\begin{align}\label{eq:induction_step}
+B(k+1) &= 2 \cdot B(k) + 1 \notag \\
+       &\ge 2(2^k - 1) + 1 = 2^{k+1} - 1
+\end{align}
+By mathematical induction, $B(n) \ge 2^n - 1$ for all $n \ge 1$, which is giving the $\Omega(2^n)$ lower bound, to a significant degree.
+\end{proof}
+
+\begin{corollary}[Polynomial Complexity under One-Way Cycle Chaining]\label{cor:poly_bound}
+If active pump cycles $C_1, \dots, C_d$ reside in separate SCCs, $C_i$ can reach $C_{i+1}$. Under these conditions, also, $C_{i+1}$ can't reach $C_i$, then the number of search paths is bounded by the number of ways to choose pump counts across $d$ stages:
+\begin{equation}\label{eq:poly_comb_bound}
+B(n) = \sum_{0 \le i_1 \le \dots \le i_{d-1} \le n} 1 = \binom{n+d-1}{d-1} = \Theta(n^d)
+\end{equation}
+\end{corollary}
+
+\begin{theorem}[DFA Immunity and Linear Execution Invariance]\label{thm:dfa_immunity}
+Let $\mathcal{M} = \langle Q_D, \Sigma, \mathrm{tr}_D, q_{0,D}, F_D \rangle$ be a Deterministic Finite Automaton (DFA) built via powerset construction from NFA $\mathcal{A}$, where each state $S \in Q_D$ is a subset of $Q$, all things considered; indeed, for any input string $w \in \Sigma^*$ with length $|w| = m$, the DFA execution handles exactly $m$ state transitions, runs in $\mathcal{O}(m)$ time with zero backtracks, and is therefore immune to ReDoS, in the main.
+\end{theorem}
+
+\begin{proof}
+By definition of DFA, the transition function $\mathrm{tr}_D: Q_D \times \Sigma \to Q_D$ is a deterministic single-valued total mapping. The engine pushes no choice-points ($|\mathrm{Stk}| = 0$). Taken together, still, the execution trace is a linear path of length $m$ without branches, and no backtrack operations originate. For any configuration $\langle S, \sigma \cdot w' \rangle$, there is exactly one successor state $S' = \mathrm{tr}_D(S, \sigma)$. Also, also, each transition needs $\mathcal{O}(1)$ table-lookup time, so the total runtime is bounded by:
+\begin{equation}\label{eq:dfa_linear_runtime}
+T(m) \le c \cdot m = \mathcal{O}(m)
+\end{equation}
+\end{proof}
+
+\subsection{Extended Regex Features and Complexity Hierarchy}
+Regular languages in the Chomsky Type-3 hierarchy are, in effect, summarized by classic regular expressions; two remarkable non-regular traits are group backreferences (e.g., \texttt{(\textbackslash w+)\textbackslash s+\textbackslash 1}) and zero-width lookaround assertions (e.g., \texttt{(?=.*[A-Z])}), to a significant degree. Viewed through this lens, modern matching engines add syntactic extensions that exceed this expressive power.
+
+Runtime string equality across the match intervals is enforced by backreferences; on the fly, the engine must record matched character offsets and compare substrings character by character, in the main. Aho~\cite{aho1990algorithms} proved that matching expressions with backreferences is NP-complete, by reduction from 3-Satisfiability (3-SAT), which is why also, no single-pass DFA can therefore read backreferenced patterns without exponential state proliferation, in many respects.
+
+Lookaround assertions are running speculative sub-searches. In parallel with this, nested backtracking is creating independent exponential search trees, which is multiplying the primary search space when a lookaround encompasses ambiguous quantifiers~\cite{chida2022repairing}, to a significant degree; indeed, a positive lookahead is pushing an isolated sub-configuration, tests prefix acceptance, and restores the input position without consuming characters, in real-world scenarios.
+
+\section{Related Work and Tooling Landscape}
+
+\subsection{Automata Ambiguity and Theoretical Foundations}
+To be precise, formal studies of regular language complexity date back to Rabin and Scott~\cite{rabin1959finite} and Thompson~\cite{thompson1968regular}, at least in practice; geometric ambiguity analysis was introduced by kirrage et al.~\cite{kirrage2013static} to detect ReDoS statically, which is why berglund et al.~\cite{berglund2014analyzing} formalized worst-case branching bounds for nested quantifiers, on the whole. Weideman et al.~\cite{weideman2016analyzing} established graph-theoretic measures that separate Exponential Degree Ambiguity (EDA) from Infinite Degree Ambiguity (IDA); indeed, cox~\cite{cox2007regular,cox2010regular} renewed attention to runtime divergence by contrasting linear Thompson NFA simulation with backtracking matchers in Python and Java. From this perspective, backtracking engines blow up exponentially on patterns as uncomplicated as \texttt{a?}$^n$\texttt{a}$^n$; In EDA, an NFA transition graph has cycles that are reachable from one one more, within the single strongly connected constituent. In IDA, cycles are connected sequentially across the separate components; indeed, building on all these topological foundations, W\"{u}stholz et al.~\cite{wustholz2017static} translated cycle reachability conditions into SMT string constraints.
+
+\subsection{Empirical Studies in Software Ecosystems}
+Empirical studies over the past decade show that regex vulnerabilities permeate production software; in turn, JavaScript application servers were analyzed by staicu and Pradel~\cite{staicu2018freezing}, to a significant degree; and thus, also their audits showed backtracking regexes in popular npm packages block the Node.js event loop and exhaust worker threads, at least in practice. Across npm and PyPI, Davis et al.~\cite{davis2018ecosystem,davis2019interview,davis2021memoization} broadened this assessment to registry-scale corpora; also thousands of vulnerable packages that are spreading algorithmic vulnerabilities through the dependency chains were shared by their audits. Further investigations~\cite{davis2019why,davis2019lingua} showed software engineers struggle to reason about worst-case regex execution and seldom test non-matching inputs; cognitive studies by Michael et al.~\cite{michael2019hard}, Chapman and Stolee~\cite{chapman2016exploring,stolee2016exploring}, and Coghlan and Davis~\cite{coghlan2021empirical} hit the same conclusion - developers write expressions for valid strings rather than adversarial inputs. To ease these risks, Davis et al.~\cite{davis2021memoization} showed selective NFA state memoization bounds worst-case backtracking in linear space.
+
+\subsection{Defensive Tooling Landscape and Limitations}
+Current defenses fall into the three broad categories, each restricted by operational trade-offs:
+\begin{enumerate}
+    \item \textbf{Static AST Linters (safe-regex~\cite{safe_regex2023}, Regexploit~\cite{regexploit2021}, and type systems~\cite{spishak2012type}):} Regular expression ASTs and flag nested quantifiers applying star-height heuristics are read by those tools, at least empirically; indeed, nonetheless, safe-regex ignores string anchors and character-class disjointness, so it alerts on expressions such as \texttt{([a-z]+[0-9]+)+} even, at least for now. Building on this observation, still letters and digits never overlap. As, Davis et al.~\cite{davis2019why} found, many false alarms on real-world codebases emerge from this insensitivity to character semantics.
+    \item \textbf{Dynamic Exploit Synthesizers (ReScue~\cite{shen2018rescue}, ReDoSHunter~\cite{li2021redoshunter}):} These analyzers evolve attack strings via genetic algorithms or SMT constraint solving; in fact, despite they are creating concrete exploit witnesses, their constraint solvers frequently are needing 10 to 30 minutes per pattern, which is making them impractical for continuous integration checkpoints, on the whole.
+    \item \textbf{Automated Repair Tools (FlashRegex~\cite{li2020flashregex}):} Synthesis frameworks infer replacement regexes from input-output examples, yet automated inductive rewrites do not guarantee formal semantic equivalence on unobserved inputs, which is creating any second risk of subtle functional regressions, at least empirically.
+\end{enumerate}
+
+\section{The \textsc{ReDoS-Guard} Framework and Empirical Design}
+
+\subsection{Research Questions}
+Our empirical study tackles four research questions about regex execution behavior:
+\begin{itemize}
+    \item \textbf{RQ-1 (Worst-Case Complexity Prevalence):} Super-linear (polynomial or rapid) worst-case algorithmic intricacy is, as it stands, showed by what proportion of production regular expressions?
+    \item \textbf{RQ-2 (Catastrophic Halting Inflection $n^*$):} At what input length does backtracking latency breach an 800~ms watchdog limit, across the mixed vulnerability structures?
+    \item \textbf{RQ-3 (DFA Linearization via Google \texttt{re2}):} What fraction of production regular expressions can (in practical terms) run on linear automata engines; in turn, also, what speedup does this substitution reach, under the attack?
+    \item \textbf{RQ-4 (Static Checker Predictive Validity):} How precisely do runtime complexity is projected by heuristic static AST checkers when assessed against microsecond CPU execution data?
+\end{itemize}
+
+\subsection{Evaluation Benchmark Corpora Selection}
+To support generalizability, we built one master benchmark suite of 10,000 production regular expressions and drew an audited stratified sample of 1,200 expressions across the three primary groups (five sub-sources), applying fixed random seed 42:
+\begin{enumerate}
+    \item \textbf{RegexLib Enterprise Repository (1,000 patterns):} Sourced via stratified random sampling across ten functional categories, grouped into the eight operational spaces in Table~\ref{tab:domain_tax} (180 Email \& User ID, 150 URL \& Network, 130 Phone \& Postal, 120 Date \& Time, 110 Financial \& Numeric, 110 Programming Tokens, 100 Markup \& HTML, 100 Strings \& Sanitization), all things considered.
+    \item \textbf{Production Ecosystem Packages (100 patterns):} Sampled from high-impact open-source packages with $>1$M monthly downloads, specifically 70 npm packages and 30 PyPI libraries (e.g., \texttt{ansi-regex}, \texttt{ssri}, \texttt{semver}), in many respects.
+    \item \textbf{Verified Security Vulnerability Corpora (100 patterns):} Sampled from 65 published Common Vulnerabilities and Exposures (CVE) advisories and 35 OWASP ReDoS benchmark test cases, in the main.
+\end{enumerate}
+
+\begin{table*}[t]
+\centering
+\caption{Functional Domain Taxonomy of Evaluated Production Expressions (1,200 Total)}
+\label{tab:domain_tax}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lrlc}
+\toprule
+\textbf{Domain Category} & \textbf{Size} & \textbf{Representative Production Pattern} & \textbf{DFA Comp.} \\
+\midrule
+Email \& User ID & 180 & \texttt{\^{}[\textbackslash w\textbackslash .-]+@([\textbackslash w\textbackslash -]+\textbackslash .)+[a-zA-Z]\{2,4\}\$} & 100.0\% \\
+URL \& Networking & 150 & \texttt{https?://([\textbackslash w\textbackslash -]+\textbackslash .)+[\textbackslash w\textbackslash -]+} & 96.7\% \\
+Phone \& Postal & 130 & \texttt{\^{}(\textbackslash +\textbackslash d\{1,3\}[- ]?)?\textbackslash d\{3\}[- ]?\textbackslash d\{4\}\$} & 100.0\% \\
+Date \& Timestamp & 120 & \texttt{\^{}(\textbackslash d\{4\})-(0[1-9]|1[0-2])-(0[1-9]|[12]\textbackslash d|3[01])\$} & 100.0\% \\
+Financial \& Numeric & 110 & \texttt{\^{}\textbackslash \$?\textbackslash d\{1,3\}(,\textbackslash d\{3\})*(\textbackslash .\textbackslash d\{2\})?\$} & 100.0\% \\
+Programming Tokens & 110 & \texttt{\^{}[a-zA-Z\_][a-zA-Z0-9\_]*\$} & 100.0\% \\
+Markup \& HTML & 100 & \texttt{<([a-z]+)([\^{}>]+)*(?:>(.*)</\textbackslash 1>|\textbackslash s*/>)} & 68.0\% \\
+Strings \& Sanitization & 100 & \texttt{[\^{}\textbackslash s]+(\textbackslash s+[\^{}\textbackslash s]+)*} & 100.0\% \\
+\midrule
+\textit{RegexLib Subtotal} & \textit{1,000} & \textit{Enterprise Web Services} & \textit{96.3\%} \\
+npm \& PyPI Packages & 100 & \texttt{\textbackslash x\hspace{1.8pt}1\hspace{1.8pt}b[0-9;]*[a-zA-Z]} & 85.0\% \\
+Security Benchmarks & 100 & \texttt{\^{}(?=.*[a-z])(?=.*[A-Z])(?=.*\textbackslash d).\{8,\}\$} & 55.0\% \\
+\midrule
+\textbf{Master Benchmark Suite} & \textbf{1,200} & \textbf{Production Expressions Audited} & \textbf{91.92\%} \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\begin{algorithm}[t]
+\caption{Adversarial Payload Synthesis via AST-Tarjan Cycle Extraction}
+\label{algo:payload_synth}
+\small
+\begin{algorithmic}[1]
+\REQUIRE Regular expression pattern $R$
+\ENSURE Parameterized attack vector $w(n) = u_{\mathrm{prefix}} \cdot (w_p)^n \cdot w_{\mathrm{suffix}}$, Class
+\STATE $\mathcal{A} \leftarrow \text{Parse-AST}(R)$; $\mathcal{G}_{\mathrm{NFA}} \leftarrow \text{Thompson-Construct}(\mathcal{A})$; $\mathcal{S}_{\mathrm{SCC}} \leftarrow \text{Tarjan-SCC}(\mathcal{G}_{\mathrm{NFA}})$
+\FORALL{$S \in \mathcal{S}_{\mathrm{SCC}}$ \textbf{with} $|S| \ge 1$}
+    \STATE $(C_1, C_2, q_{\mathrm{pivot}}) \leftarrow \text{Extract-Cycles}(S)$
+    \IF{$C_1 \neq \emptyset \land C_2 \neq \emptyset \land C_1 \neq C_2$}
+        \RETURN $(\operatorname{BFS}(q_0, q_{\mathrm{pivot}}), \text{Common-Word}(\mathcal{L}(C_1) \cap \mathcal{L}(C_2)), \text{Mismatch}(\operatorname{Follow}(q_{\mathrm{pivot}})), \text{'EXP'})$
+    \ENDIF
+\ENDFOR
+\STATE $(S_1, S_2, C_1, C_2) \leftarrow \text{Extract-Inter-Cycles}(\mathcal{S}_{\mathrm{SCC}}, \mathcal{G}_{\mathrm{NFA}})$
+\IF{$C_1 \neq \emptyset \land C_2 \neq \emptyset \land S_1 \neq S_2$}
+    \RETURN $(\operatorname{BFS}(q_0, q_1), \text{Word}(C_1) \cdot \text{Word}(C_2), \text{Mismatch}(\operatorname{Follow}(q_2)), \text{'POLY'})$
+\ENDIF
+\RETURN $\text{Linear-Witness}(\mathcal{G}_{\mathrm{NFA}}, \Sigma)$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Adversarial Payload Synthesis Protocol}
+To gauge worst-case complexity without manually crafting test vectors, ReDoS-Guard embeds an automated adversarial payload synthesizer. Under these conditions, given a regular expression $R$, the synthesizer builds a parameterized three-part attack string:
+\begin{equation}\label{eq:adv_payload_decomp}
+w(n) = u_{\mathrm{prefix}} \cdot (w_p)^n \cdot w_{\mathrm{suffix}}
+\end{equation}
+where:
+\begin{enumerate}
+    \item $u_{\mathrm{prefix}} \in \Sigma^*$ is, in effect, the shortest string acquired by Breadth-First Search $\operatorname{BFS}(q_0, q_{\mathrm{pivot}})$ from the initial state $q_0$ to the SCC pivot state $q_{\mathrm{pivot}}$, at least in principle.
+    \item $w_p \in \Sigma^+$ is the shortest word in the intersection of the two overlapping cycles $\mathcal{L}(C_1) \cap \mathcal{L}(C_2)$ spotted with Tarjan's strongly connected elements algorithm~\cite{tarjan1972depth}, in many respects.
+    \item $w_{\mathrm{suffix}} \in \Sigma^*$ is a terminal string chosen so that $w_{\mathrm{suffix}} \notin \operatorname{Follow}(C_1 \cup C_2)$, which forces rejection after the pump repetitions, broadly speaking, and if an unanchored pattern or trailing wildcard gives $\operatorname{Follow}(R) = \Sigma$, an out-of-alphabet sentinel such as an ASCII \texttt{NUL} byte forces a mismatch only when neither wildcards (\texttt{.}) nor negated classes (\texttt{[\^{}...]}) can match \texttt{NUL}, at least for now. Viewed through this lens, an plain end-of-string boundary (\texttt{\$}) is needed by suffix rejection or restricted token boundaries for unanchored patterns with trailing unconstrained wildcards.
+\end{enumerate}
+
+\subsection{Microsecond Hardware Timing Calibration and Core Pinning}
+To prevent measurement noise from hardware variability, strict isolation controls were enforced during the profiling, in the main. Execution was timed with \texttt{time.perf\_counter\_ns()} for nanosecond-resolution measurements, and filtered temporary OS interrupts with the standard interquartile range (IQR) rule: measurements outside $[Q_1 - 1.5 \cdot \mathrm{IQR}, Q_3 + 1.5 \cdot \mathrm{IQR}]$ were discarded and re-sampled, and called \texttt{gc.collect()} and disabled garbage collection (\texttt{gc.disable()}) to avoid GC pauses during the measurement, broadly speaking; and thus, we disabled Intel Turbo Boost, locked CPU cores to their token base clock of 2.40~GHz under the Linux ACPI \texttt{performance} governor, and pinned the profiling process to Core~0 via \texttt{taskset -c 0} to prevent scheduler migration, across the cache hierarchies. Viewed through this lens, we benchmarked 15 input lengths $n \in [2, 30]$ with a step size of 2, running 5 warm-up and 10 timed passes per length across CPython \texttt{re} (v3.11.8), Python \texttt{regex} (v2023.12.25), and Google \texttt{re2} (v2024-03-01) on Ubuntu 22.04 LTS (Linux kernel 6.5.0-35-generic, Intel Xeon Platinum 8375C @ 2.40~GHz); this produced 18,000 pattern--length measurement points ($1{,}200 \times 15$). Also 54,000 person is running, recorded in \texttt{telemetry\_raw\_18000.csv}; an implementation of an adaptive cutoff, like if an engine took longer than $T_{\mathrm{watchdog}} = 800$~ms on any test vector was effectuated, the use logged the catastrophic inflection point and aborted further lengths for that pattern to prevent process lockups. Numerical OLS curve fitting and grouping performed in $<1$ ms per pattern; in fact, across the 1,200 expressions, profiling needed a median wall-clock time of $18.4$ ms per linear pattern (mean $23.2$ ms) and $142$ ms overall (95th percentile: $890$ ms).
+
+\subsection{Parametric Big-O Curve Fitting Protocol}
+CPython's regular expression engine (\texttt{\_sre}) incurs a constant baseline call and match-object setup overhead $T_0 \approx 400$--$1{,}200$ ns. In parallel with this, building on this note, for short input lengths $n \in [2, 30]$, fitting an unadjusted power-law $\ln T = \ln\ \alpha + d \ln n$ directly would result in an artificially damped slope $d \approx c n / (T_0 + c n) < 1$. To establish true asymptotic intricacy, ReDoS-Guard applies a three-parameter composite model:
+\begin{equation}\label{eq:three_param_model}
+T(n) = T_0 + \alpha \cdot n^d
+\end{equation}
+\begin{enumerate}
+    \item \textbf{Baseline Calibration:} $T_0$ is measured empirically at $n = 1$.
+    \item \textbf{Power-Law Model (Polynomial):}
+    \begin{equation}\label{eq:power_law_ols}
+    \ln(T(n) - T_0) = \ln\ \alpha + d \cdot \ln n
+    \end{equation}
+    To guard against random cache or interrupt effects, findings with empirical $T(n) \le T_0$ on tiny inputs ($n \in [2, 4]$), which are originating from sub-microsecond OS scheduler jitter, are filtered before log-transformation; this is preventing boundary artifacts at $\ln(1.0) = 0$ from warping standard departures, in many respects, and also parameter convergence is cross-validated against non-linear least squares. Viewed through this lens, extended evaluations across $n \in [100, 10{,}000]$ are validating true asymptotic linearity ($d \le 1.15$); indeed, the degree $d$ implies polynomial order: $d \approx 1$ is linear, $d \approx 2$ is quadratic, and $d \ge 3$ is cubic, in many respects. Fast-reject anchored patterns are revealing $d \approx 0$ ($\mathcal{O}(1)$).
+    \item \textbf{Exponential Model:}
+    \begin{equation}\label{eq:exp_semi_log}
+    \ln(T(n) - T_0) = \ln\ \alpha + n \cdot \ln\ \beta
+    \end{equation}
+    Catastrophic exponential backtracking ($\mathcal{O}(2^n)$) is confirmed by a base $\beta > 1.05$ with $R^2 > 0.90$.
+\end{enumerate}
+Model selection follows a deterministic decision tree with model competition: (1) If the semi-log model pulls off $R^2_{\mathrm{exp}} > 0.90$ and estimated base $\hat{\beta} > 1.05$, and explains more variance than this polynomial model ($R^2_{\mathrm{exp}} \ge R^2_{\mathrm{poly}}$), the pattern is classified as \textbf{Exponential}, at least in practice. (2) Otherwise, if the power-law model reaches $R^2_{\mathrm{poly}} > 0.85$ and estimated degree $\hat{d} > 1.50$ (with 95\% confidence interval not spanning 1.0), the pattern is classified as \textbf{Polynomial} of degree $\lceil \hat{d} \rceil$, to a significant degree. (3) Otherwise, the pattern is classified as \textbf{Linear}; we record the adjusted coefficient of determination $R^2_{\mathrm{adj}}$ and the RMSE for each person regression model.
+
+\begin{algorithm}[t]
+\caption{Adaptive Telemetry Profiling \& OLS Model Competition}
+\label{algo:telemetry_ols}
+\begin{algorithmic}[1]
+\REQUIRE Pattern $R$, payload $(u_{\mathrm{prefix}}, w_p, w_{\mathrm{suffix}})$, lengths $\mathcal{N} = [2, 4, \dots, 30]$
+\ENSURE Complexity class $C \in \{\text{Linear}, \text{Poly}, \text{Exp}\}$, $n^*$, $L^*$
+\STATE $\text{Lock-CPU-Frequency}(2.40\text{ GHz})$; $\text{Pin-Process}(\text{Core 0})$
+\STATE $T_0 \leftarrow \text{Measure-Baseline-Overhead}(n = 1)$
+\FORALL{$n \in \mathcal{N}$}
+    \STATE $w_n \leftarrow u_{\mathrm{prefix}} \cdot (w_p)^n \cdot w_{\mathrm{suffix}}$
+    \STATE $T(n) \leftarrow \text{Benchmark-perf-counter}(R, w_n, \text{runs}=10, \text{warmup}=5)$
+    \IF{$T(n) > T_{\mathrm{watchdog}}$ (800 ms)}
+        \STATE $n^*_{\mathrm{emp}} \leftarrow n$; $m \leftarrow \text{Count}(\mathcal{N}_{\mathrm{done}})$; \textbf{break}
+    \ENDIF
+\ENDFOR
+\STATE $(R^2_{\mathrm{poly}}, \hat{d}) \leftarrow \text{OLS-Power-Law}(\ln(T(n) - T_0) \sim \ln\ \alpha + d \cdot \ln n)$
+\STATE $(R^2_{\mathrm{exp}}, \hat{\beta}) \leftarrow \text{OLS-Semi-Log}(\ln(T(n) - T_0) \sim \ln\ \alpha + n \cdot \ln\ \beta)$
+\IF{$R^2_{\mathrm{exp}} > 0.90 \land \hat{\beta} > 1.05 \land R^2_{\mathrm{exp}} \ge R^2_{\mathrm{poly}}$}
+    \STATE $C \leftarrow \text{Exponential}$; $n^* \leftarrow [\ln(T_{\mathrm{watchdog}} - T_0) - \ln\ \alpha] / \ln\ \hat{\beta}$ \textbf{if} $m \ge 4$ \textbf{else} $n^*_{\mathrm{emp}}$
+\ELSIF{$R^2_{\mathrm{poly}} > 0.85 \land \hat{d} > 1.50 \land 1.0 \notin \mathrm{CI}_{95}(\hat{d})$}
+    \STATE $C \leftarrow \text{Polynomial}(\lceil \hat{d} \rceil)$; $n^* \leftarrow ((T_{\mathrm{watchdog}} - T_0)/\alpha)^{1/\hat{d}}$
+\ELSE
+    \STATE $C \leftarrow \text{Linear}$; $n^* \leftarrow \infty$
+\ENDIF
+\STATE $L^* \leftarrow |u_{\mathrm{prefix}}| + |w_{\mathrm{suffix}}| + |w_p| \cdot n^*$
+\RETURN $(C, n^*, L^*, R^2, \operatorname{RMSE})$
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Closed-Form Halting Horizon ($n^*$ and $L^*$):} The pump iteration threshold $n^*$ marks the exact input size where execution latency crosses the watchdog budget ($T_{\mathrm{watchdog}} = 800$~ms). Its calculation rests on the spotted complexity class. Within this framework, for exponential patterns ($T(n) \equiv T_0 + \alpha \cdot \exp(n \cdot \ln\ \beta)$):
+\begin{equation}\label{eq:n_star_exp}
+n^*_{\mathrm{exp}} = \frac{\ln(T_{\mathrm{watchdog}} - T_0) - \ln\ \alpha}{\ln\ \beta}
+\end{equation}
+For polynomial patterns ($T(n) = T_0 + \alpha \cdot n^d$):
+\begin{equation}\label{eq:n_star_poly}
+n^*_{\mathrm{poly}} = \left( \frac{T_{\mathrm{watchdog}} - T_0}{\alpha} \right)^{1/d}
+\end{equation}
+The associated total adversarial string length $L^*$ is:
+\begin{equation}\label{eq:L_star}
+L^* = |u_{\mathrm{prefix}}| + |w_{\mathrm{suffix}}| + |w_p| \cdot n^*
+\end{equation}
+
+\subsection{Mathematical Derivation of OLS Variance and Confidence Bounds}
+We formalize the statistical characteristics of our parameter estimators. Against this backdrop, for the linearized power-law transformation:
+\begin{equation}\label{eq:ols_model_spec}
+y_i = \beta_0 + d \cdot x_i + r_i, \quad r_i \overset{\mathrm{i.i.d.}}{\sim} \mathcal{N}(0, \sigma^2)
+\end{equation}
+where $y_i = \ln(T_i - T_0)$ and $x_i = \ln n_i$ across $m$ measurement points, the closed-form Ordinary Least Squares estimator for polynomial degree $d$ is:
+\begin{equation}\label{eq:ols_d_hat}
+\hat{d} = \frac{\sum_{i=1}^m (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^m (x_i - \bar{x})^2}
+\end{equation}
+where $\bar{x} = \frac{1}{m}\sum_{i=1}^m x_i$ and $\bar{y} = \frac{1}{m}\sum_{i=1}^m y_i$. Under these conditions, the unbiased sample residual variance and the standard deviation of the estimate are:
+\begin{align}
+s^2 &= \frac{1}{m-2} \sum_{i=1}^m (y_i - \hat{y}_i)^2 \label{eq:ols_s2} \\
+\operatorname{SE}(\hat{d}) &= \frac{s}{\sqrt{\sum_{i=1}^m (x_i - \bar{x})^2}} \label{eq:ols_se}
+\end{align}
+We build two-tailed 95\% confidence intervals as:
+\begin{equation}\label{eq:ci_95_d}
+\mathrm{CI}_{95}(\hat{d}) = \left[ \hat{d} - t_{m-2, \, 0.025} \cdot \operatorname{SE}(\hat{d}), \; \hat{d} + t_{m-2, \, 0.025} \cdot \operatorname{SE}(\hat{d}) \right]
+\end{equation}
+where $t_{m-2, \, 0.025}$ is the critical Student's $t$-value with $m-2$ degrees of freedom, and among linear patterns assessed over asymptotic input lengths, 97.80\% of expressions ($1{,}020 / 1{,}043$) yield estimated degrees $\hat{d} \le 1.15$, with 95\% confidence interval upper bounds below 1.50, in many respects; in fact, on account of broad confidence intervals, another 1.92\% ($20 / 1{,}043$) are revealing intermediate slopes in the range $1.15 < \hat{d} < 1.50$, in real-world scenarios. Extended evaluations across $n \in [100, 10{,}000]$ are verifying their asymptotic linearity; the remaining 3 patterns (0.29\%, $3 / 1{,}043$) suffer from sub-microsecond timing jitter that is pushing $\hat{d} \ge 1.50$, and all these account for the 3 false positives in Table~\ref{tab:static_metrics}. Building on this observation, for rapid expressions, the semi-log model yields growth bases $\hat{\beta} \in [1.08, 2.08]$ with $p < 10^{-12}$ against the null hypothesis $H_0: \ln\ \beta = 0$, which is showing the clear separation from linear and polynomial trends.
+
+\section{Experimental Evaluation and Findings}
+
+\subsection{RQ-1: Worst-Case Complexity Prevalence Across Corpora}
+Table~\ref{tab:rq1_dist} and Fig.~\ref{fig:dist_bars} report the empirical distribution of complexity classes; indeed, across production web validation expressions from RegexLib, over 99.9\% of benign patterns run in linear $\mathcal{O}(n)$ time, on the whole. Taken together, benign web validation expressions are therefore structurally linear.
+
+\Figure[t!][width=0.82\columnwidth]{fig1_complexity_distribution.png}{Distribution of worst-case algorithmic complexity classes, across the production corpora (RegexLib, Packages, Security Benchmarks).\label{fig:dist_bars}}
+
+The opposite profile is uncovered by the security and package registries, which is why also, the two polynomial cases ($N=2$) confirm IDA ambiguity in real-world libraries, at least in practice; in fact, across the entire 1,200-expression suite, our audit classifies 86.92\% (1,043) as linear, 0.17\% (2) as polynomial, and 12.92\% (155) as exponential, overallly prevailing 13.08\% (157), at least in practice. Along these dimensions, still, polynomial degradation is far less widespread in production web validators than exponential EDA cliffs; indeed, open-source packages in npm and PyPI point to 75.0\% (75/100) exponential and 1.0\% polynomial expressions (\texttt{ansi-regex}, CVE-2021-3807). Among the OWASP and CVE security patterns, 79.0\% (79/100) exhibit rapid cliffs ($\mathcal{O}(2^n)$), and 1.0\% display polynomial growth ($\mathcal{O}(n^d)$).
+
+\begin{table}[t]
+\centering
+\caption{Algorithmic Complexity Class Distribution Across Corpora (RQ-1). (Ground-truth oracle distribution; ReDoS-Guard unassisted classifier performance is reported in Table~\ref{tab:static_metrics}.)}
+\label{tab:rq1_dist}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Corpus Source} & \textbf{Linear $\mathcal{O}(n)$} & \textbf{Poly $\mathcal{O}(n^d)$} & \textbf{Exp $\mathcal{O}(2^n)$} & \textbf{Total} \\
+\midrule
+RegexLib Enterprise & 999 (99.9\%) & 0 (0.0\%) & 1 (0.1\%) & 1,000 \\
+npm \& PyPI Packages & 24 (24.0\%) & 1 (1.0\%) & 75 (75.0\%) & 100 \\
+Security Benchmarks & 20 (20.0\%) & 1 (1.0\%) & 79 (79.0\%) & 100 \\
+\midrule
+\textbf{Master Combined Suite} & \textbf{1,043 (86.92\%)} & \textbf{2 (0.17\%)} & \textbf{155 (12.92\%)} & \textbf{1,200} \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\subsection{Domain Breakdown and Root Causes in Enterprise RegexLib}
+Studying the functional fields within RegexLib (Table~\ref{tab:domain_tax}) reveals why production web validation regexes differ basically from synthetic test cases, at least in practice; indeed, all 180 enforce anchoring (e.g., \texttt{\^{}} or a trailing \texttt{\$}), which prevents unanchored quadratic restart scans. Consequently, all 180 exhibit linear $\mathcal{O}(n)$ complexity, which accounts for the 0 (0.0\%) polynomial count in Table~\ref{tab:rq1_dist}. In unanchored variants of domain validation (e.g., \texttt{([a-z0-9-]+\textbackslash .)+[a-z]\{2,\}}), an adversarial label lacking a dot (e.g., \texttt{'a'+'-'*16+'!'}) triggers $\mathcal{O}(n)$ restart attempts across $n$ input offsets. This causes quadratic $\mathcal{O}(n^2)$ re-anchoring latency rather than exponential branching. Phone number and postal code patterns exhibit strict linearity ($d = 1.00 \pm 0.02$), because their grammars bound input lengths with fixed intervals (e.g., \texttt{\textbackslash d\{3\}-\textbackslash d\{4\}}), which is excluding unbounded search depth, all things considered. Within this framework, among the 180 appraised Email \& User ID expressions, 100\% run in linear time on gentle inputs.
+
+\subsection{RQ-2: Catastrophic Halting Inflection Thresholds ($n^*$ and $L^*$)}
+Fig.~\ref{fig:halting_cdf} is revealing the Empirical Cumulative Distribution Function (ECDF) of the catastrophic halting threshold $n^*$, alongside the total adversarial payload length $L^*$, across the exponential cohort ($N=155$), at least in principle. 153 vulnerable patterns ($TP=153$) were flagged by ReDoS-Guard's unassisted BFS pipeline; in fact, within our bounded empirical testing window $n \in [2, 30]$, exactly 58 patterns breached the 800~ms watchdog limit directly ($n^* \le 30$), all things considered. We projected $n^*$ through the confirmed semi-log OLS model: $n^* = [\ln(T_{\mathrm{watchdog}} - T_0) - \ln\ \hat{\alpha}] / \ln\ \hat{\beta}$ for patterns with $n^* > 30$ ($N=97$); in fact, the remaining 4 corner cases required multi-token restrictions ($FN=4$ in Table~\ref{tab:static_metrics}). Also, their telemetry was completed with the oracle SMT solver. In this broader context, across the exponential cohort ($N=155$), the median threshold is $n^* = 36.1$ pump passes, matching to a total payload length of $L^* = 41.8$ characters (mean: $76.05 \pm 93.88$ iterations / $82.35 \pm 95.82$ characters; minimum, incorporating 22.6 cycles / 29.6 characters; maximum, including 445.8 repetitions / 458.5 characters; Table~\ref{tab:halting_metrics}); and thus, within this group, exactly 92.26\% of patterns ($143/155$) halt at $n^* \le 200$ iterations (90th percentile, spanning 151.2, 95th percentile, including 345.2). By comparison, the two polynomial IDA patterns in our super-linear suite (\texttt{ansi-regex} in npm and CVE-2020-7660 in security benchmarks) scale quadratically ($\Theta(n^2)$); they are breaching the 800~ms watchdog only at $n^* \sim 10^3\text{--}10^4$ ($n^* = 5{,}950$, $L^* = 11{,}902$ characters for \texttt{ansi-regex}, Table~\ref{tab:cve_profiles}).
+
+\Figure[t!][width=0.82\columnwidth]{fig2_halting_threshold_cdf.png}{Empirical Cumulative Distribution Function (ECDF) of catastrophic halting threshold $n^*$, across the exponential cohort ($N=155$, watchdog threshold = 800 ms), to a significant degree; indeed, shaded region marks gathered watchdog breaches, within $n \le 30$ ($N=58$); dashed lines are marking Median $n^* = 36.1$ (50\%), $Q_3 = 82.6$ (75\%), and $P_{90} = 151.2$ (90\%), at least empirically. Exactly 92.26\% ($143/155$) halt at $n^* \le 200$ (Table~\ref{tab:halting_metrics}). Polynomial IDA patterns are breaching at $n^* \sim 10^3\text{--}10^4$ (Table~\ref{tab:cve_profiles}).\label{fig:halting_cdf}}
+
+One direct operational vulnerability is shared by these measurements. Standard Web Application Firewalls (WAFs) and API gateways configure payload inspection limits between 1,024 and 8,192 characters. Viewed through this lens, no defence against algorithmic complexity attacks is therefore offered by payload length filtering, because a second opponent can trigger thread starvation with any payload of fewer than 42 characters ($L^* = 41.8$).
+
+\begin{table}[t]
+\centering
+\caption{Halting Inflection Threshold Distribution Metrics for Exponential Patterns ($N=155$, RQ-2)}
+\label{tab:halting_metrics}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Metric Dimension} & \textbf{Pump Iter. ($n^*$)} & \textbf{Length ($L^*$ chars)} & \textbf{Operational Significance} \\
+\midrule
+Sample Count ($N$) & 155 Patterns & 155 Patterns & Exponential (EDA) cohort$^*$ \\
+Minimum Inflection ($n^*_{\min}$) & \textbf{22.6 iter.} & \textbf{29.6 chars} & Shortest input causing 800 ms freeze \\
+25th Percentile ($Q_1$) & \textbf{25.7 iter.} & \textbf{30.5 chars} & 1 in 4 exploits fit within SMS length \\
+Median Inflection ($n^*_{\mathrm{median}}$) & \textbf{36.1 iter.} & \textbf{41.8 chars} & Bypasses 100\% of WAF size filters \\
+75th Percentile ($Q_3$) & \textbf{82.6 iter.} & \textbf{89.4 chars} & Plotted ECDF 75th percentile \\
+Mean Inflection (avg.) & $76.05 \pm 93.88$ & $82.35 \pm 95.82$ & Sample standard deviation ($s$) \\
+90th Percentile & 151.2 iter. & 158.6 chars & Threshold within $[0, 200]$ range \\
+Maximum Inflection ($n^*_{\max}$) & 445.8 iter. & 458.5 chars & 95th \%: 345.2, 99th \%: 404.1 \\
+\bottomrule
+\end{tabular}
+}
+\newline
+\vspace{1pt}
+\footnotesize{$^*$Summarizes the $N=155$ exponential patterns; polynomial IDA expressions breach the 800 ms watchdog at $n^* \sim 10^3\text{--}10^4$ (e.g., \texttt{ansi-regex} at $n^* = 5{,}950$, Table~\ref{tab:cve_profiles}).}
+\end{table}
+
+\subsection{RQ-3: DFA Linearization via Google \texttt{re2}}
+Whether production regular expressions can migrate was assessed to linear-time automata engines without syntax breakage, on the whole. Building on this observation, broadly speaking, 91.92\% (1,103/1,200) of our expressions run natively on Google \texttt{re2} without syntax errors, at least in principle; in fact, only 8.08\% (97 patterns) failed compilation on account of non-regular extensions (Table~\ref{tab:re2_incompat}).
+
+\begin{table}[t]
+\centering
+\caption{Taxonomy of Syntactic Incompatibilities with Google \texttt{re2} (RQ-3)}
+\label{tab:re2_incompat}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Incompatibility Feature} & \textbf{Count} & \textbf{Share} & \textbf{Theoretical Restriction} \\
+\midrule
+Lookahead Assertions & 58 & 4.83\% & Requires multi-pass sub-DFA \\
+Lookbehind Assertions & 24 & 2.00\% & Requires reverse string scan \\
+Backreferences (\texttt{\textbackslash 1..\textbackslash 9}) & 13 & 1.08\% & NP-complete recognition class \\
+Condition Flags / Modifiers & 2 & 0.17\% & Non-standard dialect features \\
+\midrule
+\textbf{Total Incompatible} & \textbf{97} & \textbf{8.08\%} & Non-regular grammar extensions \\
+\textbf{Fully DFA-Compatible} & \textbf{1,103} & \textbf{91.92\%} & Guaranteed $\mathcal{O}(n)$ Execution \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+Paired runtime performance was compared between Google \texttt{re2} and CPython \texttt{re}, across all $N = 1{,}103$ native DFA-compatible expressions at input length $n = 24$, broadly speaking. Exponential patterns that timed out were capped at $T_{\mathrm{watchdog}} = 800$~ms; assessing at $n = 22$ without timeout capping indistinguishably concludes, in actual application; indeed, in RegexLib (1 super-linear pattern), this pattern is gathering natively, which is why also, on the vulnerable super-linear batch ($N = 157$), compatibility is breaking down across the corpora (Table~\ref{tab:domain_tax}). In npm/PyPI Packages (76 super-linear), 65 compile natively and 11 are incompatible; in turn, in Security Benchmarks (80 super-linear), 47 compile natively and 33 are incompatible; and thus, across the 157 super-linear expressions, exactly 113 compile natively in Google \texttt{re2} (71.97\% native compatibility). In parallel with this, paired Wilcoxon signed-rank testing reveals clear linear superiority: $W = 608{,}300.0, z = 28.5, p < 10^{-15}$~\cite{wilcoxon1945individual}, so the remaining 44 expressions are incompatible; also 26 of them apply conjunctive lookaheads. On the 113 native-compatible super-linear patterns at $n = 24$ (CPython mean $147.4$ ms vs. Google \texttt{re2} mean $12.0$ us), the paired Wilcoxon signed-rank test yields $W = 6{,}441.0, z = 9.21, p = 3.24 \times 10^{-20}$; this is the theoretical maximum $W = 113 \times 114 / 2 = 6{,}441.0$, where CPython is slower than \texttt{re2} on 100\% of pairs (matched rank-biserial correlation $r_{\mathrm{rb}} = +1.00$; median paired speedup $12{,}283\times$ with 95\% bootstrap CI $[11{,}400\times, 13{,}850\times]$~\cite{efron1993introduction}). Under adversarial inputs at $n = 30$, Google \texttt{re2} is reaching speedup factors $\mathrm{Speedup}(n) \triangleq T_{\mathrm{CPython}}(n) / T_{\mathrm{re2}}(n)$ exceeding $10^5\times$ (Fig.~\ref{fig:engine_speedup}); in fact, automated multi-pass DFAs (Section~\ref{sec:lookaround_decomp}) are making these 26 executable, bringing the total of linear executable patterns to $113 + 26 = 139$ (88.54\%). Generalizing the test to the 26 decomposed lookahead patterns ($N = 139$) gives $W = 9{,}730.0, z = 10.23, p = 1.45 \times 10^{-24}$ ($r_{\mathrm{rb}} = +1.00$), with Holm--Bonferroni correction preserving family-wise error control at $\alpha = 0.05$, across all comparisons; and thus, none of the 1,103 compatible expressions exceeded Google \texttt{re2}'s default 8~MB cache budget during our benchmarks. Non-regular backreferences or lookbehinds are encompassed by the final 18 patterns.
+
+Under adversarial suffixes, \Figure[t!][width=0.80\columnwidth]{fig4_engine_divergence_speedup.png}{Empirical speedup factor $\mathrm{Speedup}(n)$ of Google \texttt{re2} vs.\ CPython \texttt{re}.\label{fig:engine_speedup}}
+
+\subsection{Syntactic Decomposition of Non-Regular Lookarounds}\label{sec:lookaround_decomp}
+Among the 97 expressions rejected by Google \texttt{re2}, 58 (59.8\%) failed solely on account of lookahead assertions (\texttt{(?=...)}), embedding 26 in the super-linear group and 32 in the linear batch. In parallel with this, our syntactic audit found that 48 of these 58 expressions (82.8\%) were root-anchored conjunctive lookaheads for multi-attribute validation rules (e.g., password policies needing lowercase, uppercase, digits, and minimum length: \texttt{\^{}(?=.*[a-z])(?=.*[A-Z])(?=.*\textbackslash d).\{8,\}\$}). Because these lookaheads are normally conjoined at the root anchor, they decompose into an intersection of autonomous linear DFAs:
+\begin{align}\label{eq:lookaround_decomp_prod}
+\mathcal{L}(R) &= \mathcal{L}(\text{\texttt{\^{}.\{8,\}\$}}) \cap (\mathcal{L}(\text{\texttt{\^{}.*[a-z]}}) \cdot \Sigma^*) \notag \\
+&\quad \cap (\mathcal{L}(\text{\texttt{\^{}.*[A-Z]}}) \cdot \Sigma^*) \cap (\mathcal{L}(\text{\texttt{\^{}.*[0-9]}}) \cdot \Sigma^*)
+\end{align}
+Assessing each person decomposed condition sequentially with Google \texttt{re2} preserves linear execution time:
+\begin{equation}\label{eq:lookaround_linear_eval}
+T(n) = \sum_{k=1}^4 c_k \cdot n = \mathcal{O}(n)
+\end{equation}
+The transformation is frequently operationalized as the automated AST pass in \texttt{adversarial\_synthesizer.py}, which is allowing linear execution (formalized in Lemma~\ref{lem:lookaround_decomp}), at least in principle.
+
+\subsection{Cross-Runtime Architecture and JIT Divergence}
+We gauged four production runtimes across our benchmark suite to measure architectural effects on backtracking latency:
+\begin{enumerate}
+    \item \textbf{CPython \texttt{re}:} Executed in C as an construed bytecode loop (\texttt{\_sre.c})~\cite{cpython_sre}, and a definite heap-allocated stack frames, in real-world scenarios; and thus, also, the engine incurs roughly 42~ns of overhead per state transition.
+    \item \textbf{Python \texttt{regex} (mrabarnett):} Matthew Barnett's engine~\cite{mrabarnett_regex} is combining C-level loop unrolling and recursion tuning. On super-linear expressions at $n \le 15$, it has 41.2\% lower median latency than CPython \texttt{re} (mean speedup $1.72\times$); it still suffers rapid blowup beyond $n \ge 22$, with a median halting repetition of $n^* = 38.4$ in comparison to $36.1$ in CPython \texttt{re}, at least in practice; Constant-factor C optimizations are delaying the halting threshold by only 2.3 pump characters.
+    \item \textbf{Node.js / Google V8 \texttt{Irregexp}:} CPU time was measured with \texttt{process.hrtime.bigint()} on Node.js v20.11.0 LTS, across the 100 package expressions (70 npm, 30 PyPI), in many respects. In this group, CPython \texttt{re} is reaching a median halting threshold of $n^* = 37.4$ iterations ($L^* = 43.1$ characters); while V8 Irregexp halts at $n^* = 39.8$ iterations ($L^* = 45.4$ characters, scaling as $\Theta(2^{0.98n})$), with a peak CPU freeze exceeding 14.2~s at $n = 32$, to a significant degree; indeed, JIT compilation accelerates linear throughput by $4.8\times$ ($0.85$ vs. $4.1$~us/char); it is delaying the exponential cliff by only 2.4 passes.
+    \item \textbf{Google \texttt{re2}:} This C++ engine is implementing Thompson NFA simulation with on-demand lazy DFAs~\cite{google_re2,cox2007regular}; execution latency therefore scales as $T(n) = \mathcal{O}(n)$, across all test inputs, which is giving immunity to backtracking collapse, on the whole.
+\end{enumerate}
+
+\subsection{RQ-4: Static Checker Predictive Validity and False Alarms}
+Ground truth was established by an independent hybrid oracle rather than by our own regression classifications, all things considered; and thus, Tarjan NFA cycle reachability, automated Z3 SMT solver (v4.12.2) satisfiability checks for multi-token pump words, and 10-second multi-engine timeout verification is combined by the oracle, at least in practice. Disagreements between static cycle reachability and empirical execution are resolved by priority consensus, namely empirical timeout verification ($>10$~s) serves as final proof of super-linear intricacy; in fact, also for un-timed patterns, cycle reachability is settled by Z3 satisfiability of the pump witness. Two thoroughly used static linters, \texttt{safe-regex} (v0.2.0)~\cite{safe_regex2023} and \texttt{Regexploit}~\cite{regexploit2021}, were judged across all 1,200 expressions; table~\ref{tab:static_metrics} and Fig.~\ref{fig:static_cm} encapsulate their detection performance. 87.67\% exactness is got by \texttt{safe-regex}. Taken together, notwithstanding, it creates a 47.17\% false discovery rate (75 false alarms, across 1,043 benign patterns); all these false alarms stem mostly from nested quantifiers over disjoint character classes, such as \texttt{([a-z]+[0-9]+)+}. Under the same operating bounds, 73 vulnerable patterns (53.50\% recall) were missed by \texttt{safe-regex}. \texttt{Regexploit} stages up on syntax heuristics, through transition modeling, reaching 64.97\% recall and 91.42\% precision, and still, it still incurs a 32.00\% FDR. On tiny inputs ($n \le 4$), the 3 false positives in ReDoS-Guard are originating from temporary interpreter warm-up overhead; and thus, the 4 false negatives stem from multi-condition conjunctive lookaheads whose pump cycles need synchronized multi-token payloads, which one more single-pivot BFS does not trigger. By comparison, ReDoS-Guard's hybrid parametric regression hits 99.42\% accuracy, 97.45\% recall, and an MCC of +0.974~\cite{matthews1975comparison}, which lowers false alarms by 93.8\% relative to Regexploit; indeed, in a head-to-head shared-subset evaluation on 200 representative package and security expressions, with a 60-second per-pattern execution cap, uncapped ReScue averages 18.4 minutes per pattern (genetic fuzzing stalls on lookaheads, reaching 82.5\% precision under the cap). Uncapped ReDoSHunter averages 3.2 minutes per pattern (SMT solver timeouts, reaching 89.5\% accuracy, under the cap); and thus, on this same 200-pattern subset, ReDoS-Guard reaches 96.5\% detection accuracy (193/200; 99.42\% across the full 1,200-pattern suite), with an average dynamic telemetry profiling latency of 142 ms per pattern plus $<1$ ms for numerical OLS fitting. This gives superior detection fidelity at $>1{,}000\times$ lower investigation overhead (Table~\ref{tab:competitor_matrix}).
+
+\begin{table*}[t]
+\centering
+\caption{Comparative Detection Performance: Static AST Linters (\texttt{safe-regex}~\cite{safe_regex2023}, \texttt{Regexploit}~\cite{regexploit2021}) vs. ReDoS-Guard (RQ-4)}
+\label{tab:static_metrics}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lrrrl}
+\toprule
+\textbf{Metric Dimension} & \textbf{safe-regex} & \textbf{Regexploit} & \textbf{ReDoS-Guard} & \textbf{Delta Improvement} \\
+\midrule
+True Positives (TP) & 84 & 102 & 153 & +50.0\% vs. Regexploit \\
+False Positives (FP) & 75 & 48 & 3 & \textbf{-93.8\% vs. Regexploit} \\
+True Negatives (TN) & 968 & 995 & 1,040 & +4.5\% vs. Regexploit \\
+False Negatives (FN) & 73 & 55 & 4 & \textbf{-92.7\% vs. Regexploit} \\
+Sensitivity / Recall (TPR) & 53.50\% & 64.97\% & \textbf{97.45\%} & +32.48 pp vs. Regexpl. \\
+False Positive Rate (FPR) & 7.19\% & 4.60\% & \textbf{0.29\%} & \textbf{-4.31 pp vs. Regexpl.} \\
+False Discovery Rate (FDR) & 47.17\% & 32.00\% & \textbf{1.92\%} & \textbf{-30.08 pp vs. Regexpl.} \\
+Classification Accuracy & 87.67\% & 91.42\% & \textbf{99.42\%} & +8.00 pp vs. Regexpl. \\
+Matthews Correlation (MCC) & +0.461 & +0.616 & \textbf{+0.974} & \textbf{+0.358 vs. Regexploit} \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\Figure[t!][width=0.78\columnwidth]{fig5_static_checker_roc_matrix.png}{Confusion matrix of static AST heuristic detectors gauged against microsecond CPU runtime telemetry (RQ-4).\label{fig:static_cm}}
+
+\section{Qualitative Vulnerability Case Studies}
+
+\subsection{Case Study 1: Polynomial Complexity Breakdown ($\mathcal{O}(n^2)$ IDA) in \texttt{ansi-regex}}
+The thoroughly applied npm package \texttt{ansi-regex} ($>50$ million weekly downloads) encompassed an algorithmic vulnerability in its ANSI escape sequence parser (versions $\le 5.0.0$)~\cite{cve_2021_3807}:
+\begin{center}\vspace{-4pt}
+\scriptsize\texttt{[\textbackslash u\hspace{1.8pt}001\hspace{1.8pt}B\textbackslash u009B][[\textbackslash\textbackslash]()\allowbreak{}\#;?]*(?:(?:(?:(?:;[-a-zA-Z\textbackslash d/\#\&.:=?\%@\textasciitilde\_]+)\allowbreak{}*|\allowbreak{}[a-zA-Z\textbackslash d]+(?:;[-a-zA-Z\textbackslash d/\#\&.:=?\%@\textasciitilde\_]*)\allowbreak{}*)\allowbreak{}?\textbackslash u0007)\allowbreak{}|\allowbreak{}}\\
+\scriptsize\texttt{(?:(?:\textbackslash d\{1,4\}(?:;\textbackslash d\{0,4\})\allowbreak{}*)\allowbreak{}?[\textbackslash dA-PR-TZcf-ntqry=\textgreater\textless\textasciitilde])\allowbreak{})\allowbreak{}}
+\vspace{-4pt}\end{center}
+This vulnerability represents a real-world manifestation of polynomial Infinite Degree Ambiguity (IDA, Definition~\ref{def:ambiguity_degree} and Corollary~\ref{cor:poly_bound}). In parallel with this, the outer character class loop $C_1 = \text{\texttt{[[\textbackslash\textbackslash]()\#;?]*}}$ (which accepts delimiter \texttt{;} and symbol \texttt{?}) is sequentially concatenated with the inner branch $C_2 = \text{\texttt{(?:;[-a-zA-Z\textbackslash d/\#\&.:=?\%@\textasciitilde\_]+)*}}$ (which matches \texttt{;?}). Because $C_1$ and $C_2$ reside in separate Strongly Connected Elements with no return transition from $C_2$ to $C_1$, the sequential cycle chaining admits $n+1$ partition split points, which creates quadratic complexity $\Theta(n^2)$:
+\begin{equation}\label{eq:ansi_backtrack_sum}
+B(n) = \sum_{i=0}^n (n-i) = \frac{n(n+1)}{2} = \Theta(n^2)
+\end{equation}
+rather than rapid $\Omega(2^n)$ growth. Under empirical measurement on CPython \texttt{re}, at $n = 1{,}000$ pump units ($L = 2{,}002$ chars), the engine is conducting $500{,}500$ backtracks in $21.5$ ms. At $n = 5{,}000$ ($L = 10{,}002$ chars), latency is growing quadratically to $1.25 \times 10^7$ operations ($562.0$ ms), at least empirically. The pattern is crossing the 800 ms watchdog horizon at $n^* = 5{,}950$ pump repetitions ($L^* = 11{,}902$ chars, $>1.77 \times 10^7$ backtracks, 800 ms), at least in practice; by comparison, Google \texttt{re2} processes the indistinguishable $11{,}902$-character payload in $18.4$ us ($\mathrm{Speedup} \approx 43{,}500\times$) in linear time. The package maintainers fixed the issue in v5.0.1 by needing non-delimiter tokens ahead of the semicolon loops. Bare semicolons can't enter $C_2$, because each \texttt{;} must be followed by a non-semicolon character ($+$), yet when the engine receives adversarial input that lacks the terminator \texttt{\textbackslash u0007} and encompasses the overlapping pump unit $S(n) = \text{\texttt{"\textbackslash x\hspace{1.8pt}1\hspace{1.8pt}b["}} + (\text{\texttt{";?"}})^n$, the backtracking NFA explores all combinatorial match splits between $C_1$ and $C_2$.
+
+\subsection{Case Study 2: CVE-2021-27290 in \texttt{ssri}}
+The Node.js package \texttt{ssri} ($>30$M weekly downloads) uses the regex \texttt{\^{}([{\^{}}-]+)\allowbreak{}-([A-Za-z0-9+/=]\{44,88\})\allowbreak{}(\textbackslash ?[\textbackslash x21-\textbackslash x7E]*)\allowbreak{}*\$} to parse integrity headers~\cite{cve_2021_27290}. In the optional group \texttt{(\textbackslash ?[\textbackslash x21-\textbackslash x7E]*)\allowbreak{}*}, the character class spans all printable ASCII characters, including the question mark itself. Appending a non-matching character outside this class---such as a space (\texttt{0x20})\allowbreak{} or null byte---forces the engine into exhaustive exploration across partitions between the outer \texttt{(\textbackslash ?...)\allowbreak{}} loop and inner \texttt{[\textbackslash x21-\textbackslash x7E]*} quantifier. On an attack string $S = \text{\texttt{"sha512-"}} + \text{\texttt{"A"}} \times 64 + \text{\texttt{"?"}} \times n + \text{\texttt{" "}}$, the backtracking engine exhibits exponential complexity ($\mathcal{O}(2^n)\allowbreak{}$)\allowbreak{}. At an input threshold of $n^* = 25.4$ question marks (total payload length $L^* = 97.4$ characters, with a 71-character prefix and 1-character suffix)\allowbreak{}, CPython \texttt{re} executed more than $16{,}777{,}216$ ($2^{24}$)\allowbreak{} backtracks and froze for 1,450~ms. In contrast, Google \texttt{re2} rejects the same input in $9.2$~us, in real-world scenarios.
+
+\subsection{Case Study 3: CVE-2022-25883 in \texttt{semver}}
+The extensively employed Node.js semantic versioning utility \texttt{semver} ($>100$ million weekly npm downloads) applies regular expressions within its internal \texttt{new Range()} parser to normalize comparator sets~\cite{cve_2022_25883}. Before v7.5.2, the internal grammar that tokenizes hyphen ranges and comparator prefixes applied an expression whose isolated core vulnerable sub-expression is \texttt{\^{}\textbackslash s*([v=\textbackslash s]+)+\textbackslash d+\textbackslash .\textbackslash d+\textbackslash .\textbackslash d+\$} (representing the nested whitespace ambiguity of the comparator set parser). From this perspective, the pattern includes a structural flaw: the outer nested repetition \texttt{([v=\textbackslash s]+)+} wraps an inner character class that also encompasses whitespace (\texttt{\textbackslash s}). Because, whitespace can be matched by either the outer repetition or the inner repetition loop, any sequence of consecutive spaces admits an exponential number of valid parse trees.
+
+The backtracking NFA checks every person partition of the whitespace sequence before failing on this numeric major version token \texttt{\textbackslash d+}, when an attacker supplies a string of $n$ spaces followed by an invalid version tag ($S = \text{\texttt{" "}} \times n + \text{\texttt{"invalid"}}$), in real-world scenarios; indeed, concurrent operations, spanning incoming HTTP requests, WebSocket messages, and health-check endpoints, freeze until backtracking concludes, at least for now. From this perspective, v8's Irregexp engine is allocating the choice points on the call stack, and the backtracking stalls the main libuv event loop in single-threaded Node.js applications.
+
+The vulnerability was fixed in \texttt{semver} v7.5.2 by replacing nested repetition with non-nested token scanning (\texttt{\^{}\textbackslash s*[v=]*\textbackslash s*\textbackslash d+\textbackslash .\textbackslash d+\textbackslash .\textbackslash d+\$}); standard static linters such as \texttt{safe-regex} missed this bug, because their syntax rules did not check character-class overlap across nested quantifiers. At $n = 23$ spaces, the engine is performing over $4{,}500{,}000$ backtracking operations in 920~ms. At $n = 27$ spaces, backtracks exceed $2^{27}-1 \approx 1.34 \times 10^8$, blocking execution for over 15 seconds, and Google \texttt{re2} processes the equivalent input in linear time, in $14.1$~us ($\mathrm{Speedup} \approx 65{,}200\times$), at least for now; indeed, empirical profiling on CPython \texttt{re} reveals latency crosses the 800~ms watchdog limit at an input pump of just $n^* = 22.6$ spaces ($L^* = 29.6$ characters, the minimum halting threshold $n^*_{\min} = 22.6$, across our super-linear suite), on the whole.
+
+\subsection{Case Study 4: CVE-2022-3517 in \texttt{minimatch}}
+The glob matching library \texttt{minimatch} ($>80$ million weekly downloads, underpinning ESLint and Babel) applies an internal regular expression parser in its \texttt{braceExpand} routine to tokenize brace expansions~\cite{cve_2022_3517}, at least for now; indeed, as, an illustration, $S = \text{\texttt{"a\{"}} + \text{\texttt{"b,"}} \times n + \text{\texttt{"c"}}$ is an adversarial payload for \texttt{minimatch}'s internal brace-matching regex whenever user input is encompassing unclosed nested braces with repeated commas, at least empirically.
+
+Because, the input lacks a closing brace \texttt{\}}, the backtracking engine explores combinatorially many nestings of the unclosed brace prefix, at least in principle; and thus, a person HTTP request carrying this payload stalls the libuv event loop and drops all concurrent connections in single-threaded Node.js microservices, on the whole. At pump threshold $n^* = 43.0$ iterations (total payload length $L^* = 89.0$ characters, accounting for the 2-character prefix \texttt{"a\{"}, 2-character pump unit \texttt{"b,"}, and 1-character suffix \texttt{"c"}), CPython \texttt{re} and Node.js \texttt{Irregexp} are regularly exhausting over $50{,}000{,}000$ backtracking operations, locking CPU utilization at 100\% for $12{,}400$ ms before rejecting the string (Table~\ref{tab:cve_profiles}).
+
+The maintainers patched the vulnerability in \texttt{minimatch} v5.1.2 by capping the maximum brace nesting depth and replacing recursive regular expressions with an iterative scanner, in many respects; indeed, google \texttt{re2} processes the same payload in $18.5$~us ($\mathrm{Speedup} > 670{,}000\times$), which is corroborating its immunity to this attack, at least for now.
+
+\begin{table*}[t]
+\centering
+\caption{Comparative Execution Metrics for Real-World Vulnerability Case Studies}
+\label{tab:cve_profiles}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llrrrc}
+\toprule
+\textbf{Target} & \textbf{Advisory ID} & \textbf{Backtracks} & \textbf{CPython} & \textbf{Google \texttt{re2}} & \textbf{$n^*$ ($L^*$)} \\
+\midrule
+ansi-regex & CVE-2021-3807$^*$~\cite{cve_2021_3807} & $>17,700,000$ & 800 ms (n=5,950) & 18.4 us & 5,950 (11,902) \\
+ssri & CVE-2021-27290~\cite{cve_2021_27290} & $>16,777,216$ & 1,450 ms (n=26) & 9.2 us & 25.4 (97.4) \\
+semver & CVE-2022-25883~\cite{cve_2022_25883} & $>4,500,000$ & 920 ms (n=23) & 14.1 us & 22.6 (29.6) \\
+minimatch & CVE-2022-3517~\cite{cve_2022_3517} & $>50,000,000$ & 12,400 ms (n=43) & 18.5 us & 43.0 (89.0) \\
+\bottomrule
+\end{tabular}
+}
+\vspace{1pt}
+\footnotesize{$^*$CVE-2021-3807 exhibits polynomial $\mathcal{O}(n^2)$ IDA complexity across sequential loops; Case Studies 2--4 exhibit exponential $\mathcal{O}(2^n)$ EDA complexity.}
+\end{table*}
+
+\section{Actionable Engineering Implications}
+Our findings create four recommendations for production systems:
+\begin{enumerate}
+    \item \textbf{Deploy Dual-Engine Reverse Proxies (NGINX/Envoy):} All perimeter URI, header and parameter validation should be did with \texttt{re2} at edge proxies, because 91.92\% of production validation patterns compile natively in Google \texttt{re2}; this policy can be enforced by teams, through \texttt{envoy.matching.inputs.cel\_data\_input} or Wasm filters compiled against \texttt{re2} in Envoy environments, all things considered. Under these conditions, traffic for the remaining 8.08\% of expressions that are needing non-regular extensions such as lookarounds should go to an out-of-process PCRE2 worker pool, isolated with Linux seccomp-bpf filters and a hard 10~ms execution deadline; this dual-engine architecture is keeping untrusted inputs from application event loops separate from the backtracking engine, at least for now. Rules can bind to \texttt{lua-resty-core} in NGINX and OpenResty.
+    \item \textbf{Dynamic Watchdog Timeout Calibration:} Fixed timeouts (such as 5 seconds) are too coarse, so watchdogs should separate person regex checks from composite inspection pipelines, in actual application; as, an illustration, hundreds of connections are dropped by a person thread blocked for 5 seconds, under a load of 100 requests per second, to a significant degree.
+    \begin{equation}\label{eq:timeout_regex}
+    T_{\mathrm{regex}}(|w|) = c_{\mathrm{base}} + c_{\mathrm{rate}} \cdot |w|
+    \end{equation}
+    calibrated to the 99.9th percentile of linear executions ($c_{\mathrm{base}} = 50\,\text{us}$, $c_{\mathrm{rate}} = 2\,\text{us/char}$); in turn, for WAF inspection pipelines testing 50+ rules over HTTP bodies, timeouts should scale as:
+    \begin{equation}\label{eq:timeout_waf}
+    T_{\mathrm{WAF}}(|w|) = T_{\mathrm{init}} + c_{\mathrm{waf}} \cdot |w|
+    \end{equation}
+    Any individual match that exceeds 50~ms on an input, under 100 characters is proposing algorithmic collapse, because rapid backtracking inflects at a median of $n^* = 36.1$ iterations ($L^* \approx 36$--$97$ characters), all things considered. Taken together, here $T_{\mathrm{init}} = 5\text{ ms}$ and $c_{\mathrm{waf}} = 0.05\text{ ms/char}$. Proxies should, in practice, drop such requests promptly and raise an alert.
+    \item \textbf{Integrate Microsecond Curve Fitting into CI/CD:} Development teams are led by high false-alarm rates from static linters (47.17\% FDR in \texttt{safe-regex}) to disregard security warnings, at least in practice. Under these conditions, the gate automatically pulls candidate pump cycles from changed regex ASTs via git diff inspection, blends adversarial test vectors across the input lengths $n \in \{5, 10, 15, 20, 25\}$, records microsecond CPU runtimes, and computes regression fits against power-law ($\ln(T(n) - T_0) = \ln\ \alpha + d \ln n$) and exponential ($\ln(T(n) - T_0) = \ln\ \alpha + n \ln\ \beta$) models, in many respects; and thus, a pull request that introduces a pattern with an exponential-growth fit of $R^2 \ge 0.95$ and base $\hat{\beta} \ge 1.05$ automatically crashes the build, which stops ReDoS vulnerabilities before rollout. Production CI/CD pipelines should replace static linters with an automated dynamic complexity regression gate.
+    \item \textbf{Enforce Syntactic Guardrails at Schema Level:} Where engines are supporting advanced automata features (PCRE2, Java \texttt{java.util.regex}, Python \texttt{regex}), schema validators can, in practice, apply atomic groupings (\texttt{(?>A+)B}) or possessive quantifiers (\texttt{(A)++B}) to remove choice points, at least for now; language semantics are changed by atomic grouping. Developers must first validate Strong Language Disjointness (Lemma~\ref{lem:atomic_invariance}): $\operatorname{Follow}_{\mathcal{L}(A^+)}(u) \cap \operatorname{First}(B) = \emptyset$. As, an illustration, rewriting \texttt{([a-z])+b} as \texttt{(?>[a-z]+)b} makes the engine reject valid inputs such as \texttt{"ab"} when disjointness is violated, in many respects; engineers should therefore confirm disjointness before applying atomic groups, and refactor overlapping segments into the disjoint character sets or lookahead guards where needed.
+\end{enumerate}
+
+\section{Threats to Validity}\label{sec:threats}
+\textbf{Construct Validity:} The automated synthesis of adversarial pump suffixes is our primary construct threat; if a combined suffix fails to excite the true overlapping cycle, an rapid pattern might appear linear in the measurements, at least for now. Along these dimensions, to prevent this misclassification, transition graphs against the ASTs were verified, appraised multiple pump candidates for unclear patterns, and inspected findings against known CVE test vectors whose vulnerability labels were established independently, in many respects.
+
+\textbf{Internal Validity:} Sub-microsecond execution timings are sensitive to OS scheduling, background daemons, and thermal throttling; these timing disturbances were tackled through the hardware and process isolation: we pinned execution threads to any dedicated CPU core with \texttt{taskset}, disabled Intel Turbo Boost, ran 5 warm-up cycles before data collection, and implemented IQR statistical filtering to remove outlier measurements, in real-world scenarios.
+
+\textbf{External Validity:} Granted that our 1,200 patterns span enterprise web validation, package dependencies, and security benchmarks, proprietary codebases may (to some degree) diversely distribute, all things considered; to support generalizability, we sampled across ten functional categories in RegexLib. Along these dimensions, \textbf{Sampling Bias:} Our package and security benchmark corpora were chosen from public vulnerability advisories (OWASP, CVE, Snyk); this is creating high super-linear prevalence rates (75.0\% and 79.0\%) that do not represent random regex usage across the software repositories; this combined suite prevalence of 13.08\% therefore reflects this sampling, and broad production usage is much closer to RegexLib's 0.1\% super-linear rate, at least empirically.
+
+\textbf{Conclusion Validity:} Parametric assumptions were avoided, because latency measurements are revealing heavy-tailed distributions, and we applied non-parametric paired tests throughout, such as the Wilcoxon signed-rank test~\cite{wilcoxon1945individual}, matched rank-biserial link ($r_{\mathrm{rb}} = +1.00$)~\cite{kerby2014simple}, and bootstrap confidence intervals~\cite{efron1993introduction}, with Holm--Bonferroni family-wise error adjustment, at least in practice. What three patterns showed was timing noise that pushed $\hat{d} \ge 1.50$ (the false positives in Table~\ref{tab:static_metrics}), in actual application. Under these conditions, 97.80\% ($1{,}020/1{,}043$) of linear patterns yielded OLS degree projections $\hat{d} \le 1.15$ with confidence interval upper bounds below 1.50, and expanded benchmarks over $n \in [100, 10{,}000]$ authenticated linearity for 20 borderline linear patterns; only two polynomial patterns ($N=2$, 0.17\%) are in our corpus, so this small sample is limiting statistical generalization for polynomial degree estimation ($d \approx 2, 3$). Still, this low prevalence matches broader findings by Davis et al.~\cite{davis2018ecosystem,davis2021memoization}: polynomial IDA vulnerabilities are emerging far less often in production than exponential EDA cliffs.
+
+\begin{table*}[t]
+\centering
+\caption{Replication Package Artifact Inventory and Schema Description}
+\label{tab:rep_inventory}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llrl}
+\toprule
+\textbf{Artifact Filename} & \textbf{Format} & \textbf{Size / Rows} & \textbf{Description \& Research Question} \\
+\midrule
+\texttt{benchmark\_regexes\_1200.json} & JSON & 1,200 Patterns & Audited patterns, AST nodes, labels (RQ-1, RQ-3) \\
+\texttt{telemetry\_raw\_18000.csv} & CSV & 18,000 Rows & Pattern--length telemetry (\texttt{t\_cpython}, \texttt{t\_regex}, \texttt{t\_re2}, \texttt{t\_v8}) (RQ-1 to RQ-3) \\
+\texttt{fitted\_models.parquet} & Parquet & 1,200 Models & OLS regression parameters, $R^2$, and $n^*$ (RQ-1, RQ-2) \\
+\texttt{static\_checker\_eval.json} & JSON & 1,200 Results & Static detector comparison \& confusion matrix (RQ-4) \\
+\texttt{adversarial\_synthesizer.py} & Python & 350 LOC & Automated AST cycle extraction \& payload generation \\
+\texttt{re2\_verifier.py} & Python & 280 LOC & Microsecond multi-engine evaluation harness \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\section{Conclusion and Replication Package}
+That article provided ReDoS-Guard, one empirical and theoretical study of what happens when regular expression engines reach algorithmic complexity limits, at least empirically. Judging 18,000 pattern--length measurement points ($1{,}200 \times 15$) across the three production engines (54,000 total checks), we find that 13.08\% of the patterns have super-linear performance cliffs (12.92\% exponential, 0.17\% polynomial), with resource exhaustion at a median pump iteration count of $n^* = 36.1$ ($L^* = 41.8$ characters), broadly speaking; indeed, we reveal that Google \texttt{re2} natively supports 91.92\% of production patterns, which barriers the view that DFA-based engines are too restrictive. Taken together, also that it is reaching latency speedups above $10^5\times$, and offer our complete open-source replication bundle, raw microsecond telemetry datasets, and analysis scripts via a persistent repo archive (Zenodo DOI: \href{https://doi.org/10.5281/zenodo.10842910}{\texttt{10.5281/zenodo.10842910}}~\cite{replication_pkg}, Table~\ref{tab:rep_inventory}); in fact, evaluations were executed with Google \texttt{re2} v2024-03-01, Python \texttt{regex} v2023.12.25, CPython v3.11.8, and Node.js v20.11.0 LTS.
+
+\appendices
+
+\section{Formal Proof Extensions and Lookaround Decomposition}
+
+\begin{lemma}[Conjunctive Lookaround Regular Intersection]\label{lem:lookaround_decomp}
+Let $R = \text{\texttt{\^{}}}\text{\texttt{(?=}}R_1\text{\texttt{)}}\dots\text{\texttt{(?=}}R_k\text{\texttt{)}}R_0\text{\texttt{\$}}$ be an anchored regex enforcing $k$ conjunctive positive lookaheads on prefix $R_0$. Then:
+\begin{equation}\label{eq:lemma1_decomp}
+\mathcal{L}(R) = \mathcal{L}(\text{\texttt{\^{}}}R_0\text{\texttt{\$}}) \cap \bigcap_{i=1}^k \left( \mathcal{L}(\text{\texttt{\^{}}}R_i) \cdot \Sigma^* \right)
+\end{equation}
+is uniformly regular and recognizable by $k+1$ sequential DFA passes in time:
+\begin{equation}\label{eq:lemma1_time}
+T(w) = \sum_{i=0}^k c_i \cdot |w| = \mathcal{O}(k \cdot |w|)
+\end{equation}
+which is needing only $\sum_{i=0}^k |Q_i|$ total states without building the product automaton (for negative lookaheads \texttt{\^{}(?!$R_i$)}, the sub-pass tests DFA complementation $\Sigma^* \setminus (\mathcal{L}(\text{\texttt{\^{}}}R_i) \cdot \Sigma^*)$), all things considered.
+\end{lemma}
+
+\begin{proof}
+By definition, a string $w$ is matching $R$ if and only if $w \in \mathcal{L}(\text{\texttt{\^{}}}R_0\text{\texttt{\$}})$ and for every $i \in \{1, \dots, k\}$, there exists a decomposition $w = u_i v_i$ such that $u_i \in \mathcal{L}(\text{\texttt{\^{}}}R_i)$ and $v_i \in \Sigma^*$, which is equivalent to $w \in \mathcal{L}(\text{\texttt{\^{}}}R_i) \cdot \Sigma^*$. Because regular languages are closed under finite intersection and concatenation, the intersection language $\mathcal{L}(R)$ remains regular. Testing string $w$ against each component DFA $\mathcal{M}_i$ requires $\mathcal{O}(|w|)$ time. If any pass rejects, the engine immediately rejects; if all $k+1$ passes accept, the string is accepted. Total time is bounded by $\sum_{i=0}^k c_i |w| = \mathcal{O}(k \cdot |w|)$; this bounds execution to linear time without state-space explosion, at least empirically.
+\end{proof}
+
+\begin{lemma}[Pruning Invariance of Atomic Groupings under Strong Language Disjointness]\label{lem:atomic_invariance}
+Let $R = (A)+B$ where sub-expression $A$ is non-nullable ($\varepsilon \notin \mathcal{L}(A)$) and internally clear ($\mathcal{D}(A) = 1$), and let continuation alphabet $\operatorname{Follow}_{\mathcal{L}(A^+)}(u)$ and initial alphabet $\operatorname{First}(B)$ be designated as:
+\begin{align}
+\operatorname{Follow}_{\mathcal{L}(A^+)}(u) &\triangleq \{\sigma \in \Sigma \mid \exists w \in \Sigma^*, \; u \cdot \sigma \cdot w \in \mathcal{L}(A^+)\} \label{eq:def_follow} \\
+\operatorname{First}(B) &\triangleq \{\sigma \in \Sigma \mid \exists w \in \Sigma^*, \; \sigma \cdot w \in \mathcal{L}(B)\} \label{eq:def_first}
+\end{align}
+If $(A)+$ and $B$ meet Strong Language Disjointness:
+\begin{equation}\label{eq:strong_disjointness_cond}
+\forall u \in \mathcal{L}(A^+), \quad \operatorname{Follow}_{\mathcal{L}(A^+)}(u) \cap \operatorname{First}(B) = \emptyset
+\end{equation}
+then replacing $(A)+B$ with the atomic grouping \texttt{(?>A+)B} (or the possessive quantifier \texttt{(A)++B}) preserves semantics ($\mathcal{L}(\text{\texttt{(?>A+)B}}) = \mathcal{L}((A)+B)$) and bounds matching latency to $\mathcal{O}(n)$, at least in principle; and thus, by contrast, if Strong Language Disjointness is widely violated (e.g., $([a\text{-}z])+b$ on \texttt{"ab"}), greedy consumption by $A^+$ can change $\mathcal{L}(R)$ by pruning backtracking branches needed to match $B$, to a significant degree. Against this backdrop, if the outer pattern is, in this setting, unanchored, the worst-case latency is kept at $\mathcal{O}(n^2)$ by outer restart scanning.
+\end{lemma}
+
+\begin{proof}
+In backtracking semantics, atomicization commits to greedy matching of $A$ and prunes choice-points:
+\begin{equation}\label{eq:rule_atomic}
+\langle q, w, V_{\mathrm{eps}}, \mathrm{Stk}_{\mathrm{sub}} \mathbin{+\!\!+} \mathrm{Stk}_{\mathrm{outer}} \rangle \xrightarrow{\mathrm{atomic}} \langle q, w, V_{\mathrm{eps}}, \mathrm{Stk}_{\mathrm{outer}} \rangle
+\end{equation}
+discarding internal branch points within $A$. Suppose for contradiction that a string $w \in \mathcal{L}((A)+B)$ is substantially rejected by \texttt{(?>A+)B}; then there is a decomposition $w = u \cdot y$ where $u \in \mathcal{L}(A^+)$ and $y \in \mathcal{L}(B)$ such that the greedy scan of $A$ consumes an expanded prefix $u \cdot v$ ($v \in \Sigma^+$) with $u \cdot v \in \mathcal{L}(A^+)$, leaving suffix $y = v \cdot y'$, in actual application. For the original regex to accept $y$ probably, the first symbol of $v$ must belong to $\operatorname{First}(B)$, in real-world scenarios; still by definition the first character of $v$ belongs to $\operatorname{Follow}_{\mathcal{L}(A^+)}(u)$. Under Strong Language Disjointness ($\operatorname{Follow}_{\mathcal{L}(A^+)}(u) \cap \operatorname{First}(B) = \emptyset$), no such non-empty prefix $v$ exists, so greedy scanning never over-consumes characters needed for $B$; this guarantees $\mathcal{L}(\text{\texttt{(?>A+)B}}) = \mathcal{L}((A)+B)$ while bounding matching time by $\mathcal{O}(n)$.
+\end{proof}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\EOD
+
+\end{document}
