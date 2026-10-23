@@ -165,10 +165,7 @@ python src/re2_verifier.py --pattern "^([a-zA-Z0-9]+)+$" --length 24
 
 ---
 
-## 📦 Zenodo Replication Package Archive
 
-The full persistent archive of all raw telemetry traces, regression models, and benchmark artifacts is registered on Zenodo:
-- **DOI:** [10.5281/zenodo.10842910](https://doi.org/10.5281/zenodo.10842910)
 - **License:** MIT Open Source License
 
 ---
