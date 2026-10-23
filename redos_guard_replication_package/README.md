@@ -178,12 +178,10 @@ The full persistent archive of all raw telemetry traces, regression models, and 
 If you use ReDoS-Guard in your research, please cite:
 
 ```bibtex
-@inproceedings{singh2024characterizing,
-  author    = {Adarsh Singh and Umamaheswari M},
+@inproceedings{SinghPatelRedosGuard,
+  author    = {Adarsh Singh, Devarsh Patel and Umamaheswari M},
   title     = {Characterizing the Catastrophic Backtracking Cliff: A Large-Scale Empirical Study of Algorithmic Complexity Breakdown in Production Regular Expression Engines},
-  year      = {2024},
-  doi       = {10.5281/zenodo.10842910},
-  publisher = {Zenodo}
+  year      = {2026},
 }
 ```
 
